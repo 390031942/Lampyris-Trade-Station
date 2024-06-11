@@ -29,6 +29,7 @@
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />
     <ClInclude Include="Sources\Utility\PathUtil.h" />

@@ -100,6 +100,9 @@
     <ClInclude Include="Sources\Base\Delegate.h">
       <Filter>Source Files\Base</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Utility\StringUtil.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
