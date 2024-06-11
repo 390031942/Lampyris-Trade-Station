@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Wrapper">
+      <UniqueIdentifier>{9510780e-2979-45dd-bb84-8bddbaaeafc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\TWS">
+      <UniqueIdentifier>{a27b60bc-65ce-4aae-bf7a-4b2c8e009a83}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\TWS\bar.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\CommissionReport.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\CommonDefs.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\Contract.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\ContractCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\Decimal.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\DefaultEWrapper.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\DepthMktDataDescription.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EClient.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EClientException.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EClientMsgSink.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EClientSocket.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EDecoder.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EMessage.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EMutex.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EOrderDecoder.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EPosixClientSocketPlatform.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EReader.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EReaderOSSignal.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EReaderSignal.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\ESocket.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\ETransport.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EWrapper.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\EWrapper_prototypes.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\Execution.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\executioncondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\FamilyCode.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\HistogramEntry.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\HistoricalSession.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\HistoricalTick.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\HistoricalTickBidAsk.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\HistoricalTickLast.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\IExternalizable.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\MarginCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\NewsProvider.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\OperatorCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\Order.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\OrderCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\OrderState.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\PercentChangeCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\platformspecific.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\PriceCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\PriceIncrement.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\resource.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\ScannerSubscription.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\SoftDollarTier.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\StdAfx.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TagValue.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TickAttrib.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TickAttribBidAsk.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TickAttribLast.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TimeCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\TwsSocketClientErrors.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\VolumeCondition.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\TWS\WshEventData.h">
+      <Filter>Source Files\TWS</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Wrapper\MessageWrapper.h">
+      <Filter>Source Files\Wrapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\TWS\ContractCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\DefaultEWrapper.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EClient.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EClientSocket.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EDecoder.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EMessage.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EMutex.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EOrderDecoder.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EReader.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\EReaderOSSignal.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\ESocket.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\executioncondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\MarginCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\OperatorCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\OrderCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\PercentChangeCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\PriceCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\SoftDollarTier.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\StdAfx.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\TimeCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\TWS\VolumeCondition.cpp">
+      <Filter>Source Files\TWS</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Wrapper\MessageWrapper.cpp">
+      <Filter>Source Files\Wrapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

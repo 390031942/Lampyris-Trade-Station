@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{cedaca5c-6cb3-4b59-abb3-9f4cb82ca02c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Forms">
+      <UniqueIdentifier>{22b38193-ce89-4c0f-aebe-0198081d9b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Qrc">
+      <UniqueIdentifier>{8d0b22de-e67d-41d5-9519-328df2fc87ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\ConnectDialog.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainWindow.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\UI\MainWindow.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Resource\Forms\ConnectDialog.ui">
+      <Filter>Resource Files\Forms</Filter>
+    </QtUic>
+    <QtUic Include="Resource\Forms\MainWindow.ui">
+      <Filter>Resource Files\Forms</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resource\Qrc\Resources.qrc">
+      <Filter>Resource Files\Qrc</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Sources\UI\ConnectDialog.h">
+      <Filter>Source Files\UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+</Project>

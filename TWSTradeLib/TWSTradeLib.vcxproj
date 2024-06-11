@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\TWS\bar.h" />
+    <ClInclude Include="Sources\TWS\CommissionReport.h" />
+    <ClInclude Include="Sources\TWS\CommonDefs.h" />
+    <ClInclude Include="Sources\TWS\Contract.h" />
+    <ClInclude Include="Sources\TWS\ContractCondition.h" />
+    <ClInclude Include="Sources\TWS\Decimal.h" />
+    <ClInclude Include="Sources\TWS\DefaultEWrapper.h" />
+    <ClInclude Include="Sources\TWS\DepthMktDataDescription.h" />
+    <ClInclude Include="Sources\TWS\EClient.h" />
+    <ClInclude Include="Sources\TWS\EClientException.h" />
+    <ClInclude Include="Sources\TWS\EClientMsgSink.h" />
+    <ClInclude Include="Sources\TWS\EClientSocket.h" />
+    <ClInclude Include="Sources\TWS\EDecoder.h" />
+    <ClInclude Include="Sources\TWS\EMessage.h" />
+    <ClInclude Include="Sources\TWS\EMutex.h" />
+    <ClInclude Include="Sources\TWS\EOrderDecoder.h" />
+    <ClInclude Include="Sources\TWS\EPosixClientSocketPlatform.h" />
+    <ClInclude Include="Sources\TWS\EReader.h" />
+    <ClInclude Include="Sources\TWS\EReaderOSSignal.h" />
+    <ClInclude Include="Sources\TWS\EReaderSignal.h" />
+    <ClInclude Include="Sources\TWS\ESocket.h" />
+    <ClInclude Include="Sources\TWS\ETransport.h" />
+    <ClInclude Include="Sources\TWS\EWrapper.h" />
+    <ClInclude Include="Sources\TWS\EWrapper_prototypes.h" />
+    <ClInclude Include="Sources\TWS\Execution.h" />
+    <ClInclude Include="Sources\TWS\executioncondition.h" />
+    <ClInclude Include="Sources\TWS\FamilyCode.h" />
+    <ClInclude Include="Sources\TWS\HistogramEntry.h" />
+    <ClInclude Include="Sources\TWS\HistoricalSession.h" />
+    <ClInclude Include="Sources\TWS\HistoricalTick.h" />
+    <ClInclude Include="Sources\TWS\HistoricalTickBidAsk.h" />
+    <ClInclude Include="Sources\TWS\HistoricalTickLast.h" />
+    <ClInclude Include="Sources\TWS\IExternalizable.h" />
+    <ClInclude Include="Sources\TWS\MarginCondition.h" />
+    <ClInclude Include="Sources\TWS\NewsProvider.h" />
+    <ClInclude Include="Sources\TWS\OperatorCondition.h" />
+    <ClInclude Include="Sources\TWS\Order.h" />
+    <ClInclude Include="Sources\TWS\OrderCondition.h" />
+    <ClInclude Include="Sources\TWS\OrderState.h" />
+    <ClInclude Include="Sources\TWS\PercentChangeCondition.h" />
+    <ClInclude Include="Sources\TWS\platformspecific.h" />
+    <ClInclude Include="Sources\TWS\PriceCondition.h" />
+    <ClInclude Include="Sources\TWS\PriceIncrement.h" />
+    <ClInclude Include="Sources\TWS\resource.h" />
+    <ClInclude Include="Sources\TWS\ScannerSubscription.h" />
+    <ClInclude Include="Sources\TWS\SoftDollarTier.h" />
+    <ClInclude Include="Sources\TWS\StdAfx.h" />
+    <ClInclude Include="Sources\TWS\TagValue.h" />
+    <ClInclude Include="Sources\TWS\TickAttrib.h" />
+    <ClInclude Include="Sources\TWS\TickAttribBidAsk.h" />
+    <ClInclude Include="Sources\TWS\TickAttribLast.h" />
+    <ClInclude Include="Sources\TWS\TimeCondition.h" />
+    <ClInclude Include="Sources\TWS\TwsSocketClientErrors.h" />
+    <ClInclude Include="Sources\TWS\VolumeCondition.h" />
+    <ClInclude Include="Sources\TWS\WshEventData.h" />
+    <ClInclude Include="Sources\Wrapper\MessageWrapper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\TWS\ContractCondition.cpp" />
+    <ClCompile Include="Sources\TWS\DefaultEWrapper.cpp" />
+    <ClCompile Include="Sources\TWS\EClient.cpp" />
+    <ClCompile Include="Sources\TWS\EClientSocket.cpp" />
+    <ClCompile Include="Sources\TWS\EDecoder.cpp" />
+    <ClCompile Include="Sources\TWS\EMessage.cpp" />
+    <ClCompile Include="Sources\TWS\EMutex.cpp" />
+    <ClCompile Include="Sources\TWS\EOrderDecoder.cpp" />
+    <ClCompile Include="Sources\TWS\EReader.cpp" />
+    <ClCompile Include="Sources\TWS\EReaderOSSignal.cpp" />
+    <ClCompile Include="Sources\TWS\ESocket.cpp" />
+    <ClCompile Include="Sources\TWS\executioncondition.cpp" />
+    <ClCompile Include="Sources\TWS\MarginCondition.cpp" />
+    <ClCompile Include="Sources\TWS\OperatorCondition.cpp" />
+    <ClCompile Include="Sources\TWS\OrderCondition.cpp" />
+    <ClCompile Include="Sources\TWS\PercentChangeCondition.cpp" />
+    <ClCompile Include="Sources\TWS\PriceCondition.cpp" />
+    <ClCompile Include="Sources\TWS\SoftDollarTier.cpp" />
+    <ClCompile Include="Sources\TWS\StdAfx.cpp" />
+    <ClCompile Include="Sources\TWS\TimeCondition.cpp" />
+    <ClCompile Include="Sources\TWS\VolumeCondition.cpp" />
+    <ClCompile Include="Sources\Wrapper\MessageWrapper.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E1AA93C5-DB56-4FA9-8B41-835F52C193F3}</ProjectGuid>
+    <Keyword>QtVS_v304</Keyword>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
+    <QtInstall>_Qt-static</QtInstall>
+    <QtModules>core</QtModules>
+    <QtBuildConfig>debug</QtBuildConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
+    <QtInstall>_Qt-static</QtInstall>
+    <QtModules>core</QtModules>
+    <QtBuildConfig>release</QtBuildConfig>
+  </PropertyGroup>
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(QtMsBuild)\Qt.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <IncludePath>$(ProjectDir)Sources;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>$(SolutionDir)ThirdParty\libbid\libs;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <IncludePath>$(ProjectDir)Sources\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <AdditionalDependencies>biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>TWSTRADELIB_LIB;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="Configuration">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>TWSTRADELIB_LIB;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
