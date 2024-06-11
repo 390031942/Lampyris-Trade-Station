@@ -5,44 +5,44 @@
 // Project Include(s)
 #include "ConsoleLogger.h"
 
-void ConsoleLogger::LogInfo(const char* message) {
-    LogMessage(LogLevel::Info, message);
+void ConsoleLogger::logInfo(const char* message) {
+    logMessage(LogLevel::Info, message);
 }
 
-void ConsoleLogger::LogWarning(const char* message) {
-    LogMessage(LogLevel::Warning, message);
+void ConsoleLogger::logWarning(const char* message) {
+    logMessage(LogLevel::Warning, message);
 }
 
-void ConsoleLogger::LogError(const char* message) {
-    LogMessage(LogLevel::Error, message);
+void ConsoleLogger::logError(const char* message) {
+    logMessage(LogLevel::Error, message);
 }
 
-void ConsoleLogger::LogException(const std::exception& exception) {
-    LogMessage(LogLevel::Error, exception.what());
+void ConsoleLogger::logException(const std::exception& exception) {
+    logMessage(LogLevel::Error, exception.what());
 }
 
-void ConsoleLogger::LogInfoFormat(const char* format, ...) {
+void ConsoleLogger::logInfoFormat(const char* format, ...) {
     va_list args;
     va_start(args, format);
     QString message = QString::vasprintf(format, args);
     va_end(args);
-    LogInfo(message.toUtf8().constData());
+    logInfo(message.toUtf8().constData());
 }
 
-void ConsoleLogger::LogWarningFormat(const char* format, ...) {
+void ConsoleLogger::logWarningFormat(const char* format, ...) {
     va_list args;
     va_start(args, format);
     QString message = QString().vasprintf(format, args);
     va_end(args);
-    LogWarning(message.toUtf8().constData());
+    logWarning(message.toUtf8().constData());
 }
 
-void ConsoleLogger::LogErrorFormat(const char* format, ...) {
+void ConsoleLogger::logErrorFormat(const char* format, ...) {
     va_list args;
     va_start(args, format);
     QString message = QString().vasprintf(format, args);
     va_end(args);
-    LogError(message.toUtf8().constData());
+    logError(message.toUtf8().constData());
 }
 
 ConsoleLogger::ConsoleLogger() {
@@ -62,7 +62,7 @@ ConsoleLogger::~ConsoleLogger() {
 
 }
 
-void ConsoleLogger::LogMessage(LogLevel logLevel, const char* message) {
+void ConsoleLogger::logMessage(LogLevel logLevel, const char* message) {
     // ÎÄ±¾ÑÕÉ«
     WORD color = 0;
 

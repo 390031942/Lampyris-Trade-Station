@@ -11,7 +11,7 @@ public:
 	/*
 	 * 获取下一个有效的订单ID，其在placeOrder等函数中使用
 	*/
-	int GetNextValid() { 
+	int getNextValid() { 
 		return this->m_nextValidId;
 	}
 

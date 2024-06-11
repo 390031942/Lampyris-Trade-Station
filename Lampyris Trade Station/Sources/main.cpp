@@ -3,15 +3,14 @@
 */
 
 // Project Include(s)
-#include "UI/MainWindow.h"
+#include "UI/ConnectDialog.h"
 
 // QT Include(s)
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    MainWindow w;
-
+    ConnectDialog w;
     w.show();
     return a.exec();
 }

@@ -25,8 +25,26 @@
   <property name="windowTitle">
    <string>ConnectDialog</string>
   </property>
+  <widget class="QGifImage" name="LoginGif" native="true">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>50</y>
+     <width>100</width>
+     <height>100</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QGifImage</class>
+   <extends>QWidget</extends>
+   <header>UI/Common/QGifImage.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

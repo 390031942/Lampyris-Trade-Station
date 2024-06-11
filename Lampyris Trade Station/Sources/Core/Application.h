@@ -21,17 +21,17 @@ public:
 	 * 参数{port}:端口号
 	 * 参数{clientId}:客户端ID，如果有多个客户端连接同一个IB网关/TWS，那么clientId应该互不相同
 	*/
-	void           Connect(const QString& ip,int port,int clientId);
+	void           connect(const QString& ip,int port,int clientId);
 		       
 	/*
 	 * 中断与IB网关/TWS的连接：
 	*/
-	void           Disconnect();
+	void           disconnect();
 	
 	/*
 	 * 是否与IB网关/TWS连接成功：
 	*/
-	bool           IsConnected();
+	bool           isConnected();
 
 	/*
 	 * 构造函数：
@@ -46,7 +46,7 @@ private:
 	/*
 	 * 从文件中读取程序配置信息：
 	*/
-	void           ReadConfigFromFile();
+	void           readConfigFromFile();
 
 	EWrapper*      m_wrapper;
 

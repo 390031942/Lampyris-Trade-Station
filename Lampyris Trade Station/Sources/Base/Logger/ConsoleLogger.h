@@ -25,25 +25,25 @@
 
 class ConsoleLogger:public ILogger {
 public:
-    void     LogInfo(const char* message);
+    void     logInfo(const char* message);
              
-    void     LogWarning(const char* message);
+    void     logWarning(const char* message);
              
-    void     LogError(const char* message);
+    void     logError(const char* message);
              
-    void     LogException(const std::exception& exception);
+    void     logException(const std::exception& exception);
              
-    void     LogInfoFormat(const char* format, ...);
+    void     logInfoFormat(const char* format, ...);
              
-    void     LogWarningFormat(const char* format, ...);
+    void     logWarningFormat(const char* format, ...);
              
-    void     LogErrorFormat(const char* format, ...);
+    void     logErrorFormat(const char* format, ...);
 private:
              ConsoleLogger();
 
     virtual ~ConsoleLogger();
 
-    void     LogMessage(LogLevel logLevel, const char* message);
+    void     logMessage(LogLevel logLevel, const char* message);
 
     HANDLE   m_handle;
 };

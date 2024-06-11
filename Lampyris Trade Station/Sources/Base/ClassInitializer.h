@@ -5,10 +5,10 @@
 
 #define LTS_DECLARE_CLASS_INITIALIZE(clsName) public: \
     static int __hiddenInteger; \
-    static int StaticInitialize();
+    static int __staticInitialize();
 
 #define LTS_DECLARE_CLASS_BEGIN(clsName) \
-	int clsName::__hiddenInteger = clsName::StaticInitialize(); \ 
-	int clsName::StaticInitialize() {
+	int clsName::__hiddenInteger = clsName::__staticInitialize(); \ 
+	int clsName::__staticInitialize() {
 
 #define LTS_DECLARE_CLASS_END(clsName) return 1; }

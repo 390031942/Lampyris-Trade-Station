@@ -11,11 +11,11 @@
 */
 class ILogger {
 public:
-    virtual void LogInfo(const QString& message) = 0;
+    virtual void logInfo(const QString& message) = 0;
 
-    virtual void LogWarning(const QString& message) = 0;
+    virtual void logWarning(const QString& message) = 0;
 
-    virtual void LogError(const QString& message) = 0;
+    virtual void logError(const QString& message) = 0;
 
-    virtual void LogException(const QString& message) = 0;
+    virtual void logException(const QString& message) = 0;
 };

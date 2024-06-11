@@ -9,11 +9,9 @@
 #include <QVBoxLayout>
 
 QGifImage::QGifImage(QWidget *parent) : QWidget(parent) {
-    // 初始化 QLabel 和 QMovie
     m_gifLabel = new QLabel(this);
     m_gifMovie = new QMovie(this);
 
-    // 将 QLabel 添加到布局中
     QVBoxLayout *layout = new QVBoxLayout(this);
     layout->addWidget(m_gifLabel);
     layout->setContentsMargins(0, 0, 0, 0);

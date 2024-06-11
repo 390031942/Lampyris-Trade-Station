@@ -3,7 +3,7 @@
 */
 #include "PathUtil.h"
 
-const QString& PathUtil::GetAppDocumentSavePath() {
+const QString& PathUtil::getAppDocumentSavePath() {
     static QString path;
 
     if (path.size() <= 0) {

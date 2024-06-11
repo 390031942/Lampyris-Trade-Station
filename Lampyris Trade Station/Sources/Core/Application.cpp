@@ -5,14 +5,14 @@
 // Project Include(s)
 #include "Application.h"
 
-void Application::Connect(const QString& ip, int port, int clientId) {
+void Application::connect(const QString& ip, int port, int clientId) {
 
 }
 
-void Application::Disconnect() {
+void Application::disconnect() {
 }
 
-bool Application::IsConnected() {
+bool Application::isConnected() {
 	return false;
 }
 
@@ -24,6 +24,6 @@ Application::~Application() {
 	
 }
 
-void Application::ReadConfigFromFile() {
+void Application::readConfigFromFile() {
 
 } 

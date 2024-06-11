@@ -8,6 +8,7 @@
 ConnectDialog::ConnectDialog(QWidget *parent)
 	: QDialog(parent) {
 	ui.setupUi(this);
+	ui.LoginGif->setGifImagePath(":/Resources/Gif/Gif_0004.gif");
 }
 
 ConnectDialog::~ConnectDialog() {

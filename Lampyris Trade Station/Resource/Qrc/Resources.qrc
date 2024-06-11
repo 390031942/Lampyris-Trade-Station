@@ -1,4 +1,10 @@
 <RCC>
-    <qresource prefix="MainWindow">
+    <qresource prefix="/Resources">
+        <file>Gif/Gif_0001.gif</file>
+        <file>Gif/Gif_0002.gif</file>
+        <file>Gif/Gif_0003.gif</file>
+        <file>Gif/Gif_0004.gif</file>
+        <file>Gif/Gif_0005.gif</file>
+        <file>Gif/Gif_0006.gif</file>
     </qresource>
 </RCC>
