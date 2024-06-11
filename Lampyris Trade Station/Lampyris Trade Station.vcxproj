@@ -11,16 +11,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp" />
     <ClCompile Include="Sources\Core\Application.cpp" />
+    <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
+    <ClCompile Include="Sources\Utility\PathUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Utility\MemoryUti.h" />
+    <ClInclude Include="Sources\Base\ClassInitializer.h" />
+    <ClInclude Include="Sources\Base\Delegate.h" />
+    <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
+    <ClInclude Include="Sources\Base\Singleton.h" />
+    <ClInclude Include="Sources\Const\LogLevel.h" />
+    <ClInclude Include="Sources\Core\MessageWrapper.h" />
+    <ClInclude Include="Sources\Interface\ILogger.h" />
+    <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <QtMoc Include="Sources\UI\Common\QGifImage.h" />
+    <ClInclude Include="Sources\Utility\MemoryUtil.h" />
+    <ClInclude Include="Sources\Utility\PathUtil.h" />
     <QtMoc Include="Sources\UI\ConnectDialog.h" />
     <ClInclude Include="Sources\Core\Application.h" />
-    <ClInclude Include="Sources\UI\MainWindow.h" />
+    <QtMoc Include="Sources\UI\MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui" />
@@ -79,10 +93,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(SolutionDir)ThirdParty\TWSAPI\includes;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>
+    </ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>

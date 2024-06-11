@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\Wrapper">
-      <UniqueIdentifier>{9510780e-2979-45dd-bb84-8bddbaaeafc2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\TWS">
       <UniqueIdentifier>{a27b60bc-65ce-4aae-bf7a-4b2c8e009a83}</UniqueIdentifier>
     </Filter>
@@ -178,9 +175,6 @@
     <ClInclude Include="Sources\TWS\WshEventData.h">
       <Filter>Source Files\TWS</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Wrapper\MessageWrapper.h">
-      <Filter>Source Files\Wrapper</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\TWS\ContractCondition.cpp">
@@ -245,9 +239,6 @@
     </ClCompile>
     <ClCompile Include="Sources\TWS\VolumeCondition.cpp">
       <Filter>Source Files\TWS</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Wrapper\MessageWrapper.cpp">
-      <Filter>Source Files\Wrapper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

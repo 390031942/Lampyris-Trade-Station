@@ -18,6 +18,27 @@
     <Filter Include="Resource Files\Qrc">
       <UniqueIdentifier>{8d0b22de-e67d-41d5-9519-328df2fc87ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{66d62e2d-d65c-4fe0-9884-c12936f17472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Interface">
+      <UniqueIdentifier>{4c4208e3-998e-40c1-ae2d-febd6f0153f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base">
+      <UniqueIdentifier>{f002b6f5-d04f-49ec-972e-2c62768b3d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{ba59ed64-680d-461c-aeb1-ff8e46e92e02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Base\Logger">
+      <UniqueIdentifier>{4518bae6-2d18-4e1f-9cd5-90d9b8d9f892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Const">
+      <UniqueIdentifier>{96763d1a-c16c-4459-b92d-7ac5e716772d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Common">
+      <UniqueIdentifier>{667994c0-4fcc-481a-8714-36a681c4e50c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -29,10 +50,55 @@
     <ClCompile Include="Sources\UI\MainWindow.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Core\Application.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\MessageWrapper.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Utility\PathUtil.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp">
+      <Filter>Source Files\Base\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Common\QGifImage.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\UI\MainWindow.h">
-      <Filter>Source Files\UI</Filter>
+    <ClInclude Include="Sources\Core\Application.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Utility\MemoryUtil.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Core\MessageWrapper.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Utility\PathUtil.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\ISerializable.h">
+      <Filter>Source Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\Singleton.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\ILogger.h">
+      <Filter>Source Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h">
+      <Filter>Source Files\Base\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\LogLevel.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\ClassInitializer.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\Delegate.h">
+      <Filter>Source Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +117,12 @@
   <ItemGroup>
     <QtMoc Include="Sources\UI\ConnectDialog.h">
       <Filter>Source Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainWindow.h">
+      <Filter>Source Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\QGifImage.h">
+      <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

@@ -3,16 +3,18 @@
 */
 #pragma once
 
+// QT Include(s)
 #include <QDialog>
+
+// Project Include(s)
 #include "ui_ConnectDialog.h"
 
 class ConnectDialog : public QDialog {
 	Q_OBJECT
-
 public:
-	ConnectDialog(QWidget *parent = nullptr);
+	explicit ConnectDialog(QWidget *parent = nullptr);
 
-	~ConnectDialog();
+          	~ConnectDialog();
 private:
 	Ui::ConnectDialogClass ui;
 };

@@ -3,15 +3,18 @@
 */
 #pragma once
 
+// QT Include(s)
 #include <QtWidgets/QMainWindow>
+
+// Project Include(s)
 #include "ui_MainWindow.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
-     MainWindow(QWidget *parent = nullptr);
+     explicit MainWindow(QWidget *parent = nullptr);
 
-    ~MainWindow();
+             ~MainWindow();
 private:
     Ui::MainWindowClass ui;
 };

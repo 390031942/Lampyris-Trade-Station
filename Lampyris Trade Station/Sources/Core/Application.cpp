@@ -1,6 +1,8 @@
 /*
 /* Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
+
+// Project Include(s)
 #include "Application.h"
 
 void Application::Connect(const QString& ip, int port, int clientId) {
@@ -21,3 +23,7 @@ Application::Application():
 Application::~Application() {
 	
 }
+
+void Application::ReadConfigFromFile() {
+
+} 
