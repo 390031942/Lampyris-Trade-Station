@@ -29,6 +29,7 @@
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />
@@ -97,6 +98,7 @@
     <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(IncludePath)</IncludePath>
     <ExternalIncludePath>
     </ExternalIncludePath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
@@ -104,6 +106,9 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

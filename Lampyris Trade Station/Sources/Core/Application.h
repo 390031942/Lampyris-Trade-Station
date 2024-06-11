@@ -20,8 +20,9 @@ public:
 	 * 参数{ip}:IP地址字符串
 	 * 参数{port}:端口号
 	 * 参数{clientId}:客户端ID，如果有多个客户端连接同一个IB网关/TWS，那么clientId应该互不相同
+	 * 返回:是否连接成功
 	*/
-	void           connect(const QString& ip,int port,int clientId);
+	bool           connect(const QString& ip,int port,int clientId);
 		       
 	/*
 	 * 中断与IB网关/TWS的连接：
@@ -51,4 +52,6 @@ private:
 	EWrapper*      m_wrapper;
 
 	EClientSocket* m_clientSocket;
+
+	EReaderSignal* m_signal;
 };

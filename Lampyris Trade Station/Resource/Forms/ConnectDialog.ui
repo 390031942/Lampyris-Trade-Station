@@ -194,7 +194,7 @@ QPushButton:pressed
    </property>
    <property name="styleSheet">
     <string notr="true">QLabel {
-    background-image: url(&quot;C:/Users/Administrator/source/repos/Lampyris-Trade-Station/Lampyris Trade Station/Resource/Qrc/Image/ConnectDialog/ConnectDialog_0001.png&quot;);
+    background-image: url(&quot;:/Resources/Image/ConnectDialog/ConnectDialog_0001.png&quot;);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover; /* 根据需要调整图片大小 */

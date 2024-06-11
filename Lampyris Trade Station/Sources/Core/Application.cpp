@@ -5,19 +5,28 @@
 // Project Include(s)
 #include "Application.h"
 
-void Application::connect(const QString& ip, int port, int clientId) {
-
+bool Application::connect(const QString& ip, int port, int clientId) {
+	if (m_clientSocket == nullptr) {
+		return false;
+	}
+	return m_clientSocket->eConnect(ip.toUtf8().constData(), port, clientId);
 }
 
 void Application::disconnect() {
+	if (isConnected()) {
+		m_clientSocket->eDisconnect();
+	}
 }
 
 bool Application::isConnected() {
-	return false;
+	if (m_clientSocket == nullptr) {
+		return false;
+	}
+
+	return m_clientSocket->isConnected();
 }
 
-Application::Application():
-	m_wrapper(nullptr),m_clientSocket(nullptr) {
+Application::Application() {
 }
 
 Application::~Application() {
@@ -25,5 +34,4 @@ Application::~Application() {
 }
 
 void Application::readConfigFromFile() {
-
 } 

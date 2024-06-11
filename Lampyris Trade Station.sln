@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lampyris Trade Station", "Lampyris Trade Station\Lampyris Trade Station.vcxproj", "{8DE86DC5-285A-4FE8-A610-AC6906C99CAF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E1AA93C5-DB56-4FA9-8B41-835F52C193F3} = {E1AA93C5-DB56-4FA9-8B41-835F52C193F3}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TWSTradeLib", "TWSTradeLib\TWSTradeLib.vcxproj", "{E1AA93C5-DB56-4FA9-8B41-835F52C193F3}"
 EndProject

@@ -4,10 +4,14 @@
 
 // Project Include(s)
 #include "ConnectDialog.h"
+#include <Utility/StringUtil.h>
+#include <Core/Application.h>
 
 // QT Include(s)
 #include <QMouseEvent>
 #include <QDateTime>
+#include <QIntValidator>
+#include <QMessageBox>
 
 ConnectDialog::ConnectDialog(QWidget *parent)
 	: QDialog(parent) {
@@ -37,6 +41,10 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 
 	// 初始化信号
 	QObject::connect(m_ui.buttonEnter, &QPushButton::clicked, this, &ConnectDialog::OnClickButtonConnect);
+
+	// 验证器
+	QIntValidator* portValidator = new QIntValidator(1, 65535, m_ui.textPort);
+	m_ui.textPort->setValidator(portValidator);
 }
 
 ConnectDialog::~ConnectDialog() {
@@ -59,5 +67,15 @@ void ConnectDialog::mouseMoveEvent(QMouseEvent* event) {
 }
 
 void ConnectDialog::OnClickButtonConnect() {
+	QString ip = m_ui.textIP->text();
 
-}
+	if (!StringUtil::isValidIPV4(ip)) {
+		QMessageBox::information(NULL, "Lampyris Trade Station", "Invalid string format for ip address");
+		return;
+	}
+
+	int port = m_ui.textPort->text().toInt();
+	int clientId = m_ui.textClientId->text().toInt();
+
+	Application::getInstance()->connect(ip, port, clientId);
+}	

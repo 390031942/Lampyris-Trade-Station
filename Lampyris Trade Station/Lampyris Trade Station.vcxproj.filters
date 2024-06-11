@@ -103,6 +103,9 @@
     <ClInclude Include="Sources\Utility\StringUtil.h">
       <Filter>Source Files\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\UI\SystemTrayIcon.h">
+      <Filter>Source Files\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
