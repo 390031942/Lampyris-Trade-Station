@@ -21,7 +21,6 @@ public:
         m_funcList.push_back(func);
         return *this;
     }
-
     /*
      * 移除监听函数
      * 参数{func}待添加的函数的地址
@@ -30,7 +29,6 @@ public:
         m_funcList.erase(std::remove_if(funcs.begin(), funcs.end(), [func](Func f) { return f == func; }), funcs.end());
         return *this;
     }
-
     /* 
      * 调用所有注册的函数
      */ 

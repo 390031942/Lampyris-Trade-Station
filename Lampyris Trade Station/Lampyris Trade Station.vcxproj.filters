@@ -39,6 +39,15 @@
     <Filter Include="Source Files\UI\Common">
       <UniqueIdentifier>{667994c0-4fcc-481a-8714-36a681c4e50c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\Helper">
+      <UniqueIdentifier>{79128aca-6f5b-4356-ba66-95afbc6982f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model">
+      <UniqueIdentifier>{b0d6d2f1-edb6-4854-ac81-5c293b613944}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collections">
+      <UniqueIdentifier>{e3995a94-1716-4e46-8f96-1662bc42687c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -64,6 +73,15 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp">
       <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\SystemTrayIcon.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp">
+      <Filter>Source Files\UI\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
+      <Filter>Source Files\Collections</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +123,21 @@
     </ClInclude>
     <ClInclude Include="Sources\UI\SystemTrayIcon.h">
       <Filter>Source Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\UI\Helper\MenuHelper.h">
+      <Filter>Source Files\UI\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\EventManager.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\EventType.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\QuoteDataDef.h">
+      <Filter>Source Files\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
+      <Filter>Source Files\Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -60,14 +60,9 @@ public:
 
 	}
 private:
-	/*
-	 * 下一个有效的订单ID
-	*/
+	// 下一个有效的订单ID
 	int m_nextValidId;
-
-	/*
-	 * 服务端时间戳
-	*/
+	// 服务端时间戳
 	long m_timestamp;
 };
 

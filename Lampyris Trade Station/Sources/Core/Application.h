@@ -23,22 +23,18 @@ public:
 	 * 返回:是否连接成功
 	*/
 	bool           connect(const QString& ip,int port,int clientId);
-		       
 	/*
 	 * 中断与IB网关/TWS的连接：
 	*/
 	void           disconnect();
-	
 	/*
 	 * 是否与IB网关/TWS连接成功：
 	*/
 	bool           isConnected();
-
 	/*
 	 * 构造函数：
 	*/
 	               Application();
-
 	/*
 	 * 析构函数：
 	*/
@@ -50,8 +46,6 @@ private:
 	void           readConfigFromFile();
 
 	EWrapper*      m_wrapper;
-
 	EClientSocket* m_clientSocket;
-
 	EReaderSignal* m_signal;
 };

@@ -11,23 +11,8 @@
 */
 class ISerializable {
 public:
-	/*
-	 * 序列化方法
-	*/
 	virtual void serialize() = 0;
-
-	/*
-	 * 反序列化方法
-	*/
 	virtual void deserialize() = 0;
-
-	/*
-	 * 在反序列化完成后执行的方法
-	*/
 	virtual void postDeserialize() {}
-
-	/*
-	 * 序列化本地的存储文件名
-	*/
 	virtual QString getStorageFileName() = 0;
 };
