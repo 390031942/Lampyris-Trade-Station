@@ -48,6 +48,15 @@
     <Filter Include="Source Files\Collections">
       <UniqueIdentifier>{e3995a94-1716-4e46-8f96-1662bc42687c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\App">
+      <UniqueIdentifier>{724af9d1-d037-4988-940d-449fd1b43924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Login">
+      <UniqueIdentifier>{85bebcd8-b7af-4196-a771-1ab0914d6991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Quote">
+      <UniqueIdentifier>{a5fbeea5-47ee-4121-82a6-a6c4b3eb1b89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -133,11 +142,11 @@
     <ClInclude Include="Sources\Const\EventType.h">
       <Filter>Source Files\Const</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Model\QuoteDataDef.h">
-      <Filter>Source Files\Model</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
       <Filter>Source Files\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h">
+      <Filter>Source Files\Model\Quote</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

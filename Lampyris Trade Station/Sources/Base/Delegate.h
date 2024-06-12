@@ -26,7 +26,7 @@ public:
      * 参数{func}待添加的函数的地址
      */
     Delegate& operator-=(Func func) {
-        m_funcList.erase(std::remove_if(funcs.begin(), funcs.end(), [func](Func f) { return f == func; }), funcs.end());
+        m_funcList.erase(std::remove_if(m_funcList.begin(), m_funcList.end(), [func](Func f) { return f == func; }), m_funcList.end());
         return *this;
     }
     /* 

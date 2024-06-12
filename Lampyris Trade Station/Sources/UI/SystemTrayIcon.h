@@ -9,6 +9,7 @@
 // Project Include(s)
 #include <Base/Singleton.h>
 #include <Base/Delegate.h>
+#include "Helper/MenuHelper.h"
 
 class SystemTrayIcon : public Singleton<SystemTrayIcon> {
 	typedef void* MessageUserData;

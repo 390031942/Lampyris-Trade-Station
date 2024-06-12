@@ -14,7 +14,7 @@
 #include <QMessageBox>
 
 ConnectDialog::ConnectDialog(QWidget *parent)
-	: QDialog(parent) {
+	: QDialog(parent),m_retryCount(0) {
 	m_ui.setupUi(this);
 
 	// Gif 表情
@@ -41,10 +41,19 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 
 	// 初始化信号
 	QObject::connect(m_ui.buttonEnter, &QPushButton::clicked, this, &ConnectDialog::OnClickButtonConnect);
+	QObject::connect(&m_connectTimer, &QTimer::timeout, this, &ConnectDialog::TryConnect);
 
 	// 验证器
 	QIntValidator* portValidator = new QIntValidator(1, 65535, m_ui.textPort);
 	m_ui.textPort->setValidator(portValidator);
+
+	// 设置 需要被设置为disable的控件列表
+	m_needDisableWidgetList.push_back(m_ui.textIP);
+	m_needDisableWidgetList.push_back(m_ui.textPort);
+	m_needDisableWidgetList.push_back(m_ui.textClientId);
+	m_needDisableWidgetList.push_back(m_ui.toggleSaveIP);
+	m_needDisableWidgetList.push_back(m_ui.toggleAutoConnect);
+	m_needDisableWidgetList.push_back(m_ui.buttonEnter);
 }
 
 ConnectDialog::~ConnectDialog() {
@@ -76,6 +85,16 @@ void ConnectDialog::OnClickButtonConnect() {
 
 	int port = m_ui.textPort->text().toInt();
 	int clientId = m_ui.textClientId->text().toInt();
+}
+void ConnectDialog::TryConnect() {
+	if (!Application::getInstance()->connect(ip, port, clientId)) {
 
-	Application::getInstance()->connect(ip, port, clientId);
-}	
+	}
+}
+
+void ConnectDialog::SetControlEditable(bool value) {
+	for (int i = 0; i < m_needDisableWidgetList.size(); i++) {
+		m_needDisableWidgetList[i]->setDisabled(!value);
+	}
+}
+

@@ -5,6 +5,7 @@
 
 // QT Include(s)
 #include <QDialog>
+#include <QTimer>
 
 // Project Include(s)
 #include "ui_ConnectDialog.h"
@@ -19,6 +20,14 @@ protected:
     void                   mouseMoveEvent(QMouseEvent* event) override;
 private:                   
 	void                   OnClickButtonConnect();
+	void                   TryConnect();
+	void                   SetControlEditable(bool value);
+
 	Ui::ConnectDialogClass m_ui;
 	QPoint                 m_dragPosition; 
+	std::vector<QWidget*>  m_needDisableWidgetList;
+
+	/*********** 连接相关 ***********/
+	QTimer                 m_connectTimer;
+	int                    m_retryCount;
 };

@@ -8,12 +8,8 @@
 #include <utility>
 #include <memory>
 
-// 假设QuoteData和KLineData类已经定义
-class QuoteData {
-public:
-    std::vector<KLineData> perDayKLineList; // 每日K线数据列表
-    // 其他成员和方法...
-};
+// Project Include(s)
+#include <Model/Quote/QuoteDataDef.h>
 
 struct QuotePriceSegmentTreeNode;
 typedef std::shared_ptr<QuotePriceSegmentTreeNode> QuotePriceSegmentTreeNodePtr;
