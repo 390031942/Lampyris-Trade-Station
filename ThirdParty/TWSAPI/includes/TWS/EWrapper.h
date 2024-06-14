@@ -144,7 +144,7 @@ class EWrapper
 public:
    virtual ~EWrapper() {};
 
-	#define EWRAPPER_VIRTUAL_IMPL {}
+	#define EWRAPPER_VIRTUAL_IMPL = 0
 	#include "EWrapper_prototypes.h"
 };
 

@@ -12,11 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp" />
-    <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp" />
+    <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
     <ClCompile Include="Sources\main.cpp" />
+    <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
+    <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
@@ -25,17 +29,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Base\ClassInitializer.h" />
+    <ClInclude Include="Sources\Base\CustomSerializable.h" />
     <ClInclude Include="Sources\Base\Delegate.h" />
-    <ClInclude Include="Sources\Base\EventManager.h" />
+    <QtMoc Include="Sources\Base\EventManager.h" />
     <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
+    <ClInclude Include="Sources\Base\SerializableSingleton.h" />
+    <ClInclude Include="Sources\Base\SerializeMacro.h" />
     <ClInclude Include="Sources\Base\Singleton.h" />
-    <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h" />
+    <ClInclude Include="Sources\Base\SingletonQObject.h" />
+    <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\AppReturnCode.h" />
     <ClInclude Include="Sources\Const\EventType.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
+    <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
+    <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
@@ -80,7 +94,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>_Qt-static</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;network;gui;widgets;websockets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -106,7 +120,7 @@
     <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(IncludePath)</IncludePath>
     <ExternalIncludePath>
     </ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(SolutionDir)ThirdParty\boost\libs;$(LibraryPath)</LibraryPath>
     <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -116,7 +130,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libboost_stacktrace_windbg-vc142-mt-gd-1_85.lib;libboost_serialization-vc142-mt-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

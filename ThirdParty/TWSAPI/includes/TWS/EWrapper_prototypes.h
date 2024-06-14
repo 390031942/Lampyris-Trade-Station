@@ -9,24 +9,17 @@
 
 virtual void tickPrice( TickerId tickerId, TickType field, double price, const TickAttrib& attrib) EWRAPPER_VIRTUAL_IMPL;
 virtual void tickSize(TickerId tickerId, TickType field, Decimal size) EWRAPPER_VIRTUAL_IMPL;
-virtual void tickOptionComputation( TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol, double delta,
-	double optPrice, double pvDividend, double gamma, double vega, double theta, double undPrice) EWRAPPER_VIRTUAL_IMPL;
+virtual void tickOptionComputation( TickerId tickerId, TickType tickType, int tickAttrib, double impliedVol, double delta,double optPrice, double pvDividend, double gamma, double vega, double theta, double undPrice) EWRAPPER_VIRTUAL_IMPL;
 virtual void tickGeneric(TickerId tickerId, TickType tickType, double value) EWRAPPER_VIRTUAL_IMPL;
 virtual void tickString(TickerId tickerId, TickType tickType, const std::string& value) EWRAPPER_VIRTUAL_IMPL;
-virtual void tickEFP(TickerId tickerId, TickType tickType, double basisPoints, const std::string& formattedBasisPoints,
-	double totalDividends, int holdDays, const std::string& futureLastTradeDate, double dividendImpact, double dividendsToLastTradeDate) EWRAPPER_VIRTUAL_IMPL;
-virtual void orderStatus( OrderId orderId, const std::string& status, Decimal filled,
-	Decimal remaining, double avgFillPrice, int permId, int parentId,
-	double lastFillPrice, int clientId, const std::string& whyHeld, double mktCapPrice) EWRAPPER_VIRTUAL_IMPL;
+virtual void tickEFP(TickerId tickerId, TickType tickType, double basisPoints, const std::string& formattedBasisPoints,double totalDividends, int holdDays, const std::string& futureLastTradeDate, double dividendImpact, double dividendsToLastTradeDate) EWRAPPER_VIRTUAL_IMPL;
+virtual void orderStatus( OrderId orderId, const std::string& status, Decimal filled,Decimal remaining, double avgFillPrice, int permId, int parentId,double lastFillPrice, int clientId, const std::string& whyHeld, double mktCapPrice) EWRAPPER_VIRTUAL_IMPL;
 virtual void openOrder( OrderId orderId, const Contract&, const Order&, const OrderState&) EWRAPPER_VIRTUAL_IMPL;
 virtual void openOrderEnd() EWRAPPER_VIRTUAL_IMPL;
 virtual void winError( const std::string& str, int lastError) EWRAPPER_VIRTUAL_IMPL;
 virtual void connectionClosed() EWRAPPER_VIRTUAL_IMPL;
-virtual void updateAccountValue(const std::string& key, const std::string& val,
-const std::string& currency, const std::string& accountName) EWRAPPER_VIRTUAL_IMPL;
-virtual void updatePortfolio( const Contract& contract, Decimal position,
-	double marketPrice, double marketValue, double averageCost,
-	double unrealizedPNL, double realizedPNL, const std::string& accountName) EWRAPPER_VIRTUAL_IMPL;
+virtual void updateAccountValue(const std::string& key, const std::string& val,const std::string& currency, const std::string& accountName) EWRAPPER_VIRTUAL_IMPL;
+virtual void updatePortfolio( const Contract& contract, Decimal position,double marketPrice, double marketValue, double averageCost,double unrealizedPNL, double realizedPNL, const std::string& accountName) EWRAPPER_VIRTUAL_IMPL;
 virtual void updateAccountTime(const std::string& timeStamp) EWRAPPER_VIRTUAL_IMPL;
 virtual void accountDownloadEnd(const std::string& accountName) EWRAPPER_VIRTUAL_IMPL;
 virtual void nextValidId( OrderId orderId) EWRAPPER_VIRTUAL_IMPL;
@@ -36,22 +29,17 @@ virtual void contractDetailsEnd( int reqId) EWRAPPER_VIRTUAL_IMPL;
 virtual void execDetails( int reqId, const Contract& contract, const Execution& execution) EWRAPPER_VIRTUAL_IMPL;
 virtual void execDetailsEnd( int reqId) EWRAPPER_VIRTUAL_IMPL;
 virtual void error(int id, int errorCode, const std::string& errorString, const std::string& advancedOrderRejectJson) EWRAPPER_VIRTUAL_IMPL;
-virtual void updateMktDepth(TickerId id, int position, int operation, int side,
-	double price, Decimal size) EWRAPPER_VIRTUAL_IMPL;
-virtual void updateMktDepthL2(TickerId id, int position, const std::string& marketMaker, int operation,
-	int side, double price, Decimal size, bool isSmartDepth) EWRAPPER_VIRTUAL_IMPL;
+virtual void updateMktDepth(TickerId id, int position, int operation, int side,double price, Decimal size) EWRAPPER_VIRTUAL_IMPL;
+virtual void updateMktDepthL2(TickerId id, int position, const std::string& marketMaker, int operation,int side, double price, Decimal size, bool isSmartDepth) EWRAPPER_VIRTUAL_IMPL;
 virtual void updateNewsBulletin(int msgId, int msgType, const std::string& newsMessage, const std::string& originExch) EWRAPPER_VIRTUAL_IMPL;
 virtual void managedAccounts( const std::string& accountsList) EWRAPPER_VIRTUAL_IMPL;
 virtual void receiveFA(faDataType pFaDataType, const std::string& cxml) EWRAPPER_VIRTUAL_IMPL;
 virtual void historicalData(TickerId reqId, const Bar& bar) EWRAPPER_VIRTUAL_IMPL;
 virtual void historicalDataEnd(int reqId, const std::string& startDateStr, const std::string& endDateStr) EWRAPPER_VIRTUAL_IMPL;
 virtual void scannerParameters(const std::string& xml) EWRAPPER_VIRTUAL_IMPL;
-virtual void scannerData(int reqId, int rank, const ContractDetails& contractDetails,
-	const std::string& distance, const std::string& benchmark, const std::string& projection,
-	const std::string& legsStr) EWRAPPER_VIRTUAL_IMPL;
+virtual void scannerData(int reqId, int rank, const ContractDetails& contractDetails,const std::string& distance, const std::string& benchmark, const std::string& projection,const std::string& legsStr) EWRAPPER_VIRTUAL_IMPL;
 virtual void scannerDataEnd(int reqId) EWRAPPER_VIRTUAL_IMPL;
-virtual void realtimeBar(TickerId reqId, long time, double open, double high, double low, double close,
-	Decimal volume, Decimal wap, int count) EWRAPPER_VIRTUAL_IMPL;
+virtual void realtimeBar(TickerId reqId, long time, double open, double high, double low, double close,Decimal volume, Decimal wap, int count) EWRAPPER_VIRTUAL_IMPL;
 virtual void currentTime(long time) EWRAPPER_VIRTUAL_IMPL;
 virtual void fundamentalData(TickerId reqId, const std::string& data) EWRAPPER_VIRTUAL_IMPL;
 virtual void deltaNeutralValidation(int reqId, const DeltaNeutralContract& deltaNeutralContract) EWRAPPER_VIRTUAL_IMPL;
@@ -73,8 +61,7 @@ virtual void positionMulti( int reqId, const std::string& account,const std::str
 virtual void positionMultiEnd( int reqId) EWRAPPER_VIRTUAL_IMPL;
 virtual void accountUpdateMulti( int reqId, const std::string& account, const std::string& modelCode, const std::string& key, const std::string& value, const std::string& currency) EWRAPPER_VIRTUAL_IMPL;
 virtual void accountUpdateMultiEnd( int reqId) EWRAPPER_VIRTUAL_IMPL;
-virtual void securityDefinitionOptionalParameter(int reqId, const std::string& exchange, int underlyingConId, const std::string& tradingClass,
-	const std::string& multiplier, const std::set<std::string>& expirations, const std::set<double>& strikes) EWRAPPER_VIRTUAL_IMPL;
+virtual void securityDefinitionOptionalParameter(int reqId, const std::string& exchange, int underlyingConId, const std::string& tradingClass,const std::string& multiplier, const std::set<std::string>& expirations, const std::set<double>& strikes) EWRAPPER_VIRTUAL_IMPL;
 virtual void securityDefinitionOptionalParameterEnd(int reqId) EWRAPPER_VIRTUAL_IMPL;
 virtual void softDollarTiers(int reqId, const std::vector<SoftDollarTier> &tiers) EWRAPPER_VIRTUAL_IMPL;
 virtual void familyCodes(const std::vector<FamilyCode> &familyCodes) EWRAPPER_VIRTUAL_IMPL;

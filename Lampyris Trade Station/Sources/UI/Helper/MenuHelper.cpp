@@ -11,10 +11,10 @@ MenuItemLinkNode::MenuItemLinkNode() {
 
 MenuItemLinkNode::~MenuItemLinkNode() {
 	if (isAction) {
-		LTS_SAFE_DELETE(this->action);
+		LAMPYRIS_SAFE_DELETE(this->action);
 	}
 	else {
-		LTS_SAFE_DELETE(this->menu);
+		LAMPYRIS_SAFE_DELETE(this->menu);
 	}
 }
 

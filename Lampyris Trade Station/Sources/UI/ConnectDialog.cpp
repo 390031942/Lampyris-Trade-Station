@@ -86,10 +86,11 @@ void ConnectDialog::OnClickButtonConnect() {
 	int port = m_ui.textPort->text().toInt();
 	int clientId = m_ui.textClientId->text().toInt();
 }
-void ConnectDialog::TryConnect() {
-	if (!Application::getInstance()->connect(ip, port, clientId)) {
 
-	}
+void ConnectDialog::TryConnect() {
+	// if (!Application::getInstance()->connect(ip, port, clientId)) {
+	// 
+	// }
 }
 
 void ConnectDialog::SetControlEditable(bool value) {

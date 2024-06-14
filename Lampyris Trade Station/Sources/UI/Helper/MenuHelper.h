@@ -10,6 +10,7 @@
 
 // QT Inelude(s)
 #include <QString>
+#include <QMap>
 
 class QMenu;
 class QAction;
@@ -32,7 +33,7 @@ struct MenuItemLinkNode {
 	// 父亲节点
 	MenuItemLinkNodePtr pParent = nullptr;
 	// 子项的文本字符串->节点
-	std::unordered_map<QString, MenuItemLinkNodePtr> root2NodeMap;
+	QMap<QString, MenuItemLinkNodePtr> root2NodeMap;
 
 	         MenuItemLinkNode();
 	virtual ~MenuItemLinkNode();

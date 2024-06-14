@@ -14,5 +14,5 @@ public:
 	virtual void serialize() = 0;
 	virtual void deserialize() = 0;
 	virtual void postDeserialize() {}
-	virtual QString getStorageFileName() = 0;
+	virtual const std::string& getStorageFileName() = 0;
 };

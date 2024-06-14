@@ -5,6 +5,9 @@
 
 // QT Include(s)
 #include <QString>
+#include <QApplication>
+#include <QSharedMemory>
+#include <QtNetwork/qlocalserver.h>
 
 // TWS API Include(s)
 #include <TWS/EWrapper.h>
@@ -12,6 +15,8 @@
 
 // Project Include(s)
 #include <Base/Singleton.h>
+
+class QWidget;
 
 class Application:public Singleton<Application> {
 public:
@@ -32,9 +37,17 @@ public:
 	*/
 	bool           isConnected();
 	/*
+	 * 是否与IB网关/TWS连接成功：
+	*/
+	int            mainLoop();
+	/*
+	 * 创建应用程序实例互斥信号：
+	*/
+	bool           createAppInstanceMutex();
+	/*
 	 * 构造函数：
 	*/
-	               Application();
+	               Application(int argc, char* argv[]);
 	/*
 	 * 析构函数：
 	*/
@@ -45,7 +58,19 @@ private:
 	*/
 	void           readConfigFromFile();
 
+	// QT 应用程序对象
+	QApplication   m_qtApp;
+
+	// TWS API连接相关对象
 	EWrapper*      m_wrapper;
 	EClientSocket* m_clientSocket;
 	EReaderSignal* m_signal;
+
+	// 应用实例互斥信息，确保系统下只有一个实例在运行
+	QSharedMemory  m_sharedMemory;
+	QLocalServer   m_server;
+	QString        m_uniqueKey;
+
+	// UI显示信息
+	QWidget*       m_topWidget;
 };

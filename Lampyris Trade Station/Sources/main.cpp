@@ -5,13 +5,17 @@
 // Project Include(s)
 #include "UI/ConnectDialog.h"
 #include "UI/MainWindow.h"
-
-// QT Include(s)
-#include <QtWidgets/QApplication>
+#include "Core/Application.h"
+#include "Const/AppReturnCode.h"
 
 int main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
-    MainWindow w;
+    Application a(argc, argv);
+
+    if (!a.createAppInstanceMutex()) {
+        return AppReturnCode::AppInstanceAlreadyExists;
+    }
+
+    ConnectDialog w;
     w.show();
-    return a.exec();
+    return a.mainLoop();
 }

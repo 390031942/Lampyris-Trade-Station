@@ -57,6 +57,15 @@
     <Filter Include="Source Files\Model\Quote">
       <UniqueIdentifier>{a5fbeea5-47ee-4121-82a6-a6c4b3eb1b89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PlatformDepentdent">
+      <UniqueIdentifier>{ac2d1b22-02c4-46ff-943d-d3e8f6f65256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PlatformDepentdent\Windows">
+      <UniqueIdentifier>{5d19b5f5-06b5-41b1-973d-b9fc67a30616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PlatformDepentdent\Android">
+      <UniqueIdentifier>{9f77a1b2-e0b0-4826-ba12-49197542c12a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -92,6 +101,12 @@
     <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
       <Filter>Source Files\Collections</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp">
+      <Filter>Source Files\PlatformDepentdent\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -108,9 +123,6 @@
     </ClInclude>
     <ClInclude Include="Sources\Interface\ISerializable.h">
       <Filter>Source Files\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Base\Singleton.h">
-      <Filter>Source Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Interface\ILogger.h">
       <Filter>Source Files\Interface</Filter>
@@ -136,9 +148,6 @@
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h">
       <Filter>Source Files\UI\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Base\EventManager.h">
-      <Filter>Source Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Const\EventType.h">
       <Filter>Source Files\Const</Filter>
     </ClInclude>
@@ -147,6 +156,30 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h">
       <Filter>Source Files\Model\Quote</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\CustomSerializable.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\SerializeMacro.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\AppReturnCode.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h">
+      <Filter>Source Files\PlatformDepentdent\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\SerializableSingleton.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h">
+      <Filter>Source Files\Model\Login</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\Singleton.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\SingletonQObject.h">
+      <Filter>Source Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +204,12 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\QGifImage.h">
       <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Base\EventManager.h">
+      <Filter>Source Files\Base</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

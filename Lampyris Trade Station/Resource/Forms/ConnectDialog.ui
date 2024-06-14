@@ -204,6 +204,16 @@ QPushButton:pressed
     <string/>
    </property>
   </widget>
+  <widget class="QHistoryRecordLineEdit" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>529</x>
+     <y>390</y>
+     <width>201</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -211,6 +221,12 @@ QPushButton:pressed
    <class>QGifImage</class>
    <extends>QWidget</extends>
    <header>UI/Common/QGifImage.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>QHistoryRecordLineEdit</class>
+   <extends>QWidget</extends>
+   <header location="global">UI/Common/QHistoryRecordLineEdit.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
