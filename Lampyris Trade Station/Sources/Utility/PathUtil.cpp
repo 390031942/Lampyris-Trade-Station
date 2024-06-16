@@ -1,18 +1,21 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
+
+// Project Include(s) 
 #include "PathUtil.h"
 
-const QString& PathUtil::getAppDocumentSavePath() {
-    static QString path;
+// QT Include()
+#include <QApplication>
 
-    if (path.size() <= 0) {
-        // 获取用户文档目录路径
-        QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-        if (!documentsPath.isEmpty()) {
-            path = QDir(documentsPath).filePath("Lampyris Trade System");
-        }
-    }
+QString PathUtil::getAppDocumentSavePath(const QString& path) {
+    // 获取用户文档目录路径
+    QString documentsPath = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+    QString ret = QDir(QDir(documentsPath).filePath("Lampyris Trade System")).filePath(path);
+    return ret;
+}
 
-    return path;
+QString PathUtil::getAppWorkPath(const QString& path) {
+    QString ret = QDir(QApplication::applicationDirPath()).filePath(path);
+    return ret;
 }

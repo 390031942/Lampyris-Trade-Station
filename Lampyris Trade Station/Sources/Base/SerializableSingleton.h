@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 #pragma once
 
@@ -9,6 +9,7 @@
 
 // Project Include(s)
 #include <Interface/ISerializable.h>
+#include <Base/CustomSerializable.h>
 
 template<class T>
 class SerializableHandler {
@@ -24,7 +25,7 @@ public:
 		m_object->serialize();
 	}
 
-	ISerializable* getPointer() inline { return m_object; }
+	inline ISerializable* getPointer() { return m_object; }
 private:
 	ISerializable* m_object;
 };
@@ -34,6 +35,6 @@ class SerializableSingleton:ISerializable {
 public:
 	static T* getInstance() {
 		static SerializableHandler<T> handler(new T);
-		return handler.getPointer();
+		return static_cast<T*>(handler.getPointer());
 	}
 };

@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 #pragma once
 
@@ -18,7 +18,7 @@
 
 class QWidget;
 
-class Application:public Singleton<Application> {
+class Application {
 public:
 	/*
 	 * 连接到IB网关/TWS：
@@ -27,50 +27,56 @@ public:
 	 * 参数{clientId}:客户端ID，如果有多个客户端连接同一个IB网关/TWS，那么clientId应该互不相同
 	 * 返回:是否连接成功
 	*/
-	bool           connect(const QString& ip,int port,int clientId);
+	static bool           connect(const QString& ip,int port,int clientId);
 	/*
 	 * 中断与IB网关/TWS的连接：
 	*/
-	void           disconnect();
+	static void           disconnect();
 	/*
 	 * 是否与IB网关/TWS连接成功：
 	*/
-	bool           isConnected();
+	static bool           isConnected();
 	/*
 	 * 是否与IB网关/TWS连接成功：
 	*/
-	int            mainLoop();
+	static int            mainLoop();
 	/*
 	 * 创建应用程序实例互斥信号：
 	*/
-	bool           createAppInstanceMutex();
+	static bool           createAppInstanceMutex();
+	/*
+	 * 外部获取TWS API的EClientSocket对象进行协议发送
+	*/
+	static EClientSocket* getClientSocket() { return ms_clientSocket; }
 	/*
 	 * 构造函数：
 	*/
-	               Application(int argc, char* argv[]);
-	/*
-	 * 析构函数：
-	*/
-	virtual       ~Application();
+	                      Application(int argc, char* argv[]);
+	/*			         
+	 * 析构函数：        
+	*/			         
+	virtual              ~Application();
 private:
 	/*
 	 * 从文件中读取程序配置信息：
 	*/
-	void           readConfigFromFile();
+	static void           readConfigFromFile();
 
 	// QT 应用程序对象
-	QApplication   m_qtApp;
+	static QApplication*  ms_qtApp;
 
 	// TWS API连接相关对象
-	EWrapper*      m_wrapper;
-	EClientSocket* m_clientSocket;
-	EReaderSignal* m_signal;
+	static EWrapper*      ms_wrapper;
+	static EClientSocket* ms_clientSocket;
+	static EReaderSignal* ms_signal;
 
 	// 应用实例互斥信息，确保系统下只有一个实例在运行
-	QSharedMemory  m_sharedMemory;
-	QLocalServer   m_server;
-	QString        m_uniqueKey;
+	static QSharedMemory  ms_sharedMemory;
+	static QLocalServer   ms_server;
+	static QString        ms_uniqueKey;
 
 	// UI显示信息
-	QWidget*       m_topWidget;
+	static QWidget*       ms_topWidget;
 };
+
+#define TWS Applicaiton::getClientSocket()

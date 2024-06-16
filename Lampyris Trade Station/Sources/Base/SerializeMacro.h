@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 #pragma once
 
@@ -10,6 +10,8 @@
 // Boost Include(s)
 #include <boost/archive/xml_iarchive.hpp>
 #include <boost/archive/xml_oarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+#include <boost/archive/binary_iarchive.hpp>
 #include <boost/serialization/vector.hpp>
 
 // Project Include(s)
@@ -26,7 +28,7 @@
 		void serialize() {                                 \
             std::ofstream ofs(this->getStorageFileName()); \
             if(ofs.is_open()) {                            \
-				boost::archive::xml_oarchive oa(ofs);      \
+				boost::archive::binary_oarchive oa(ofs);   \
 				oa << *this;                               \
 			}                                              \
 		}                                                  \
@@ -34,7 +36,7 @@
 		void deserialize() {                               \
 			std::ifstream ifs(this->getStorageFileName()); \
             if(ifs.is_open()) {                            \
-				boost::archive::xml_iarchive ia(ifs);      \
+				boost::archive::binary_iarchive ia(ifs);   \
 				ia >> *this;                               \
 			}                                              \
 		}                                                  \
@@ -45,11 +47,12 @@
 			      + "\\archive\\"                          \
                   + #clsName                               \
 			      + ".bytes").toUtf8().constData();        \
+            return fileName;                               \
 		}
 
  #define LAMPYRIS_SERIALIZATION_IMPL_BEGIN(clsName)        \
 		template<class Archive>                            \
-        void serialize(Archive& ar,unsigned int version)   
+        void clsName::serialize(Archive& ar,unsigned int version)   
 
  #define LAMPYRIS_SERIALIZATION_IMPL_END
 

@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 #pragma once
 
@@ -14,6 +14,7 @@
 #include <Base/SerializableSingleton.h>
 
 struct IBGatewayHistoryConnectionInfo {
+	LAMPYRIS_DECLARE_SERILIZATION(IBGatewayHistoryConnectionInfo);
 	QString ip;
 	int     port;
 	int     clientId;
@@ -32,6 +33,13 @@ private:
 	// 保存了历史记录IP的列表
 	std::vector<IBGatewayHistoryConnectionInfo> historyInfoList;
 };
+
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(IBGatewayHistoryConnectionInfo) {
+	LAMPYRIS_SERIALIZATION_FIELD(ip);
+	LAMPYRIS_SERIALIZATION_FIELD(port);
+	LAMPYRIS_SERIALIZATION_FIELD(clientId);
+}
+LAMPYRIS_SERIALIZATION_IMPL_END
 
 LAMPYRIS_SERIALIZATION_IMPL_BEGIN(IBGatewayHistoryConnectionDataObject)
 {

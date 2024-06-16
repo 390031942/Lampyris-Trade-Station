@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 #pragma once
 
@@ -18,7 +18,7 @@ namespace boost::serialization {
 	/* QString begin */
 	template<class Archive>
 	void save(Archive& ar, const QString& str, unsigned int version) {
-		std::string stdStr = str.toUtf8();
+		std::string stdStr = str.toUtf8().constData();
 		ar & boost::serialization::make_nvp("QString", stdStr);
 	}
 
@@ -32,13 +32,13 @@ namespace boost::serialization {
 
 	/* QDateTime begin */
 	template<class Archive>
-	void save(Archive& ar, const QString& dateTime, unsigned int version) {
+	void save(Archive& ar, const QDateTime& dateTime, unsigned int version) {
 		QString dateTimeStr = dateTime.toString(Qt::ISODate);
 		ar& boost::serialization::make_nvp("dateTime", dateTimeStr);
 	}
 
 	template<class Archive>
-	void load(Archive& ar, QString& dateTime, unsigned int version) {
+	void load(Archive& ar, QDateTime& dateTime, unsigned int version) {
 		QString dateTimeStr;
 		ar& boost::serialization::make_nvp("dateTime", dateTimeStr);
 		dateTime = QDateTime::fromString(dateTimeStr, Qt::ISODate);

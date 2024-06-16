@@ -4,8 +4,9 @@
 
 // Project Include(s)
 #include "ConnectDialog.h"
-#include <Utility/StringUtil.h>
 #include <Core/Application.h>
+#include <Utility/StringUtil.h>
+#include <UI/Common/MessageBox.h>
 
 // QT Include(s)
 #include <QMouseEvent>
@@ -40,8 +41,8 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	m_ui.textClientId->setText(QString("%1").arg((int)QDateTime::currentSecsSinceEpoch()));
 
 	// 初始化信号
-	QObject::connect(m_ui.buttonEnter, &QPushButton::clicked, this, &ConnectDialog::OnClickButtonConnect);
-	QObject::connect(&m_connectTimer, &QTimer::timeout, this, &ConnectDialog::TryConnect);
+	QObject::connect(m_ui.buttonEnter, &QPushButton::clicked, this, &ConnectDialog::onClickButtonConnect);
+	QObject::connect(&m_connectTimer, &QTimer::timeout, this, &ConnectDialog::tryConnect);
 
 	// 验证器
 	QIntValidator* portValidator = new QIntValidator(1, 65535, m_ui.textPort);
@@ -54,6 +55,11 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	m_needDisableWidgetList.push_back(m_ui.toggleSaveIP);
 	m_needDisableWidgetList.push_back(m_ui.toggleAutoConnect);
 	m_needDisableWidgetList.push_back(m_ui.buttonEnter);
+
+	// 定时器
+	m_connectTimer.setInterval(5000);
+	
+	// what's this
 }
 
 ConnectDialog::~ConnectDialog() {
@@ -75,7 +81,7 @@ void ConnectDialog::mouseMoveEvent(QMouseEvent* event) {
 	event->accept();
 }
 
-void ConnectDialog::OnClickButtonConnect() {
+void ConnectDialog::onClickButtonConnect() {
 	QString ip = m_ui.textIP->text();
 
 	if (!StringUtil::isValidIPV4(ip)) {
@@ -83,17 +89,25 @@ void ConnectDialog::OnClickButtonConnect() {
 		return;
 	}
 
-	int port = m_ui.textPort->text().toInt();
-	int clientId = m_ui.textClientId->text().toInt();
+	m_connectInfo.ip = ip;
+	m_connectInfo.port = m_ui.textPort->text().toInt();
+	m_connectInfo.clientId = m_ui.textClientId->text().toInt();
+
+	setControlEditable(false);
+	m_connectTimer.start();
 }
 
-void ConnectDialog::TryConnect() {
-	// if (!Application::getInstance()->connect(ip, port, clientId)) {
-	// 
-	// }
+void ConnectDialog::tryConnect() {
+	if (!Application::connect(m_connectInfo.ip, m_connectInfo.port, m_connectInfo.clientId)) {
+		m_retryCount++;
+		if (m_maxRetryCount > 5) {
+			MessageBox->info("ConnectDialog_1");
+		}
+		return;
+	}
 }
 
-void ConnectDialog::SetControlEditable(bool value) {
+void ConnectDialog::setControlEditable(bool value) {
 	for (int i = 0; i < m_needDisableWidgetList.size(); i++) {
 		m_needDisableWidgetList[i]->setDisabled(!value);
 	}

@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Base\Localization.cpp" />
     <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp" />
     <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -19,6 +20,7 @@
     <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
+    <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
@@ -31,8 +33,10 @@
     <ClInclude Include="Sources\Base\ClassInitializer.h" />
     <ClInclude Include="Sources\Base\CustomSerializable.h" />
     <ClInclude Include="Sources\Base\Delegate.h" />
-    <QtMoc Include="Sources\Base\EventManager.h" />
+    <QtMoc Include="Sources\Base\EventDispatcher.h" />
+    <ClInclude Include="Sources\Base\Localization.h" />
     <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
+    <ClInclude Include="Sources\Base\LogManager.h" />
     <ClInclude Include="Sources\Base\SerializableSingleton.h" />
     <ClInclude Include="Sources\Base\SerializeMacro.h" />
     <ClInclude Include="Sources\Base\Singleton.h" />
@@ -41,15 +45,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Sources\Const\AppReturnCode.h" />
-    <ClInclude Include="Sources\Const\EventType.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
+    <ClInclude Include="Sources\UI\Common\MessageBox.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
@@ -130,7 +135,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libboost_stacktrace_windbg-vc142-mt-gd-1_85.lib;libboost_serialization-vc142-mt-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libboost_stacktrace_windbg_cached-vc143-mt-gd-x64-1_85.lib;libboost_serialization-vc143-mt-gd-x64-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

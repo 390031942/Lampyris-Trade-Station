@@ -1,5 +1,5 @@
 /*
-/* Copyright (c) HongJin Investment Ltd. All rights reserved.
+ * Copyright (c) HongJin Investment Ltd. All rights reserved.
 */
 
 // Project Include(s)
@@ -9,37 +9,48 @@
 #include <QWidget>
 #include <QDataStream>
 #include <QtNetwork/qlocalsocket.h>
+#include <Utility/MemoryUtil.h>
+
+QApplication*  Application::ms_qtApp;
+EWrapper*      Application::ms_wrapper;
+EClientSocket* Application::ms_clientSocket;
+EReaderSignal* Application::ms_signal;
+QSharedMemory  Application::ms_sharedMemory;
+QLocalServer   Application::ms_server;
+QString        Application::ms_uniqueKey;
+QWidget*       Application::ms_topWidget;
 
 bool Application::connect(const QString& ip, int port, int clientId) {
-	if (m_clientSocket == nullptr) {
+	if (ms_clientSocket == nullptr) {
 		return false;
 	}
-	return m_clientSocket->eConnect(ip.toUtf8().constData(), port, clientId);
+	return ms_clientSocket->eConnect(ip.toUtf8().constData(), port, clientId);
 }
 
 void Application::disconnect() {
 	if (isConnected()) {
-		m_clientSocket->eDisconnect();
+		ms_clientSocket->eDisconnect();
 	}
 }
 
 bool Application::isConnected() {
-	if (m_clientSocket == nullptr) {
+	if (ms_clientSocket == nullptr) {
 		return false;
 	}
 
-	return m_clientSocket->isConnected();
+	return ms_clientSocket->isConnected();
 }
 
 int Application::mainLoop() {
-	return m_qtApp.exec();
+	return ms_qtApp->exec();
 }
 
-Application::Application(int argc, char* argv[]):m_qtApp(argc,argv) {
+Application::Application(int argc, char* argv[]) {
+    ms_qtApp = new QApplication(argc, argv);
 }
 
 Application::~Application() {
-	
+    LAMPYRIS_SAFE_DELETE(ms_qtApp);
 }
 
 void Application::readConfigFromFile() {
@@ -47,24 +58,24 @@ void Application::readConfigFromFile() {
 }
 
 bool Application::createAppInstanceMutex() {
-    m_sharedMemory.setKey("lampyris_trade_station");
+    ms_sharedMemory.setKey("lampyris_trade_station");
 
     // 创建共享内存并且成功，表示是第一个实例
-    bool isFirstInstance = m_sharedMemory.attach() && m_sharedMemory.create(1);
+    bool isFirstInstance = ms_sharedMemory.attach() && ms_sharedMemory.create(1);
 
     // 向共享内存中写入数据,并处理窗口的显示
     if (isFirstInstance) {
-        *(static_cast<char*>(m_sharedMemory.data())) = 1;
+        *(static_cast<char*>(ms_sharedMemory.data())) = 1;
 
         // 监听来自其他实例的消息
         QLocalServer::removeServer("lampyris_trade_station");
-        m_server.listen("lampyris_trade_station");
+        ms_server.listen("lampyris_trade_station");
 
-        QObject::connect(&m_server, &QLocalServer::newConnection, [=]() {
+        QObject::connect(&ms_server, &QLocalServer::newConnection, [=]() {
             // 对于第二实例的Socket连接，无需处理消息发送与接收，直接显示当前实例的窗口就行
-            QLocalSocket* client = m_server.nextPendingConnection();
-            if (m_topWidget != nullptr) {
-                m_topWidget->show();
+            QLocalSocket* client = ms_server.nextPendingConnection();
+            if (ms_topWidget != nullptr) {
+                ms_topWidget->show();
             }
         });
 

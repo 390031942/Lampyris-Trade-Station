@@ -107,6 +107,12 @@
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp">
       <Filter>Source Files\UI\Common</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Common\MessageBox.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Base\Localization.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -148,9 +154,6 @@
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h">
       <Filter>Source Files\UI\Helper</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Const\EventType.h">
-      <Filter>Source Files\Const</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
       <Filter>Source Files\Collections</Filter>
     </ClInclude>
@@ -181,6 +184,18 @@
     <ClInclude Include="Sources\Base\SingletonQObject.h">
       <Filter>Source Files\Base</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Base\LogManager.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\UI\Common\MessageBox.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\Localization.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\App\AppConfig.h">
+      <Filter>Source Files\Model\App</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -208,7 +223,7 @@
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h">
       <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
-    <QtMoc Include="Sources\Base\EventManager.h">
+    <QtMoc Include="Sources\Base\EventDispatcher.h">
       <Filter>Source Files\Base</Filter>
     </QtMoc>
   </ItemGroup>
