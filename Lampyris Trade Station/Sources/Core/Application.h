@@ -12,6 +12,8 @@
 // TWS API Include(s)
 #include <TWS/EWrapper.h>
 #include <TWS/EClientSocket.h>
+#include <TWS/EReaderOSSignal.h>
+#include <TWS/EReader.h>
 
 // Project Include(s)
 #include <Base/Singleton.h>
@@ -69,6 +71,7 @@ private:
 	static EWrapper*      ms_wrapper;
 	static EClientSocket* ms_clientSocket;
 	static EReaderSignal* ms_signal;
+	static EReader*       ms_reader;
 
 	// 应用实例互斥信息，确保系统下只有一个实例在运行
 	static QSharedMemory  ms_sharedMemory;
@@ -79,4 +82,6 @@ private:
 	static QWidget*       ms_topWidget;
 };
 
-#define TWS Applicaiton::getClientSocket()
+#ifndef TWS
+ #define TWS Application::getClientSocket()
+#endif // !TWS

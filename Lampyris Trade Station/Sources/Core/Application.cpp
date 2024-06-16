@@ -10,11 +10,13 @@
 #include <QDataStream>
 #include <QtNetwork/qlocalsocket.h>
 #include <Utility/MemoryUtil.h>
+#include <Core/MessageWrapper.h>
 
 QApplication*  Application::ms_qtApp;
 EWrapper*      Application::ms_wrapper;
 EClientSocket* Application::ms_clientSocket;
 EReaderSignal* Application::ms_signal;
+EReader*       Application::ms_reader;
 QSharedMemory  Application::ms_sharedMemory;
 QLocalServer   Application::ms_server;
 QString        Application::ms_uniqueKey;
@@ -47,6 +49,12 @@ int Application::mainLoop() {
 
 Application::Application(int argc, char* argv[]) {
     ms_qtApp = new QApplication(argc, argv);
+
+    // TWS initialize
+    ms_wrapper = new MessageWrapper();
+    ms_signal = new EReaderOSSignal();
+    ms_clientSocket = new EClientSocket(ms_wrapper, ms_signal);
+    ms_reader = new EReader(ms_clientSocket, ms_signal);
 }
 
 Application::~Application() {

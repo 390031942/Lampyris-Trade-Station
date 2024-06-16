@@ -7,6 +7,7 @@
 #include <Core/Application.h>
 #include <Utility/StringUtil.h>
 #include <UI/Common/MessageBox.h>
+#include <UI/MainWindow.h>
 #include <Base/Localization.h>
 
 // QT Include(s)
@@ -70,7 +71,7 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	m_needDisableWidgetList.push_back(m_ui.buttonEnter);
 
 	// 定时器
-	m_connectTimer.setInterval(5000);
+	m_connectTimer.setInterval(1000);
 	
 	// Tips
 	m_ui.textIP->setToolTip(Localization->get("ConnectDialog_1"));
@@ -126,15 +127,22 @@ void ConnectDialog::tryConnect() {
 		if (m_retryCount > m_maxRetryCount) {
 			m_retryCount = 0;
 			m_connectTimer.stop();
-			MessageBox->info("ConnectDialog_7");
+			MessageBox->info(Localization->get("ConnectDialog_7"));
+			m_ui.textInfo->setText("");
+			setControlEditable(true);
 		}
 		else {
-			m_ui.textInfo->setText(Localization->format("ConnectDialog_6", m_maxRetryCount));
+			m_ui.textInfo->setText(Localization->format("ConnectDialog_6", m_retryCount));
 		}
 	}
 	else { // 连接成功
 		m_connectTimer.stop();
 		IBGatewayHistoryConnection->storage(m_connectInfo);
+		this->deleteLater();
+
+		// 打开主窗口
+		MainWindow* mainWindow = new MainWindow;
+		mainWindow->show();
 	}
 }
 

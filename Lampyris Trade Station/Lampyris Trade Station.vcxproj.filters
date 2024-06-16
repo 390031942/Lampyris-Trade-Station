@@ -66,6 +66,12 @@
     <Filter Include="Source Files\PlatformDepentdent\Android">
       <UniqueIdentifier>{9f77a1b2-e0b0-4826-ba12-49197542c12a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\MainPartUI">
+      <UniqueIdentifier>{a081a448-303d-4771-8ff0-9aa236aaa24e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Forms\MainPartUI">
+      <UniqueIdentifier>{dc2141b0-3bf2-4fa8-bde8-f9e9c3416caf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -115,6 +121,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp">
       <Filter>Source Files\Model\Login</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp">
+      <Filter>Source Files\UI\MainPartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp">
+      <Filter>Source Files\UI\MainPartUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +219,9 @@
     <QtUic Include="Resource\Forms\MainWindow.ui">
       <Filter>Resource Files\Forms</Filter>
     </QtUic>
+    <QtUic Include="Resource\Forms\MainPartUI\PanelMainUIOneKeyTrade.ui">
+      <Filter>Resource Files\Forms\MainPartUI</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resource\Qrc\Resources.qrc">
@@ -228,6 +243,12 @@
     </QtMoc>
     <QtMoc Include="Sources\Base\EventDispatcher.h">
       <Filter>Source Files\Base</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h">
+      <Filter>Source Files\UI\MainPartUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h">
+      <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

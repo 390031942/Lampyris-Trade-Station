@@ -33,17 +33,16 @@ QString SingletonImpl::LocalizationClass::get(const char* key) {
 }
 
 QString SingletonImpl::LocalizationClass::format(const char* key, ...) {
+    QString ret = key;
     va_list args;
     va_start(args, key);
     QString text = get(key);
 
     if (!text.isEmpty()) {
-        return QString::vasprintf(key, args);
+        ret = QString::vasprintf(text.toUtf8().constData(), args);
     }
-
     va_end(key);
-
-    return key;
+    return ret;
 }
 
 void SingletonImpl::LocalizationClass::loadLocalizationClassFile() {

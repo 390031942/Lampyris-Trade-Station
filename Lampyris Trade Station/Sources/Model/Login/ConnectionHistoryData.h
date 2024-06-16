@@ -48,7 +48,8 @@ private:
 	ConnectionInfoList      m_historyInfoList;
 };
 
-LAMPYRIS_SERIALIZATION_IMPL_BEGIN(IBGatewayHistoryConnectionInfo) {
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(IBGatewayHistoryConnectionInfo) 
+{
 	LAMPYRIS_SERIALIZATION_FIELD(ip);
 	LAMPYRIS_SERIALIZATION_FIELD(port);
 	LAMPYRIS_SERIALIZATION_FIELD(clientId);

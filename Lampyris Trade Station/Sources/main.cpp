@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         return AppReturnCode::AppInstanceAlreadyExists;
     }
 
-    ConnectDialog w;
-    w.show();
+    ConnectDialog* w = new ConnectDialog;
+    w->show();
     return a.mainLoop();
 }
