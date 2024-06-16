@@ -10,7 +10,10 @@
 #include <stdarg.h>
 
 SingletonImpl::LocalizationClass::LocalizationClass() {
-    this->m_localeFilePath = "localization_" + AppConfig->getLocale() + ".txt";
+    m_localeFilePath = "locales/localization_" + AppConfig->getLocale() + ".txt";
+    m_localeFilePath = PathUtil::getAppWorkPath(m_localeFilePath);
+
+    loadLocalizationClassFile();
 }
 
 SingletonImpl::LocalizationClass::~LocalizationClass() {
@@ -50,6 +53,7 @@ void SingletonImpl::LocalizationClass::loadLocalizationClassFile() {
     }
 
     QTextStream in(&file);
+    in.setCodec("UTF-8");   
     while (!in.atEnd()) {
         QString line = in.readLine();
         line = line.trimmed();

@@ -14,7 +14,7 @@
 #include <Base/Singleton.h>
 
 namespace SingletonImpl {
-class LocalizationClass final {
+class LocalizationClass:public Singleton<LocalizationClass> {
 public:
                            LocalizationClass();
                           ~LocalizationClass();
@@ -27,3 +27,7 @@ private:
     QString                m_localeFilePath;
 };
 } // end of namespace "SingletonImpl"
+
+#ifndef Localization 
+ #define Localization SingletonImpl::LocalizationClass::getInstance()
+#endif // !Localization

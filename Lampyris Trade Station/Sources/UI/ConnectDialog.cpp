@@ -7,6 +7,7 @@
 #include <Core/Application.h>
 #include <Utility/StringUtil.h>
 #include <UI/Common/MessageBox.h>
+#include <Base/Localization.h>
 
 // QT Include(s)
 #include <QMouseEvent>
@@ -44,6 +45,18 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	QObject::connect(m_ui.buttonEnter, &QPushButton::clicked, this, &ConnectDialog::onClickButtonConnect);
 	QObject::connect(&m_connectTimer, &QTimer::timeout, this, &ConnectDialog::tryConnect);
 
+	QObject::connect(m_ui.toggleSaveIP, &QCheckBox::stateChanged, [this](int state) {
+		IBGatewayHistoryConnection->setSaveIP(m_ui.toggleSaveIP->isChecked());
+	});
+	QObject::connect(m_ui.toggleAutoConnect, &QCheckBox::stateChanged, [this](int state) {
+		if (state) {
+			m_ui.toggleSaveIP->setChecked(true);
+		}
+
+		IBGatewayHistoryConnection->setSaveIP(m_ui.toggleSaveIP->isChecked());
+		IBGatewayHistoryConnection->setAutoConnect(m_ui.toggleAutoConnect->isChecked());
+    });
+
 	// 验证器
 	QIntValidator* portValidator = new QIntValidator(1, 65535, m_ui.textPort);
 	m_ui.textPort->setValidator(portValidator);
@@ -59,7 +72,16 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	// 定时器
 	m_connectTimer.setInterval(5000);
 	
-	// what's this
+	// Tips
+	m_ui.textIP->setToolTip(Localization->get("ConnectDialog_1"));
+	m_ui.textPort->setToolTip(Localization->get("ConnectDialog_2"));
+	m_ui.textClientId->setToolTip(Localization->get("ConnectDialog_3"));
+	m_ui.toggleSaveIP->setToolTip(Localization->get("ConnectDialog_4"));
+	m_ui.toggleAutoConnect->setToolTip(Localization->get("ConnectDialog_5"));
+
+	// 反序列化默认值
+	m_ui.toggleSaveIP->setChecked(IBGatewayHistoryConnection->getSaveIP());
+	m_ui.toggleAutoConnect->setChecked(IBGatewayHistoryConnection->getAutoConnect());
 }
 
 ConnectDialog::~ConnectDialog() {
@@ -95,15 +117,24 @@ void ConnectDialog::onClickButtonConnect() {
 
 	setControlEditable(false);
 	m_connectTimer.start();
+	m_ui.textInfo->setText(Localization->get("ConnectDialog_8"));
 }
 
 void ConnectDialog::tryConnect() {
 	if (!Application::connect(m_connectInfo.ip, m_connectInfo.port, m_connectInfo.clientId)) {
 		m_retryCount++;
-		if (m_maxRetryCount > 5) {
-			MessageBox->info("ConnectDialog_1");
+		if (m_retryCount > m_maxRetryCount) {
+			m_retryCount = 0;
+			m_connectTimer.stop();
+			MessageBox->info("ConnectDialog_7");
 		}
-		return;
+		else {
+			m_ui.textInfo->setText(Localization->format("ConnectDialog_6", m_maxRetryCount));
+		}
+	}
+	else { // 连接成功
+		m_connectTimer.stop();
+		IBGatewayHistoryConnection->storage(m_connectInfo);
 	}
 }
 

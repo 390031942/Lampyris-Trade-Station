@@ -20,7 +20,7 @@ public:
 
 	QString     getLocale() const { return this->m_locale; }
 private:	    
-	QString     m_locale;
+	QString     m_locale = "zh-CN";
 };
 
 LAMPYRIS_SERIALIZATION_IMPL_BEGIN(AppConfigDataObject)

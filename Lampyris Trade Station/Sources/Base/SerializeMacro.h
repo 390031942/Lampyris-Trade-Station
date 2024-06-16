@@ -43,10 +43,10 @@
                                                            \
 		const std::string& getStorageFileName() {		   \
 			const static std::string fileName = 		   \
-			 (PathUtil::getAppDocumentSavePath()   	       \
-			      + "\\archive\\"                          \
+			 (PathUtil::getAppDocumentSavePath(   	       \
+			        QString("archive/")                    \
                   + #clsName                               \
-			      + ".bytes").toUtf8().constData();        \
+			      + ".bytes")).toUtf8().constData();       \
             return fileName;                               \
 		}
 

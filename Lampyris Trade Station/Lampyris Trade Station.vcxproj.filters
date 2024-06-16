@@ -113,6 +113,9 @@
     <ClCompile Include="Sources\Base\Localization.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp">
+      <Filter>Source Files\Model\Login</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
