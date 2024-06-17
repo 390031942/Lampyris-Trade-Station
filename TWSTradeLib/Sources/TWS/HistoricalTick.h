@@ -6,12 +6,18 @@
 #define TWS_API_CLIENT_HISTORICALTICK_H
 
 #include "Decimal.h"
+#include <Base/TWSObject.h>
 
-struct HistoricalTick
+struct HistoricalTick:public TWSObject
 {
     long long time;
     double price;
     Decimal size;
+
+    virtual QString ToString() const override {
+        return QString("{time = %1, price = %2, size = %3}")
+            .arg(time).arg(price).arg(size);
+    }
 };  
 #endif // !historicaltickendtry_def
 

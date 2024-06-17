@@ -7,8 +7,9 @@
 
 #include <string>
 #include "Decimal.h"
+#include <Base/TWSObject.h>
 
-struct Execution
+struct Execution:public TWSObject
 {
 	Execution()
 	{
@@ -41,6 +42,33 @@ struct Execution
 	double		evMultiplier;
 	std::string modelCode;
     int         lastLiquidity;
+
+	virtual QString ToString() const override {
+		return QString("{execId: %1, time: %2, acctNumber: %3, "
+			"exchange: %4, side: %5, shares: %6, price: %7, "
+			"permId: %8, clientId: %9, orderId: %10, "
+			"liquidation: %11, cumQty: %12, avgPrice: %13, "
+			"orderRef: %14, evRule: %15, evMultiplier: %16, "
+			"modelCode: %17, lastLiquidity: %18}")
+			.arg(QString::fromStdString(execId))
+			.arg(QString::fromStdString(time))
+			.arg(QString::fromStdString(acctNumber))
+			.arg(QString::fromStdString(exchange))
+			.arg(QString::fromStdString(side))
+			.arg(QString::number(shares))
+			.arg(price)
+			.arg(permId)
+			.arg(clientId)
+			.arg(orderId)
+			.arg(liquidation)
+			.arg(QString::number(cumQty))
+			.arg(avgPrice)
+			.arg(QString::fromStdString(orderRef))
+			.arg(QString::fromStdString(evRule))
+			.arg(evMultiplier)
+			.arg(QString::fromStdString(modelCode))
+			.arg(lastLiquidity);
+	}
 };
 
 struct ExecutionFilter

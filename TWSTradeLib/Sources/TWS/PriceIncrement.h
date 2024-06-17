@@ -5,10 +5,17 @@
 #ifndef TWS_API_CLIENT_PRICEINCREMENT_H
 #define TWS_API_CLIENT_PRICEINCREMENT_H
 
-struct PriceIncrement
+#include <Base/TWSObject.h>
+
+struct PriceIncrement:public TWSObject
 {
 	double lowEdge;
 	double increment;
+
+	virtual QString ToString() const override {
+		return QString("{lowEdge = %1, increment = %2}")
+			.arg(lowEdge).arg(increment);
+	}
 };
 
 #endif // priceincrement_def

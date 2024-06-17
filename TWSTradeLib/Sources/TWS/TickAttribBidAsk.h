@@ -5,10 +5,17 @@
 #ifndef TWS_API_CLIENT_TICKATTRIBBIDASK_H
 #define TWS_API_CLIENT_TICKATTRIBBIDASK_H
 
-struct TickAttribBidAsk
+#include <Base/TWSObject.h>
+
+struct TickAttribBidAsk:public TWSObject
 {
 	bool bidPastLow;
 	bool askPastHigh;
+
+	virtual QString ToString() const override {
+		return QString("{bidPastLow = %1, askPastHigh = %2}")
+			.arg(bidPastLow).arg(askPastHigh);
+	}
 };
 
 #endif

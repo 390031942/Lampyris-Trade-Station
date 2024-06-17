@@ -16,5 +16,10 @@ public:
 	void logMessageReceived(Args&&... args) {
 
 	}
+
 private:
+	template<typename ...Args>
+	QString buildMessageLogString (Args&&... args) {
+
+	}
 };

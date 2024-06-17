@@ -5,11 +5,18 @@
 #ifndef TWS_API_CLIENT_TICKATTRIB_H
 #define TWS_API_CLIENT_TICKATTRIB_H
 
-struct TickAttrib
+#include <Base/TWSObject.h>
+
+struct TickAttrib:public TWSObject
 {
 	bool canAutoExecute;
 	bool pastLimit;
 	bool preOpen;
+
+	virtual QString ToString() const override {
+		return QString("{canAutoExecute = %1, pastLimit = %2, preOpen = %3}")
+			.arg(canAutoExecute).arg(pastLimit).arg(preOpen);
+	}
 };
 
 #endif

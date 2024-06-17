@@ -7,8 +7,9 @@
 
 #include "TickAttribBidAsk.h"
 #include "Decimal.h"
+#include <Base/TWSObject.h>
 
-struct HistoricalTickBidAsk
+struct HistoricalTickBidAsk:public TWSObject
 {
     long long time;
     TickAttribBidAsk tickAttribBidAsk;
@@ -16,6 +17,12 @@ struct HistoricalTickBidAsk
     double priceAsk;
     Decimal sizeBid;
     Decimal sizeAsk;
+
+    virtual QString ToString() const override {
+        return QString("{time = %1, tickAttribBidAsk = %2, priceBid = %3, priceAsk = %4, sizeBid = %5, sizeAsk = %6 }")
+            .arg(time).arg(tickAttribBidAsk.ToString()).arg(priceBid)
+            .arg(priceAsk).arg(sizeBid).arg(sizeAsk);
+    }
 };
 #endif
 

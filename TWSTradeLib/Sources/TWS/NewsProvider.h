@@ -6,11 +6,17 @@
 #define TWS_API_CLIENT_NEWSPROVIDER_H
 
 #include <string>
+#include <Base/TWSObject.h>
 
-struct NewsProvider
+struct NewsProvider:public TWSObject
 {
 	std::string providerCode;
 	std::string providerName;
+
+	virtual QString ToString() const override {
+		return QString("{providerCode = %1, providerName = %2 }")
+			.arg(providerCode.c_str()).arg(providerName.c_str());
+	}
 };
 
 #endif // newsprovider_def

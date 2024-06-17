@@ -6,8 +6,9 @@
 #define TWS_API_CLIENT_COMMISSIONREPORT_H
 
 #include <string>
+#include <Base/TWSObject.h>
 
-struct CommissionReport
+struct CommissionReport:public TWSObject
 {
 	CommissionReport()
 	{
@@ -24,6 +25,17 @@ struct CommissionReport
 	double		realizedPNL;
 	double		yield;
 	int			yieldRedemptionDate; // YYYYMMDD format
+
+	virtual QString ToString() const override {
+		return QString("{execId = \"%1\", commission = %2, currency = \"%3\", "
+			"realizedPNL = %4, yield = %5, yieldRedemptionDate = %6}")
+			.arg(QString::fromStdString(execId))
+			.arg(commission)
+			.arg(QString::fromStdString(currency))
+			.arg(realizedPNL)
+			.arg(yield)
+			.arg(yieldRedemptionDate);
+	}
 };
 
 #endif // commissionreport_def

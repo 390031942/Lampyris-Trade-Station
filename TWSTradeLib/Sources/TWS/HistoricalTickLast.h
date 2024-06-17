@@ -8,8 +8,9 @@
 #include "TickAttribLast.h"
 #include "Decimal.h"
 #include <string>
+#include <Base/TWSObject.h>
 
-struct HistoricalTickLast
+struct HistoricalTickLast :public TWSObject
 {
     long long time;
     TickAttribLast tickAttribLast;
@@ -17,6 +18,12 @@ struct HistoricalTickLast
     Decimal size;
     std::string exchange;
     std::string specialConditions;
+
+    virtual QString ToString() const override {
+        return QString("{time = %1, tickAttribLast = %2, price = %3, size = %4, exchange = %5, specialConditions = %6 }")
+            .arg(time).arg(tickAttribLast.ToString()).arg(price)
+            .arg(size).arg(exchange.c_str()).arg(specialConditions.c_str());
+    }
 };
 #endif
 

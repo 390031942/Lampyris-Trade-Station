@@ -13,6 +13,7 @@
 #include <limits.h>
 
 #include <cmath>
+#include <Base/TWSObject.h>
 
 #define UNSET_DOUBLE DBL_MAX
 #define UNSET_INTEGER INT_MAX
@@ -49,7 +50,7 @@ struct OrderComboLeg
 
 typedef std::shared_ptr<OrderComboLeg> OrderComboLegSPtr;
 
-struct Order
+struct Order:public TWSObject
 {
 	// order identifier
 	long     orderId = 0;
@@ -249,6 +250,32 @@ public:
 
 	// Helpers
 	static void CloneOrderComboLegs(OrderComboLegListSPtr& dst, const OrderComboLegListSPtr& src);
+
+	virtual QString ToString() const override {
+		return QString("{orderId = %1, parentId = %2, clientId = %3, action = %4, totalQuantity = %5, orderType = %6, lmtPrice = %7, "
+					   "auxPrice = %8, tif = %9, activeStartTime = %10, activeStopTime = %11, "
+					   "hidden = %12, displaySize = %13, outsideRth = %14, trailStopPrice = %15, trailingPercent = %16, "
+					   "cashQty = %17, autoCancelDate = %18, usePriceMgmtAlgo = %19}")
+					   .arg(orderId)
+					   .arg(parentId)
+					   .arg(clientId)
+					   .arg(action.c_str())
+					   .arg(totalQuantity)
+					   .arg(orderType.c_str())
+					   .arg(lmtPrice)
+					   .arg(auxPrice)
+					   .arg(tif.c_str())
+					   .arg(activeStartTime.c_str())
+					   .arg(activeStopTime.c_str())
+					   .arg(hidden)
+					   .arg(displaySize)
+					   .arg(outsideRth)
+					   .arg(trailStopPrice)
+					   .arg(trailingPercent)
+					   .arg(cashQty)
+					   .arg(autoCancelDate.c_str())
+					   .arg(usePriceMgmtAlgo);
+	}
 };
 
 inline void

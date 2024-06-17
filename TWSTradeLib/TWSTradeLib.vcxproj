@@ -11,6 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Base\StringUtil.h" />
+    <ClInclude Include="Sources\Base\TWSObject.h" />
     <ClInclude Include="Sources\TWS\bar.h" />
     <ClInclude Include="Sources\TWS\CommissionReport.h" />
     <ClInclude Include="Sources\TWS\CommonDefs.h" />
@@ -151,6 +153,9 @@
     <Link>
       <AdditionalDependencies>biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <ClCompile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>

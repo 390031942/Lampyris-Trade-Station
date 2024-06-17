@@ -8,7 +8,9 @@
 #include <string>
 #include "Decimal.h"
 
-struct Bar
+#include <Base/TWSObject.h>
+
+struct Bar:public TWSObject 
 {
 	std::string time;
 	double high;
@@ -18,6 +20,19 @@ struct Bar
 	Decimal wap;
 	Decimal volume;
 	int count;
+
+    virtual QString ToString() const override {
+        return QString("{time = \"%1\", high = %2, low = %3, open = %4, "
+            "close = %5, wap = %6, volume = %7, count = %8}")
+            .arg(QString::fromStdString(time))
+            .arg(high)
+            .arg(low)
+            .arg(open)
+            .arg(close)
+            .arg(wap) 
+            .arg(volume) 
+            .arg(count);
+    }
 };
 
 #endif

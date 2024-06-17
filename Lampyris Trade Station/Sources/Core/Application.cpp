@@ -55,6 +55,12 @@ Application::Application(int argc, char* argv[]) {
     ms_signal = new EReaderOSSignal();
     ms_clientSocket = new EClientSocket(ms_wrapper, ms_signal);
     ms_reader = new EReader(ms_clientSocket, ms_signal);
+
+    // Timer
+    ms_twsMsgTimer.setInterval(1);
+    QObject::connect(&ms_twsMsgTimer, &QTimer::timeout, []() {
+        Application::tickTwsMessage();
+    });
 }
 
 Application::~Application() {
@@ -63,6 +69,12 @@ Application::~Application() {
 
 void Application::readConfigFromFile() {
 
+}
+
+void Application::tickTwsMessage() {
+    if (ms_clientSocket->isConnected()) {
+        ms_reader->processMsgs();
+    }
 }
 
 bool Application::createAppInstanceMutex() {

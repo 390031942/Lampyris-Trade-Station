@@ -7,6 +7,8 @@
 
 #include "TagValue.h"
 #include "Decimal.h"
+#include <Base/TWSObject.h>
+#include <Base/StringUtil.h>
 
 /*
 	SAME_POS    = open/close leg value is same as combo
@@ -52,7 +54,7 @@ struct ComboLeg
 	}
 };
 
-struct DeltaNeutralContract
+struct DeltaNeutralContract:public TWSObject
 {
 	DeltaNeutralContract()
 		: conId(0)
@@ -63,11 +65,16 @@ struct DeltaNeutralContract
 	long	conId;
 	double	delta;
 	double	price;
+
+	virtual QString ToString() const override {
+		return QString("{conId = %1, delta = %2, price = %3}")
+			.arg(conId).arg(delta).arg(price);
+	}
 };
 
 typedef std::shared_ptr<ComboLeg> ComboLegSPtr;
 
-struct Contract
+struct Contract:public TWSObject
 {
 	Contract()
 		: conId(0)
@@ -109,9 +116,13 @@ struct Contract
 	DeltaNeutralContract* deltaNeutralContract;
 
 public:
-
 	// Helpers
 	static void CloneComboLegs(ComboLegListSPtr& dst, const ComboLegListSPtr& src);
+
+	virtual QString ToString() const override {
+		return QString("{conId = %1, symbol = %2, secType = %3, exchange = %4}")
+			.arg(conId).arg(symbol.c_str()).arg(secIdType.c_str()).arg(exchange.c_str());
+	}
 };
 
 struct ContractDetails
@@ -180,11 +191,16 @@ struct ContractDetails
 	std::string	notes;
 };
 
-struct ContractDescription
+struct ContractDescription :public TWSObject
 {
 	Contract contract;
 	typedef std::vector<std::string> DerivativeSecTypesList;
 	DerivativeSecTypesList derivativeSecTypes;
+
+	virtual QString ToString() const override {
+		return QString("{contract = %1, derivativeSecTypes = %2}")
+			.arg(contract.ToString()).arg(TWSStringUtil::PrintVectorToQString(derivativeSecTypes));
+	}
 };
 
 inline void

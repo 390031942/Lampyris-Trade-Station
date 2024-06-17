@@ -6,11 +6,17 @@
 #define TWS_API_CLIENT_HISTOGRAMENTRY_H
 
 #include "Decimal.h"
+#include <Base/TWSObject.h>
 
-struct HistogramEntry
+struct HistogramEntry :public TWSObject
 {
 	double price;
 	Decimal size;
+
+    virtual QString ToString() const override {
+        return QString("{price = %1, size = %2}")
+            .arg(price).arg(size);
+    }
 };
 
 #endif

@@ -10,37 +10,6 @@
 
 #pragma execution_character_set("utf-8")
 
-CustomDelegate::CustomDelegate(QObject* parent)
-	: QItemDelegate(parent), button(nullptr) {}
-
-QWidget* CustomDelegate::createEditor(QWidget* parent, const QStyleOptionViewItem&/* option */,
-	const QModelIndex&/* index */) {
-	button = new QPushButton("操作", parent);
-	connect(button, &QPushButton::clicked, this, &CustomDelegate::on_Button_Clicked);
-	return button;
-}
-
-void CustomDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
-	// 可以在这里设置按钮的文本等属性
-	Q_UNUSED(editor);
-	Q_UNUSED(index);
-}
-
-void CustomDelegate::setModelData(QWidget* editor, QAbstractItemModel* model,
-	const QModelIndex& index) const {
-	// 通常在这里从editor获取数据并设置到model里
-	Q_UNUSED(editor);
-	Q_UNUSED(model);
-	Q_UNUSED(index);
-}
-
-void CustomDelegate::on_Button_Clicked() {
-	// 按钮点击事件的处理
-	if (button) {
-		emit commitData(button);
-	}
-}
-
 PanelMainUIOneKeyTrade::PanelMainUIOneKeyTrade(QWidget* parent) :QWidget(parent) {
 	this->m_ui.setupUi(this);
 
@@ -72,70 +41,12 @@ PanelMainUIOneKeyTrade::PanelMainUIOneKeyTrade(QWidget* parent) :QWidget(parent)
 	// 股票信息
 	QObject::connect(&m_stockInfoCaptureTimer, &QTimer::timeout, this, &PanelMainUIOneKeyTrade::CaptureStockInfo);
 
-	QObject::connect(this->m_ui.EditAddress, &QLineEdit::textChanged, [=](const QString& text) {
-		std::string textStr = text.toStdString();
-		void* param[] = { &textStr };
-		EventManager::GetInstance()->RaiseEvent(EventType::RefreshAddress, param);
-	});
-
-	EventManager::GetInstance()->AddEventHandler(EventType::ResUsmartQueryMaxCount, [=](void** param) {
-		QJsonDocument& document = *(QJsonDocument*)param[0];
-		QJsonObject dataObject = document["data"].toObject();
-		int maxCanBuy = dataObject["maxBuyQty"].toInt();
-		int maxCashCanBuy = dataObject["maxCashBuyQty"].toInt();
-		double maxPurchasePower = dataObject["maxPurchasePower"].toDouble();
-		int mxaSellQty = dataObject["maxSellQty"].toInt();
-
-		this->m_ui.LabelInfo1->setText(QString("融资可买:%0,金额:%1").arg(maxCanBuy).arg(maxPurchasePower));
-		this->m_ui.LabelInfo2->setText(QString("可卖数量:%0").arg(mxaSellQty));
-
-		this->m_ui.ButtonBuy->setEnabled(maxCanBuy > 0);
-		this->m_ui.ButtonSell->setEnabled(mxaSellQty > 0);
-		this->m_ui.ButtonRefresh->setEnabled(true);
-
-		this->m_maxCanBuy = maxCanBuy;
-		this->m_maxCashCanBuy = maxCashCanBuy;
-		this->m_maxPurchasePower = maxPurchasePower;
-		this->m_maxSellQty = mxaSellQty;
-	});
-
-	EventManager::GetInstance()->AddEventHandler(EventType::ResUsmartQueryShortMaxCount, [=](void** param) {
-		QJsonDocument& document = *(QJsonDocument*)param[0];
-		QJsonObject dataObject = document["data"].toObject();
-		int maxCanBuy = dataObject["maxBuyQty"].toInt();
-		int maxCashCanBuy = dataObject["maxCashBuyQty"].toInt();
-		double maxPurchasePower = dataObject["maxPurchasePower"].toDouble();
-		int mxaSellQty = dataObject["maxSellQty"].toInt();
-
-		this->m_ui.LabelInfo3->setText(QString("可沽数量:%0,金额:%1").arg(mxaSellQty).arg(maxPurchasePower));
-		this->m_ui.LabelInfo4->setText(QString("可平数量:%0").arg(maxCanBuy));
-
-		// this->m_ui.ButtonBuy->setEnabled(maxCanBuy > 0);
-		// this->m_ui.ButtonSell->setEnabled(mxaSellQty > 0);
-		// this->m_ui.ButtonRefresh->setEnabled(true);
-		// 
-		// this->m_maxCanBuy = maxCanBuy;
-		// this->m_maxCashCanBuy = maxCashCanBuy;
-		// this->m_maxPurchasePower = maxPurchasePower;
-		// this->m_maxSellQty = mxaSellQty;
-	});
-
-	EventManager::GetInstance()->AddEventHandler(EventType::RefreshStockInfo, [=](void** param) {
-		this->m_stockInfo = *(StockTradeInfo*)(param[0]);
-		this->RefreshStockTradeInfo();
-	});
-
-	EventManager::GetInstance()->AddEventHandler(EventType::RefreshTempStopStock, [=](void** param) {
-		std::vector<StockTradeInfo>* pInfoList = (std::vector<StockTradeInfo>*)(param[0]);
-		this->RefreshTempStopStockList(pInfoList);
-	});
-
 	this->RefreshStockTradeInfo();
 
 	// 设置为置顶
 	// this->setWindowFlags(this->windowFlags() | Qt::WindowStaysOnTopHint); // 设置窗口标志为始终置顶
 
-	this->InitTempStopStockTableView();
+	this->InitHaltedStockTableView();
 	this->InitPreMarketTableView();
 
 	// 按钮默认值
@@ -150,30 +61,30 @@ PanelMainUIOneKeyTrade::~PanelMainUIOneKeyTrade() {
 }
 
 void PanelMainUIOneKeyTrade::OnClickButtonBuy() {
-	if (this->m_stockInfo.code != "") {
-		float price = std::stof(this->m_stockInfo.price.toStdString()) + 0.01;
-		price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
-
-		int count = (int)std::floor(this->m_maxCanBuy / this->m_ratio);
-		USmartTradeSystem::GetInstance()->ExecuteBuy(this->m_stockInfo.code.toStdString(),count, true, this->m_stockInfo.statusCode == 2);
-
-		// 止盈单逻辑
-		if (m_autoSellPercentage != 0.0f) {
-			price = std::stof(this->m_stockInfo.price.toStdString()) * (1 + m_autoSellPercentage * 0.01);
-			price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
-			USmartTradeSystem::GetInstance()->ExecuteSell(this->m_stockInfo.code.toStdString(), price, count, this->m_stockInfo.statusCode == 2);
-		}
-	}
+	//if (this->m_stockInfo.code != "") {
+	//	float price = std::stof(this->m_stockInfo.price.toStdString()) + 0.01;
+	//	price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
+	//
+	//	int count = (int)std::floor(this->m_maxCanBuy / this->m_ratio);
+	//	// USmartTradeSystem::GetInstance()->ExecuteBuy(this->m_stockInfo.code.toStdString(),count, true, this->m_stockInfo.statusCode == 2);
+	//
+	//	// 止盈单逻辑
+	//	if (m_autoSellPercentage != 0.0f) {
+	//		price = std::stof(this->m_stockInfo.price.toStdString()) * (1 + m_autoSellPercentage * 0.01);
+	//		price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
+	//		// USmartTradeSystem::GetInstance()->ExecuteSell(this->m_stockInfo.code.toStdString(), price, count, this->m_stockInfo.statusCode == 2);
+	//	}
+	//}
 }
 
 void PanelMainUIOneKeyTrade::OnClickButtonSell() {
-	if (this->m_stockInfo.code != "") {
-		float price = std::stof(this->m_stockInfo.price.toStdString()) - 0.01;
-		price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
-
-		int count = this->m_maxSellQty;
-		// USmartTradeSystem::GetInstance()->ExecuteAutoSell(this->m_stockInfo.code.toStdString(), 999.00, count, false, this->m_stockInfo.statusCode == 2);
-	}
+	// if (this->m_stockInfo.code != "") {
+	// 	float price = std::stof(this->m_stockInfo.price.toStdString()) - 0.01;
+	// 	price = std::round(price * 100) / 100.0f; // 乘以100进行四舍五入，然后除以100.0f保留两位小数
+	// 
+	// 	int count = this->m_maxSellQty;
+	// 	// USmartTradeSystem::GetInstance()->ExecuteAutoSell(this->m_stockInfo.code.toStdString(), 999.00, count, false, this->m_stockInfo.statusCode == 2);
+	// }
 }
 
 void PanelMainUIOneKeyTrade::OnClickButtonBuyEmpty() {
@@ -185,10 +96,10 @@ void PanelMainUIOneKeyTrade::OnClickButtonSellEmpty() {
 }
 
 void PanelMainUIOneKeyTrade::OnClickButtonRefresh() {
-	if (this->m_stockInfo.code != "") {
-		USmartTradeSystem::GetInstance()->ExecuteQueryMaxQuantity(this->m_stockInfo.code, this->m_stockInfo.price);
-		USmartTradeSystem::GetInstance()->ExecuteQueryShortMaxQuantity(this->m_stockInfo.code, this->m_stockInfo.price);
-	}
+	// if (this->m_stockInfo.code != "") {
+		// USmartTradeSystem::GetInstance()->ExecuteQueryMaxQuantity(this->m_stockInfo.code, this->m_stockInfo.price);
+		// USmartTradeSystem::GetInstance()->ExecuteQueryShortMaxQuantity(this->m_stockInfo.code, this->m_stockInfo.price);
+	// }
 }
 
 void PanelMainUIOneKeyTrade::OnClickRatioButton(int ratio) {
@@ -210,26 +121,27 @@ void PanelMainUIOneKeyTrade::CaptureStockInfo() {
 }
 
 void PanelMainUIOneKeyTrade::RefreshStockTradeInfo() {
-	if (this->m_stockInfo.code == "") {
-		this->m_ui.LabelStockCode->setText("暂无股票信息");
-		return;
-	}
-	if (this->m_stockInfo.name.size() > 20) {
-		this->m_stockInfo.name = this->m_stockInfo.name.mid(0,20) + "...";
-	}
-	this->m_ui.LabelStockCode->setText(this->m_stockInfo.code + "(" + this->m_stockInfo.name + ")");
+	// if (this->m_stockInfo.code == "") {
+	// 	this->m_ui.LabelStockCode->setText("暂无股票信息");
+	// 	return;
+	// }
+	// if (this->m_stockInfo.name.size() > 20) {
+	// 	this->m_stockInfo.name = this->m_stockInfo.name.mid(0,20) + "...";
+	// }
+	// this->m_ui.LabelStockCode->setText(this->m_stockInfo.code + "(" + this->m_stockInfo.name + ")");
 }
 
-void PanelMainUIOneKeyTrade::RefreshTempStopStockList(std::vector<StockTradeInfo>* list) {
+/*
+void PanelMainUIOneKeyTrade::RefreshHaltedStockList(std::vector<StockTradeInfo>* list) {
 	int size = 0;
 	// 生成随机数据填充表格
 	for (int i = 0; i < list->size(); ++i) {
 		const auto& data = list->at(i);
 		if (data.statusCode == 6 && data.money > 0 ){ //&& Utilities::IsAfterTodayUSMarketOpenTime(data.timeStamp)) {
-			QStandardItem* item1 = this->m_tempStopStockModel->item(size, 0);
-			QStandardItem* item2 = this->m_tempStopStockModel->item(size, 1);
-			QStandardItem* item3 = this->m_tempStopStockModel->item(size, 2);
-			QStandardItem* item4 = this->m_tempStopStockModel->item(size, 3);
+			QStandardItem* item1 = this->m_HaltedStockModel->item(size, 0);
+			QStandardItem* item2 = this->m_HaltedStockModel->item(size, 1);
+			QStandardItem* item3 = this->m_HaltedStockModel->item(size, 2);
+			QStandardItem* item4 = this->m_HaltedStockModel->item(size, 3);
 
 			if (!item1) {
 				 item1 = new QStandardItem(data.code);
@@ -237,10 +149,10 @@ void PanelMainUIOneKeyTrade::RefreshTempStopStockList(std::vector<StockTradeInfo
 				 item3 = new QStandardItem(Utilities::GetMoneyString(data.money));
 				 item4 = new QStandardItem(QString("%0").arg(data.turnOverRate) + "%");
 
-				 this->m_tempStopStockModel->setItem(size, 0, item1);
-				 this->m_tempStopStockModel->setItem(size, 1, item2);
-				 this->m_tempStopStockModel->setItem(size, 2, item3);
-				 this->m_tempStopStockModel->setItem(size, 3, item4);
+				 this->m_HaltedStockModel->setItem(size, 0, item1);
+				 this->m_HaltedStockModel->setItem(size, 1, item2);
+				 this->m_HaltedStockModel->setItem(size, 2, item3);
+				 this->m_HaltedStockModel->setItem(size, 3, item4);
 			}
 			else {
 				item1->setText(data.code);
@@ -252,27 +164,27 @@ void PanelMainUIOneKeyTrade::RefreshTempStopStockList(std::vector<StockTradeInfo
 			size++;
 		}
 	}
-	this->m_tempStopStockModel->setRowCount(size);
+	this->m_HaltedStockModel->setRowCount(size);
 }
+*/
 
-void PanelMainUIOneKeyTrade::InitTempStopStockTableView() {
-
+void PanelMainUIOneKeyTrade::InitHaltedStockTableView() {
 	// 创建表格模型
-	QStandardItemModel* model = this->m_tempStopStockModel = new QStandardItemModel;
-	model->setColumnCount(4);
-
-	// 设置列的标题
-	model->setHorizontalHeaderLabels(QStringList() << "代码" <<"涨幅" << "金额" << "换手");
-
-	this->m_ui.TableTempStop->setModel(model); // 给视图设置模型
+	// QStandardItemModel* model = this->m_HaltedStockModel = new QStandardItemModel;
+	// model->setColumnCount(4);
+	// 
+	// // 设置列的标题
+	// model->setHorizontalHeaderLabels(QStringList() << "代码" <<"涨幅" << "金额" << "换手");
+	// 
+	// this->m_ui.TableHalted->setModel(model); // 给视图设置模型
 }
 
 void PanelMainUIOneKeyTrade::InitPreMarketTableView() {
 	// 创建表格模型
-	QStandardItemModel* model = this->m_preMarketModel = new TablePreMarketModel;
-	model->setColumnCount(5);
-	// 设置列的标题
-	model->setHorizontalHeaderLabels(QStringList() << "代码" << "盘前价" << "盘前涨幅" << "盘前量" << "原因" <<  "");
-	this->m_ui.TablePreMarket->setItemDelegate(new TablePreMarketModelButtonDelegate());
-	this->m_ui.TablePreMarket->setModel(model); // 给视图设置模型
+	// QStandardItemModel* model = this->m_preMarketModel = new TablePreMarketModel;
+	// model->setColumnCount(5);
+	// // 设置列的标题
+	// model->setHorizontalHeaderLabels(QStringList() << "代码" << "盘前价" << "盘前涨幅" << "盘前量" << "原因" <<  "");
+	// this->m_ui.TablePreMarket->setItemDelegate(new TablePreMarketModelButtonDelegate());
+	// this->m_ui.TablePreMarket->setModel(model); // 给视图设置模型
 }

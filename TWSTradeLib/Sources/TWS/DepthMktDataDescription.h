@@ -7,10 +7,11 @@
 
 #include <limits.h>
 #include <string>
+#include <Base/TWSObject.h>
 
 #define UNSET_INTEGER INT_MAX
 
-struct DepthMktDataDescription
+struct DepthMktDataDescription:public TWSObject
 {
 	DepthMktDataDescription()
 		: exchange("")
@@ -26,6 +27,12 @@ struct DepthMktDataDescription
 	std::string listingExch;
 	std::string serviceDataType;
 	int aggGroup;
+
+	virtual QString ToString() const override {
+		return QString("{exchange: %1, secType: %2, listingExch = %3, serviceDataType = %4, aggGroup = %5}")
+			.arg(exchange.c_str()).arg(secType.c_str())
+			.arg(listingExch.c_str()).arg(serviceDataType.c_str()).arg(aggGroup);
+	}
 };
 
 #endif // depthmktdatadescription_def

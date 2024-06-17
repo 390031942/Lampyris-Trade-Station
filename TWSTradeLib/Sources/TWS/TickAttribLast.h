@@ -5,10 +5,17 @@
 #ifndef TWS_API_CLIENT_TICKATTRIBLAST_H
 #define TWS_API_CLIENT_TICKATTRIBLAST_H
 
-struct TickAttribLast
+#include <Base/TWSObject.h>
+
+struct TickAttribLast:public TWSObject
 {
 	bool pastLimit;
 	bool unreported;
+
+	virtual QString ToString() const override {
+		return QString("{pastLimit = %1, unreported = %2}")
+			.arg(pastLimit).arg(unreported);
+	}
 };
 
 #endif

@@ -4,6 +4,7 @@
 #pragma once
 
 // QT Include(s)
+#include <QTimer>
 #include <QString>
 #include <QApplication>
 #include <QSharedMemory>
@@ -51,6 +52,14 @@ public:
 	*/
 	static EClientSocket* getClientSocket() { return ms_clientSocket; }
 	/*
+	 * 开启TWS API消息接收定时器 
+	*/
+	static void           startMessageHandler();
+	/*
+	 * 停止TWS API消息接收定时器 
+	*/
+	static void           stopMessageHandler();
+	/*
 	 * 构造函数：
 	*/
 	                      Application(int argc, char* argv[]);
@@ -63,6 +72,10 @@ private:
 	 * 从文件中读取程序配置信息：
 	*/
 	static void           readConfigFromFile();
+	/*
+	 * TWS API消息处理：
+	*/
+	static void           tickTwsMessage();
 
 	// QT 应用程序对象
 	static QApplication*  ms_qtApp;
@@ -80,6 +93,9 @@ private:
 
 	// UI显示信息
 	static QWidget*       ms_topWidget;
+
+	// TWS API消息处理定时器
+	QTimer                ms_twsMsgTimer;
 };
 
 #ifndef TWS
