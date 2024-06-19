@@ -128,6 +128,9 @@
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp">
+      <Filter>Source Files\Model\Quote</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -210,6 +213,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\App\AppConfig.h">
       <Filter>Source Files\Model\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h">
+      <Filter>Source Files\Model\Quote</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,7 @@
     <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
+    <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp" />
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
+    <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
