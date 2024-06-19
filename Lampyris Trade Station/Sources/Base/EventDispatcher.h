@@ -14,8 +14,6 @@
 // TWS Include(s)
 #include <TWS/EWrapper.h>
 
-#define EventDispatcher EventDispatcherObject::getInstance()
-
 class EventDispatcherObject:public SingletonQObject<EventDispatcherObject> {
 	Q_OBJECT
 Q_SIGNALS:
@@ -752,3 +750,12 @@ Q_SIGNALS:
 	 */
 	void onResUserInfo(int reqId, const std::string& whiteBrandingId);
 };
+
+#ifndef EventDispatcher
+ #define EventDispatcher EventDispatcherObject::getInstance()
+ #define EventBind(eventName,func) \
+	 QObject::connect(EventDispatcher,&eventName,func);
+ #define EventUnbind(eventName,func) \
+	 QObject::disconnect(EventDispatcher,&eventName,func);
+ #define EventType EventDispatcherObject
+#endif // !EventDispatcher

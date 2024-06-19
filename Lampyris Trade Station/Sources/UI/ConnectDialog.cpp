@@ -16,6 +16,9 @@
 #include <QIntValidator>
 #include <QMessageBox>
 
+// TWS API 
+#include <TWS/ScannerSubscription.h>
+
 ConnectDialog::ConnectDialog(QWidget *parent)
 	: QDialog(parent),m_retryCount(0) {
 	m_ui.setupUi(this);
@@ -81,6 +84,9 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	m_ui.toggleAutoConnect->setToolTip(Localization->get("ConnectDialog_5"));
 
 	// 反序列化默认值
+	auto info = IBGatewayHistoryConnection->getConnectionInfo();
+	m_ui.textIP->setText(info.ip);
+	m_ui.textPort->setText(info.port > 0 ?QString::number(info.port) : "");
 	m_ui.toggleSaveIP->setChecked(IBGatewayHistoryConnection->getSaveIP());
 	m_ui.toggleAutoConnect->setChecked(IBGatewayHistoryConnection->getAutoConnect());
 }
@@ -143,6 +149,18 @@ void ConnectDialog::tryConnect() {
 		// 打开主窗口
 		MainWindow* mainWindow = new MainWindow;
 		mainWindow->show();
+
+		Contract contract;
+		contract.symbol = "IBKR";
+		contract.secType = "STK";
+		contract.currency = "USD";
+		contract.exchange = "SMART";
+
+		TWS->reqCurrentTime();
+		TWS->reqMktData(7001, contract, "", false, false, TagValueListSPtr());
+
+		// 启动TWS 消息监听
+		Application::startMessageHandler();
 	}
 }
 

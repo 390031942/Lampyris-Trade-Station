@@ -16,8 +16,8 @@
 struct IBGatewayHistoryConnectionInfo {
 	LAMPYRIS_DECLARE_SERILIZATION(IBGatewayHistoryConnectionInfo);
 	QString ip;
-	int     port;
-	int     clientId;
+	int     port = 0;
+	int     clientId = 0;
 };
 
 class IBGatewayHistoryConnectionDataObject:public SerializableSingleton<IBGatewayHistoryConnectionDataObject> {

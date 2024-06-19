@@ -4,13 +4,15 @@
 
 // Project Include(s)
 #include "Application.h"
+#include <Utility/MemoryUtil.h>
+#include <Core/MessageWrapper.h>
+#include <Base/EventDispatcher.h>
 
 // QT Include(s)
 #include <QWidget>
 #include <QDataStream>
 #include <QtNetwork/qlocalsocket.h>
-#include <Utility/MemoryUtil.h>
-#include <Core/MessageWrapper.h>
+#include <QDateTime>
 
 QApplication*  Application::ms_qtApp;
 EWrapper*      Application::ms_wrapper;
@@ -21,6 +23,9 @@ QSharedMemory  Application::ms_sharedMemory;
 QLocalServer   Application::ms_server;
 QString        Application::ms_uniqueKey;
 QWidget*       Application::ms_topWidget;
+QTimer         Application::ms_twsMsgTimer;
+QDateTime      Application::ms_serverTime;
+QDateTime      Application::ms_receivedLocalTime;
 
 bool Application::connect(const QString& ip, int port, int clientId) {
 	if (ms_clientSocket == nullptr) {
@@ -61,6 +66,12 @@ Application::Application(int argc, char* argv[]) {
     QObject::connect(&ms_twsMsgTimer, &QTimer::timeout, []() {
         Application::tickTwsMessage();
     });
+
+    // °ó¶¨¼àÌýÊÂ¼þ
+    EventBind(EventType::onResCurrentTime, [=](long time) {
+        ms_serverTime = QDateTime::fromTime_t(time);
+        ms_receivedLocalTime = QDateTime::currentDateTime();
+    });
 }
 
 Application::~Application() {
@@ -73,6 +84,7 @@ void Application::readConfigFromFile() {
 
 void Application::tickTwsMessage() {
     if (ms_clientSocket->isConnected()) {
+        // ms_signal->waitForSignal();
         ms_reader->processMsgs();
     }
 }

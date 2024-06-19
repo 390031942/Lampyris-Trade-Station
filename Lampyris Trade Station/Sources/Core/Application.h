@@ -54,11 +54,11 @@ public:
 	/*
 	 * 开启TWS API消息接收定时器 
 	*/
-	static void           startMessageHandler();
+	static void           startMessageHandler() { ms_reader->start(); ms_twsMsgTimer.start(); }
 	/*
 	 * 停止TWS API消息接收定时器 
 	*/
-	static void           stopMessageHandler();
+	static void           stopMessageHandler() { ms_twsMsgTimer.stop(); }
 	/*
 	 * 构造函数：
 	*/
@@ -95,7 +95,19 @@ private:
 	static QWidget*       ms_topWidget;
 
 	// TWS API消息处理定时器
-	QTimer                ms_twsMsgTimer;
+	static QTimer         ms_twsMsgTimer;
+
+	/* 
+	 *  程序启动时间戳相关字段, 这里提供两种时间
+	 *  1) IB/TWS 通过resCurrentTime返回的时间戳，作为准确的美东时间
+	 *  2) 标准北京时间时间
+	*/
+
+	// resCurrentTime返回的时间
+	static QDateTime      ms_serverTime;
+
+	// 收到resCurrentTime时候的本地时间
+	static QDateTime      ms_receivedLocalTime;
 };
 
 #ifndef TWS
