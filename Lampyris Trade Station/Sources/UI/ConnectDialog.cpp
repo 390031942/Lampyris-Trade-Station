@@ -149,15 +149,8 @@ void ConnectDialog::tryConnect() {
 		// 打开主窗口
 		MainWindow* mainWindow = new MainWindow;
 		mainWindow->show();
-
-		Contract contract;
-		contract.symbol = "IBKR";
-		contract.secType = "STK";
-		contract.currency = "USD";
-		contract.exchange = "SMART";
-
+\
 		TWS->reqCurrentTime();
-		TWS->reqMktData(7001, contract, "", false, false, TagValueListSPtr());
 
 		// 启动TWS 消息监听
 		Application::startMessageHandler();

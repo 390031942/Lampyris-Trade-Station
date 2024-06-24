@@ -137,6 +137,9 @@
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp">
+      <Filter>Source Files\Model\Quote\Provider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
