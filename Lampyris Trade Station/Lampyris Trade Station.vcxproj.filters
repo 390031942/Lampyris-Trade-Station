@@ -72,6 +72,15 @@
     <Filter Include="Resource Files\Forms\MainPartUI">
       <UniqueIdentifier>{dc2141b0-3bf2-4fa8-bde8-f9e9c3416caf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Strategy">
+      <UniqueIdentifier>{c0ba16c2-e726-466f-8556-f6a435498bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Strategy">
+      <UniqueIdentifier>{4f38d27b-588e-4ac8-9af7-0357ab9518d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\Quote\Provider">
+      <UniqueIdentifier>{9729d817-ff3c-49c5-87be-fd815a91ed05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -210,6 +219,24 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\App\AppConfig.h">
       <Filter>Source Files\Model\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Strategy\RthMarketActive.h">
+      <Filter>Source Files\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h">
+      <Filter>Source Files\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Strategy\PreMarketMostActive.h">
+      <Filter>Source Files\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h">
+      <Filter>Source Files\Model\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.h">
+      <Filter>Source Files\Model\Quote\Provider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Quote\Provider\TWSQuoteProvider.h">
+      <Filter>Source Files\Model\Quote\Provider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -54,9 +54,15 @@
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
+    <ClInclude Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.h" />
+    <ClInclude Include="Sources\Model\Quote\Provider\TWSQuoteProvider.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
+    <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
+    <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h" />
+    <ClInclude Include="Sources\Strategy\PreMarketMostActive.h" />
+    <ClInclude Include="Sources\Strategy\RthMarketActive.h" />
     <ClInclude Include="Sources\UI\Common\MessageBox.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
