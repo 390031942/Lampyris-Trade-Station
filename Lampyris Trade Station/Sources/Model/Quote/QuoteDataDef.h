@@ -11,6 +11,9 @@
 #include <boost/serialization/serialization.hpp>
 #include <boost/serialization/access.hpp>
 
+// STD Include(s)
+#include <memory>
+
 class KLineData {
 public:
     // 日期
@@ -46,7 +49,13 @@ private:
     QString name;
     // 交易所名称
     QString exchange;
+    // 货币类型
+    QString currency;
+
+    friend class QuoteDatabase;
 };
+
+typedef std::shared_ptr<SecurityData> SecurityDataPtr;
 
 class QuoteDataProvider {
 
