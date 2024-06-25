@@ -84,6 +84,9 @@
     <Filter Include="Resource Files\locales">
       <UniqueIdentifier>{e66c8e3d-2d3d-41d1-94f6-55068d028a7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\Tips">
+      <UniqueIdentifier>{20397bfc-a136-436b-ae35-615d402e5551}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -291,6 +294,9 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
+      <Filter>Source Files\UI\Tips</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

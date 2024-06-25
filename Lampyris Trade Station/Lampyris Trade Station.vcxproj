@@ -72,6 +72,7 @@
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
+    <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />
