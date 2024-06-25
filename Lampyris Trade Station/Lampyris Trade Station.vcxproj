@@ -18,6 +18,7 @@
     </ClCompile>
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
+    <ClCompile Include="Sources\Core\TradeApi.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp" />
@@ -45,12 +46,14 @@
     <ClInclude Include="Sources\Base\SerializeMacro.h" />
     <ClInclude Include="Sources\Base\Singleton.h" />
     <ClInclude Include="Sources\Base\SingletonQObject.h" />
+    <ClInclude Include="Sources\Collections\BufferedVector.h" />
     <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Sources\Const\AppReturnCode.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
+    <ClInclude Include="Sources\Core\TradeApi.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
@@ -84,6 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resource\Qrc\Resources.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resource\locales\localization_zh-CN.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8DE86DC5-285A-4FE8-A610-AC6906C99CAF}</ProjectGuid>
@@ -146,6 +152,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libboost_stacktrace_windbg_cached-vc143-mt-gd-x64-1_85.lib;libboost_serialization-vc143-mt-gd-x64-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>

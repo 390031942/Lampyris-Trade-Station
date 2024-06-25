@@ -4,10 +4,12 @@
 
 // Project Include(s)
 #include "MainWindow.h"
+#include <Core/Application.h>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent) {
     ui.setupUi(this);
+    this->setWindowTitle(Application::getAppName());
 }
 
 MainWindow::~MainWindow() {

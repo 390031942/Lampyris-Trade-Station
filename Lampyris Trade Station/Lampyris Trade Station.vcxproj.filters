@@ -81,6 +81,9 @@
     <Filter Include="Source Files\Model\Quote\Provider">
       <UniqueIdentifier>{9729d817-ff3c-49c5-87be-fd815a91ed05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\locales">
+      <UniqueIdentifier>{e66c8e3d-2d3d-41d1-94f6-55068d028a7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp">
       <Filter>Source Files\Model\Quote\Provider</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\TradeApi.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +247,12 @@
     <ClInclude Include="Sources\Model\Quote\Provider\TWSQuoteProvider.h">
       <Filter>Source Files\Model\Quote\Provider</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Collections\BufferedVector.h">
+      <Filter>Source Files\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Core\TradeApi.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -280,5 +292,10 @@
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Resource\locales\localization_zh-CN.txt">
+      <Filter>Resource Files\locales</Filter>
+    </Text>
   </ItemGroup>
 </Project>

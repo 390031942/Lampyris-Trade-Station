@@ -23,6 +23,9 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	: QDialog(parent),m_retryCount(0) {
 	m_ui.setupUi(this);
 
+	// 窗口标题
+	this->setWindowTitle(Localization->get("ConnectDialogTitle"));
+
 	// Gif 表情
 	m_ui.loginGif->setGifImagePath(":/Resources/Gif/Gif_0005.gif");
 

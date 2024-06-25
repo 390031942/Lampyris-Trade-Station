@@ -7,12 +7,14 @@
 #include <Utility/MemoryUtil.h>
 #include <Core/MessageWrapper.h>
 #include <Base/EventDispatcher.h>
+#include <Base/Localization.h>
 
 // QT Include(s)
 #include <QWidget>
 #include <QDataStream>
 #include <QtNetwork/qlocalsocket.h>
 #include <QDateTime>
+#include <QIcon>
 
 QApplication*  Application::ms_qtApp;
 EWrapper*      Application::ms_wrapper;
@@ -72,6 +74,9 @@ Application::Application(int argc, char* argv[]) {
         ms_serverTime = QDateTime::fromTime_t(time);
         ms_receivedLocalTime = QDateTime::currentDateTime();
     });
+
+    // App Icon
+    setAppIcon(QIcon(":/Resources/Image/Comm/Comm_0001.png"));
 }
 
 Application::~Application() {
@@ -123,5 +128,17 @@ bool Application::createAppInstanceMutex() {
 
         return true;
     }
+}
+
+QString Application::getAppName() {
+    return Localization->format("ApplicationName",LTS_COMPILE_TIME,getVersion());
+}
+
+QString Application::getVersion() {
+    return Localization->get("ApplicationVerson");
+}
+
+void Application::setAppIcon(const QIcon& icon) {
+    ms_qtApp->setWindowIcon(icon);
 }
 

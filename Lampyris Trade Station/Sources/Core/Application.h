@@ -19,6 +19,14 @@
 // Project Include(s)
 #include <Base/Singleton.h>
 
+#ifndef LTS_COMPILE_TIME
+#define LTS_COMPILE_TIME __DATE__ " " __TIME__
+#endif // !LTS_COMPILE_TIME
+
+#ifndef TWS
+#define TWS Application::getClientSocket()
+#endif // !TWS
+
 class QWidget;
 
 class Application {
@@ -47,6 +55,18 @@ public:
 	 * 创建应用程序实例互斥信号：
 	*/
 	static bool           createAppInstanceMutex();
+	/*
+	 * 获取应用程序名称字符串：
+	*/
+	static QString        getAppName();
+	/*
+	 * 获取应用程序名称版本名称：
+	*/
+	static QString        getVersion();
+	/*
+	 * 设置应用程序图标：
+	*/
+	static void           setAppIcon(const QIcon& icon);
 	/*
 	 * 外部获取TWS API的EClientSocket对象进行协议发送
 	*/
@@ -109,7 +129,3 @@ private:
 	// 收到resCurrentTime时候的本地时间
 	static QDateTime      ms_receivedLocalTime;
 };
-
-#ifndef TWS
- #define TWS Application::getClientSocket()
-#endif // !TWS

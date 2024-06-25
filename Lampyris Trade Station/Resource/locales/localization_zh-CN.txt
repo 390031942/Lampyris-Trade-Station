@@ -1,0 +1,16 @@
+// Copyright (c) HongJin Investment Ltd. All rights reserved.
+
+// Application
+ApplicationName,LTS程序化交易工作站 Build %s Version %s
+ApplicationVerson,alpha 1.0.1
+
+// Connect Dialog
+ConnectDialogTitle,LTS程序化交易工作站 登录界面
+ConnectDialog_1,IB网关/TWS的IP地址
+ConnectDialog_2,IB网关/TWS的端口号
+ConnectDialog_3,IB网关/TWS的用户唯一标识符，可以自己指定，默认值为程序启动的时间戳
+ConnectDialog_4,如果连接成功，当前的IP和端口号将被保存
+ConnectDialog_5,如果勾选，下次启动程序将自动连接上一次登录的IP。
+ConnectDialog_6,连接失败...正在第%d次重试
+ConnectDialog_7,连接失败，请检查IB网关/TWS的IP地址/端口号 是否输入正确
+ConnectDialog_8,尝试连接中
