@@ -32,6 +32,12 @@
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
+    <ClCompile Include="Sources\UI\Tips\OrderFilledTipsWindow.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="Sources\Utility\PathUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +53,7 @@
     <ClInclude Include="Sources\Base\Singleton.h" />
     <ClInclude Include="Sources\Base\SingletonQObject.h" />
     <ClInclude Include="Sources\Collections\BufferedVector.h" />
+    <ClInclude Include="Sources\Collections\CircularQueue.h" />
     <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
@@ -85,6 +92,7 @@
     <QtUic Include="Resource\Forms\ConnectDialog.ui" />
     <QtUic Include="Resource\Forms\MainPartUI\PanelMainUIOneKeyTrade.ui" />
     <QtUic Include="Resource\Forms\MainWindow.ui" />
+    <QtUic Include="Resource\Forms\OrderFilledTipsWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resource\Qrc\Resources.qrc" />

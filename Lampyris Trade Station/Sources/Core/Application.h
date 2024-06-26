@@ -29,6 +29,9 @@
 
 class QWidget;
 
+typedef std::function<void()> TickFunc;
+typedef std::vector<TickFunc> TickFuncList;
+
 class Application {
 public:
 	/*
@@ -74,11 +77,11 @@ public:
 	/*
 	 * 开启TWS API消息接收定时器 
 	*/
-	static void           startMessageHandler() { ms_reader->start(); ms_twsMsgTimer.start(); }
+	static void           startMessageHandler() { ms_reader->start(); ms_tickTimer.start(); }
 	/*
 	 * 停止TWS API消息接收定时器 
 	*/
-	static void           stopMessageHandler() { ms_twsMsgTimer.stop(); }
+	static void           stopMessageHandler() { ms_tickTimer.stop(); }
 	/*
 	 * 构造函数：
 	*/
@@ -96,6 +99,10 @@ private:
 	 * TWS API消息处理：
 	*/
 	static void           tickTwsMessage();
+	/*
+	 * 添加 Tick事件：
+	*/
+	static void           addTickFunc(TickFunc func);
 
 	// QT 应用程序对象
 	static QApplication*  ms_qtApp;
@@ -115,7 +122,7 @@ private:
 	static QWidget*       ms_topWidget;
 
 	// TWS API消息处理定时器
-	static QTimer         ms_twsMsgTimer;
+	static QTimer         ms_tickTimer;
 
 	/* 
 	 *  程序启动时间戳相关字段, 这里提供两种时间
@@ -128,4 +135,7 @@ private:
 
 	// 收到resCurrentTime时候的本地时间
 	static QDateTime      ms_receivedLocalTime;
+
+	// 需要被Tick的函数
+	static TickFuncList   ms_tickFuncList;
 };

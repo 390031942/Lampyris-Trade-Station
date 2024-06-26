@@ -25,9 +25,10 @@ QSharedMemory  Application::ms_sharedMemory;
 QLocalServer   Application::ms_server;
 QString        Application::ms_uniqueKey;
 QWidget*       Application::ms_topWidget;
-QTimer         Application::ms_twsMsgTimer;
+QTimer         Application::ms_tickTimer;
 QDateTime      Application::ms_serverTime;
 QDateTime      Application::ms_receivedLocalTime;
+TickFuncList   Application::ms_tickFuncList;
 
 bool Application::connect(const QString& ip, int port, int clientId) {
 	if (ms_clientSocket == nullptr) {
@@ -64,9 +65,15 @@ Application::Application(int argc, char* argv[]) {
     ms_reader = new EReader(ms_clientSocket, ms_signal);
 
     // Timer
-    ms_twsMsgTimer.setInterval(1);
-    QObject::connect(&ms_twsMsgTimer, &QTimer::timeout, []() {
+    ms_tickTimer.setInterval(1);
+    QObject::connect(&ms_tickTimer, &QTimer::timeout, []() {
+        // 处理TWS 消息
         Application::tickTwsMessage();
+
+        // 处理TickFunc
+        for (int i = 0; i < ms_tickFuncList.size(); i++) {
+            ms_tickFuncList[i]();
+        }
     });
 
     // 绑定监听事件
@@ -92,6 +99,10 @@ void Application::tickTwsMessage() {
         // ms_signal->waitForSignal();
         ms_reader->processMsgs();
     }
+}
+
+void Application::addTickFunc(TickFunc func) {
+    ms_tickFuncList.push_back(func);
 }
 
 bool Application::createAppInstanceMutex() {

@@ -147,7 +147,10 @@
       <Filter>Source Files\Model\Quote\Provider</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Core\TradeApi.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Tips\OrderFilledTipsWindow.cpp">
+      <Filter>Source Files\UI\Tips</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +259,9 @@
     <ClInclude Include="Sources\Core\TradeApi.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Collections\CircularQueue.h">
+      <Filter>Source Files\Collections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -266,6 +272,9 @@
     </QtUic>
     <QtUic Include="Resource\Forms\MainPartUI\PanelMainUIOneKeyTrade.ui">
       <Filter>Resource Files\Forms\MainPartUI</Filter>
+    </QtUic>
+    <QtUic Include="Resource\Forms\OrderFilledTipsWindow.ui">
+      <Filter>Resource Files\Forms</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>

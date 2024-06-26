@@ -4,7 +4,6 @@
 
 // Project Include(s)
 #include "UI/ConnectDialog.h"
-#include "UI/MainWindow.h"
 #include "Core/Application.h"
 #include "Const/AppReturnCode.h"
 
