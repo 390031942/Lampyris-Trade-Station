@@ -99,7 +99,7 @@ T& CircularQueue<T, Alloc>::front() {
     if (isEmpty()) {
         throw std::runtime_error("Queue is empty");
     }
-    return m_queue[front];
+    return m_queue[m_front];
 }
 
 template<typename T, typename Alloc>

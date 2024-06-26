@@ -46,7 +46,8 @@ struct OrderFillTipsInfo {
 	int     index;
 };
 
-class OrderFilledTips:public Singleton<OrderFilledTips> {
+class OrderFilledTips:public SingletonQObject<OrderFilledTips> {
+	Q_OBJECT
 	using WidgetStack = CircularQueue<OrderFilledTipsWindow*>;
 	using MessageQueue = std::queue<OrderFillTipsInfo>;
 Q_SIGNALS:
