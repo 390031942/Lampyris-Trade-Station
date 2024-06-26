@@ -15,6 +15,8 @@
 // STD Include(s)
 #include <queue>
 
+struct OrderFillTipsInfo;
+
 class OrderFilledTipsWindow:public QWidget {
 	Q_OBJECT
 public:
@@ -25,7 +27,7 @@ public Q_SLOTS:
 	void                           moveDown();
 private:
 	explicit                       OrderFilledTipsWindow(QWidget* parent = nullptr);
-	void                           showAppear();
+	void                           showAppear(const OrderFillTipsInfo& info);
 	void                           showMoveDown();
 	void                           showDisappear();
 	QPropertyAnimation*            m_appearAnim;
@@ -41,16 +43,21 @@ struct OrderFillTipsInfo {
 	QString direction;
 	float   avgPrice;
 	float   count;
+	int     index;
 };
 
 class OrderFilledTips:public Singleton<OrderFilledTips> {
 	using WidgetStack = CircularQueue<OrderFilledTipsWindow*>;
-	using MessageQueue = std::queue<OrderFillTipsInfo*>;
+	using MessageQueue = std::queue<OrderFillTipsInfo>;
+Q_SIGNALS:
+	void         moveDown();
 public:
 	             OrderFilledTips();
 	            ~OrderFilledTips();
 	void         show(const QString& code, const QString& direction, float avgPrice, float count);
 private:
+	void         tick();
 	WidgetStack* m_stack;
 	MessageQueue m_msgQueue;
+	bool         m_waitDisappeared = false;
 };

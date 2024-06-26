@@ -83,6 +83,10 @@ public:
 	*/
 	static void           stopMessageHandler() { ms_tickTimer.stop(); }
 	/*
+	 * 添加 Tick事件：
+	*/
+	static void           addTickFunc(TickFunc func);
+	/*
 	 * 构造函数：
 	*/
 	                      Application(int argc, char* argv[]);
@@ -99,10 +103,6 @@ private:
 	 * TWS API消息处理：
 	*/
 	static void           tickTwsMessage();
-	/*
-	 * 添加 Tick事件：
-	*/
-	static void           addTickFunc(TickFunc func);
 
 	// QT 应用程序对象
 	static QApplication*  ms_qtApp;
