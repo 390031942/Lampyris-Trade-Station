@@ -32,11 +32,13 @@
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
+    <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTipsWindow.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Sources\Utility\PathUtil.cpp" />
   </ItemGroup>
@@ -79,7 +81,10 @@
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
-    <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h" />
+    <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Tips\OrderFilledTips.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />

@@ -4,6 +4,7 @@
 #pragma once
 
 // QT Include(s)
+#include <QTimer>
 #include <QWidget>
 #include <QPropertyAnimation>
 
@@ -15,29 +16,6 @@
 // STD Include(s)
 #include <queue>
 
-struct OrderFillTipsInfo;
-
-class OrderFilledTipsWindow:public QWidget {
-	Q_OBJECT
-public:
-	                              ~OrderFilledTipsWindow();
-Q_SIGNALS:
-	void                           disappeared();
-public Q_SLOTS:
-	void                           moveDown();
-private:
-	explicit                       OrderFilledTipsWindow(QWidget* parent = nullptr);
-	void                           showAppear(const OrderFillTipsInfo& info);
-	void                           showMoveDown();
-	void                           showDisappear();
-	QPropertyAnimation*            m_appearAnim;
-	QPropertyAnimation*            m_moveDownAnim;
-	QPropertyAnimation*            m_disappearAnim;
-	Ui::OrderFilledTipsWindowClass m_ui;
-
-	friend class OrderFilledTips;
-};
-
 struct OrderFillTipsInfo {
 	QString code;
 	QString direction;
@@ -46,19 +24,25 @@ struct OrderFillTipsInfo {
 	int     index;
 };
 
-class OrderFilledTips:public SingletonQObject<OrderFilledTips> {
+class OrderFilledTipsWindow:public QWidget {
 	Q_OBJECT
-	using WidgetStack = CircularQueue<OrderFilledTipsWindow*>;
-	using MessageQueue = std::queue<OrderFillTipsInfo>;
-Q_SIGNALS:
-	void         moveDown();
 public:
-	             OrderFilledTips();
-	            ~OrderFilledTips();
-	void         show(const QString& code, const QString& direction, float avgPrice, float count);
+	                              ~OrderFilledTipsWindow();
+Q_SIGNALS:
+	void                           disappeared(OrderFilledTipsWindow* window);
+public Q_SLOTS:
+	void                           moveDown();
 private:
-	void         tick();
-	WidgetStack* m_stack;
-	MessageQueue m_msgQueue;
-	bool         m_waitDisappeared = false;
+	explicit                       OrderFilledTipsWindow(QWidget* parent = nullptr);
+	void                           showAppear(const OrderFillTipsInfo& info);
+	void                           showMoveDown();
+	void                           showDisappear();
+	int                            m_index;
+	QPropertyAnimation*            m_appearAnim;
+	QPropertyAnimation*            m_moveDownAnim;
+	QPropertyAnimation*            m_disappearAnim;
+	QTimer                         m_autoDisappearTimer;
+	Ui::OrderFilledTipsWindowClass m_ui;
+
+	friend class OrderFilledTips;
 };

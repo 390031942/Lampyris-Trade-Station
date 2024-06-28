@@ -152,6 +152,9 @@
     <ClCompile Include="Sources\UI\Tips\OrderFilledTipsWindow.cpp">
       <Filter>Source Files\UI\Tips</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp">
+      <Filter>Source Files\UI\Tips</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -305,6 +308,9 @@
       <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
+      <Filter>Source Files\UI\Tips</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Tips\OrderFilledTips.h">
       <Filter>Source Files\UI\Tips</Filter>
     </QtMoc>
   </ItemGroup>

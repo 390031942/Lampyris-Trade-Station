@@ -34,15 +34,15 @@ private:
 template<typename T, typename Alloc>
 CircularQueue<T, Alloc>::CircularQueue(size_t size) 
     : m_capacity(size), m_front(0), m_rear(-1), m_count(0) {
-    m_queue = m_alloc.allocate(size);  // 使用分配器分配内存
+    // m_queue = m_alloc.allocate(size);  // 使用分配器分配内存
 }
 
 template<typename T, typename Alloc>
 CircularQueue<T, Alloc>::~CircularQueue() {
     for (size_t i = 0; i < m_count; ++i) {
-        m_alloc.destroy(&m_queue[(m_front + i) % m_capacity]);  // 销毁元素
+        // m_alloc.destroy(&m_queue[(m_front + i) % m_capacity]);  // 销毁元素
     }
-    m_alloc.deallocate(m_queue, m_capacity);  // 释放内存
+    // m_alloc.deallocate(m_queue, m_capacity);  // 释放内存
 }
 
 template<typename T, typename Alloc>
@@ -80,7 +80,7 @@ void CircularQueue<T, Alloc>::enqueue(const T& item) {
         throw std::runtime_error("Queue is full");
     }
     m_rear = (m_rear + 1) % m_capacity;
-    m_alloc.construct(&m_queue[m_rear], item);  // 使用分配器构造元素
+    // m_alloc.construct(&m_queue[m_rear], item);  // 使用分配器构造元素
     ++m_count;
 }
 
@@ -89,7 +89,7 @@ void CircularQueue<T, Alloc>::dequeue() {
     if (isEmpty()) {
         throw std::runtime_error("Queue is empty");
     }
-    m_alloc.destroy(&m_queue[m_front]);  // 销毁元素
+    // m_alloc.destroy(&m_queue[m_front]);  // 销毁元素
     m_front = (m_front + 1) % m_capacity;
     --m_count;
 }
