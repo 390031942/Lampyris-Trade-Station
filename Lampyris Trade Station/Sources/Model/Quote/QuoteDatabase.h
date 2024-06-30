@@ -10,6 +10,7 @@
 #include <TWS/Contract.h>
 
 // STD Include(s)
+#include <fstream>
 #include <vector>
 #include <unordered_map>
 
@@ -21,9 +22,14 @@
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
-	void query(const QString& name, const QString& currency = "USD") {
+	void query(const QString& code, const QString& currency = "USD") {
 		
 	}
+
+	void subscribeBriefIndexData() {
+
+	}
+
 private:
 	//  currency -> [code -> SecurityDataPtr]
 	std::unordered_map<QString, std::unordered_map<QString, SecurityDataPtr>> m_dataMap;

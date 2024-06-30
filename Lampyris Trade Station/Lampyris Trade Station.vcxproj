@@ -22,6 +22,7 @@
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp" />
+    <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp" />
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="Sources\Base\Localization.h" />
     <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
     <ClInclude Include="Sources\Base\LogManager.h" />
+    <QtMoc Include="Sources\Base\PlannedTaskExecutor.h" />
     <ClInclude Include="Sources\Base\SerializableSingleton.h" />
     <ClInclude Include="Sources\Base\SerializeMacro.h" />
     <ClInclude Include="Sources\Base\Singleton.h" />
@@ -62,16 +64,20 @@
     </ClInclude>
     <ClInclude Include="Sources\Const\AppReturnCode.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
+    <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
     <ClInclude Include="Sources\Core\TradeApi.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
+    <ClInclude Include="Sources\Model\PlannedTask\PlannedTaskInfo.h" />
     <ClInclude Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.h" />
     <ClInclude Include="Sources\Model\Quote\Provider\TWSQuoteProvider.h" />
+    <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
+    <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
     <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h" />

@@ -66,7 +66,7 @@ void QStyledGroupBoxInternal::paintEvent(QPaintEvent* e) {
 			}
 		}
 		for (int i = 0; i < buttonCount; i++) {
-			int width = fm.width(this->m_infos[i]);
+			int width = fm.horizontalAdvance(this->m_infos[i]);
 			bool hoveredOrSelected = ((this->m_hoveredMask & (1 << (i))) != 0) || ((this->m_hoveredMask & (1 << (i + 16))) != 0);
 			if (hoveredOrSelected) {
 				painter.save();
@@ -141,7 +141,7 @@ QStyledGroupBoxInternal::QStyledGroupBoxInternal(DisplayMode mode, const QVector
 		QFontMetrics fm(this->font());
 		this->m_maxTextWidth = INT_MIN;
 		for (int i = 0; i < this->m_infos.size(); i++) {
-			int width = fm.width(this->m_infos[i]);
+			int width = fm.horizontalAdvance(this->m_infos[i]);
 			this->m_maxTextWidth = std::max(this->m_maxTextWidth, width);
 		}
 		this->setFixedHeight(fm.height() + 8);

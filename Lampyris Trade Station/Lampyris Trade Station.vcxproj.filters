@@ -87,6 +87,12 @@
     <Filter Include="Source Files\UI\Tips">
       <UniqueIdentifier>{20397bfc-a136-436b-ae35-615d402e5551}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\PlannedTask">
+      <UniqueIdentifier>{c8d833ab-7e58-4128-833c-c2181be610a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Model\UI">
+      <UniqueIdentifier>{f8e47238-98bc-4bb6-a6d3-f0821e8a676c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -157,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\Common\QStyledGroupBox.cpp">
       <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp">
+      <Filter>Source Files\Model\Quote</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +277,18 @@
     <ClInclude Include="Sources\Collections\CircularQueue.h">
       <Filter>Source Files\Collections</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Model\PlannedTask\PlannedTaskInfo.h">
+      <Filter>Source Files\Model\PlannedTask</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h">
+      <Filter>Source Files\Model\Quote</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h">
+      <Filter>Source Files\Model\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -318,6 +339,9 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h">
       <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Base\PlannedTaskExecutor.h">
+      <Filter>Source Files\Base</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

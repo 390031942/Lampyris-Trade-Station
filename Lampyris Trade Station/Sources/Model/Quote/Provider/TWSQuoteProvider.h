@@ -59,8 +59,9 @@ private:
 	/************** tickerId 变量 begin **************/
 	int m_tickerIdAutoIncrement = 0;
 	int m_scannerTickerId = -1;
+	int m_scannerReqId = -1;
 	/************** tickerId 变量 end **************/
 
-
 	std::unordered_map<std::string,int> m_subscribeStockCode2TickerId;
+	std::vector<ContractDetails> m_scannerResult;
 };

@@ -85,8 +85,13 @@ void TWSQuoteProvider::handleResScannerData(int reqId,
 	                                        const std::string& benchmark,
 	                                        const std::string& projection, 
 	                                        const std::string& legsStr) {
+	if (this->m_scannerReqId < 0) {
+		m_scannerResult.clear();
+	}
 
+	m_scannerResult.push_back(contractDetails);
 }
 
 void TWSQuoteProvider::handleResScannerDataEnd(int reqId) {
+	this->m_scannerReqId = 0;
 }
