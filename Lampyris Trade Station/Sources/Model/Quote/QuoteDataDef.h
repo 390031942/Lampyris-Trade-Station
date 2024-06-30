@@ -67,8 +67,3 @@ class QuoteDataProvider {
 enum class QuoteDataType {
 
 };
-
-struct IndexBriefQuoteSubscription {
-    QString code;
-    QString code;
-};
