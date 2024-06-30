@@ -26,6 +26,7 @@
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
+    <ClCompile Include="Sources\UI\Common\QStyledGroupBox.cpp" />
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
@@ -77,6 +78,7 @@
     <ClInclude Include="Sources\Strategy\PreMarketMostActive.h" />
     <ClInclude Include="Sources\Strategy\RthMarketActive.h" />
     <ClInclude Include="Sources\UI\Common\MessageBox.h" />
+    <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />

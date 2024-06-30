@@ -155,6 +155,9 @@
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp">
       <Filter>Source Files\UI\Tips</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Common\QStyledGroupBox.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -312,6 +315,9 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Tips\OrderFilledTips.h">
       <Filter>Source Files\UI\Tips</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h">
+      <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
