@@ -167,6 +167,9 @@
     <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp">
       <Filter>Source Files\Model\Quote</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\Common\SearchWindow.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -342,6 +345,9 @@
     </QtMoc>
     <QtMoc Include="Sources\Base\PlannedTaskExecutor.h">
       <Filter>Source Files\Base</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\SearchWindow.h">
+      <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

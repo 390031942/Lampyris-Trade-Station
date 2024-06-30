@@ -28,6 +28,12 @@
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
     <ClCompile Include="Sources\UI\Common\QStyledGroupBox.cpp" />
+    <ClCompile Include="Sources\UI\Common\SearchWindow.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
@@ -85,6 +91,7 @@
     <ClInclude Include="Sources\Strategy\RthMarketActive.h" />
     <ClInclude Include="Sources\UI\Common\MessageBox.h" />
     <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h" />
+    <QtMoc Include="Sources\UI\Common\SearchWindow.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
