@@ -67,3 +67,14 @@ class QuoteDataProvider {
 enum class QuoteDataType {
 
 };
+
+/*
+ * 指数简要行情信息
+*/
+struct IndexBriefQuoteData {
+    QString code;
+    QString name;
+    float   price;
+    float   change;
+    float   percentage;
+};

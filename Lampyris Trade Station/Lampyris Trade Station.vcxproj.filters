@@ -93,6 +93,9 @@
     <Filter Include="Source Files\Model\UI">
       <UniqueIdentifier>{f8e47238-98bc-4bb6-a6d3-f0821e8a676c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Interface\QuoteProvider">
+      <UniqueIdentifier>{a622b2e1-d6ff-4971-b02b-6762c741d36f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -291,6 +294,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h">
       <Filter>Source Files\Model\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -75,6 +75,7 @@
     <ClInclude Include="Sources\Core\TradeApi.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
     <ClInclude Include="Sources\Model\PlannedTask\PlannedTaskInfo.h" />
