@@ -17,6 +17,17 @@ public:
 
 	}
 
+	void logInfo(const QString& info) {
+
+	}
+
+	void logWarning(const QString& warning) {
+
+	}
+
+	void logError(const QString& error) {
+
+	}
 private:
 	template<typename ...Args>
 	QString buildMessageLogString (Args&&... args) {

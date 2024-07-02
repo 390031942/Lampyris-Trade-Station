@@ -21,8 +21,10 @@
     <ClCompile Include="Sources\Core\TradeApi.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
+    <ClCompile Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp" />
     <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp" />
+    <ClCompile Include="Sources\Network\HttpRequestManager.cpp" />
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
@@ -38,6 +40,7 @@
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
@@ -76,7 +79,9 @@
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
+    <ClInclude Include="Sources\Model\App\AppUIStyle.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
     <ClInclude Include="Sources\Model\PlannedTask\PlannedTaskInfo.h" />
     <ClInclude Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.h" />
@@ -85,6 +90,7 @@
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
     <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h" />
+    <QtMoc Include="Sources\Network\HttpRequestManager.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
     <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h" />
@@ -96,6 +102,7 @@
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

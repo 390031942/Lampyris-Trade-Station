@@ -6,6 +6,7 @@
 // QT Include(s)
 #include <QString>
 #include <QDateTime>
+#include <QColor>
 
 // Boost Include(s)
 #include <boost/serialization/nvp.hpp>
@@ -30,7 +31,7 @@ namespace boost::serialization {
 	}
 	/* QString end*/
 
-	/* QDateTime begin */
+	/* QVector4D begin */
 	template<class Archive>
 	void save(Archive& ar, const QDateTime& dateTime, unsigned int version) {
 		QString dateTimeStr = dateTime.toString(Qt::ISODate);
@@ -45,7 +46,28 @@ namespace boost::serialization {
 	}
 	/* QDateTime end*/
 
+	/* QColor begin */
+	template<class Archive>
+	void save(Archive& ar, const QColor& color, unsigned int version) {
+		ar& boost::serialization::make_nvp("r", color.red());
+		ar& boost::serialization::make_nvp("g", color.green());
+		ar& boost::serialization::make_nvp("b", color.blue());
+		ar& boost::serialization::make_nvp("a", color.alpha());
+	}
+
+	template<class Archive>
+	void load(Archive& ar, QColor& color, unsigned int version) {
+		int r, g, b, a;
+		ar& boost::serialization::make_nvp("r", r);
+		ar& boost::serialization::make_nvp("g", g);
+		ar& boost::serialization::make_nvp("b", b);
+		ar& boost::serialization::make_nvp("a", a);
+
+		color = QColor(r, g, b, a);
+	}
+	/* QColor end*/
 } // end of namespace 'boost::serialization'
 
 BOOST_SERIALIZATION_SPLIT_FREE(QString);
 BOOST_SERIALIZATION_SPLIT_FREE(QDateTime);
+BOOST_SERIALIZATION_SPLIT_FREE(QColor);

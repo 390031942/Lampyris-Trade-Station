@@ -13,6 +13,8 @@
  * 行情接口-指数简要行情：
 */
 class IIndexBriefQuoteProvider {
+protected:
+	typedef const IndexBriefQuoteData& ROIndexBriefQuoteData;
 public:
-	virtual const IndexBriefQuoteData& query(const QString& code) = 0;
+	virtual ROIndexBriefQuoteData queryIndexBriefQuote(const QString& code) const = 0;
 };

@@ -96,6 +96,12 @@
     <Filter Include="Source Files\Interface\QuoteProvider">
       <UniqueIdentifier>{a622b2e1-d6ff-4971-b02b-6762c741d36f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{42a949bd-d24e-4d14-838a-30f014f6a8c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\StatusBar">
+      <UniqueIdentifier>{26a39f46-57a0-427e-ac73-9c608d163160}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -172,6 +178,15 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\Common\SearchWindow.cpp">
       <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Network\HttpRequestManager.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.cpp">
+      <Filter>Source Files\Model\Quote\Provider</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +313,12 @@
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h">
       <Filter>Source Files\Interface\QuoteProvider</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\App\AppUIStyle.h">
+      <Filter>Source Files\Model\App</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -354,6 +375,12 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\SearchWindow.h">
       <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Network\HttpRequestManager.h">
+      <Filter>Source Files\Network</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

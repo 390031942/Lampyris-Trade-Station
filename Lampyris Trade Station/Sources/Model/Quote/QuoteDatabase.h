@@ -22,8 +22,8 @@
 
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 	typedef Delegate<const std::vector<IndexBriefQuoteData>&> UpdateIndexBriefQuoteCallback;
-	typedef std::unordered_map<QString, std::unordered_map<QString, SecurityDataPtr>> QuoteDataMap;
-	typedef std::vector<std::pair<QString, std::pair<QString, SecurityDataPtr>>> QuoteDataList;
+	typedef std::unordered_map<QString, std::unordered_map<QString, QuoteBaseDataPtr>> QuoteDataMap;
+	typedef std::vector<std::pair<QString, std::pair<QString, QuoteBaseDataPtr>>> QuoteDataList;
 
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
