@@ -6,13 +6,8 @@
 // QT Include(s)
 #include <QStatusBar>
 
-class MainWindowStatusBarIndexQuoteItem : public QWidget {
-    Q_OBJECT
-public:
-    explicit MainWindowStatusBarIndexQuoteItem(QWidget* parent = nullptr);
-    ~MainWindowStatusBarIndexQuoteItem();
-private:
-};
+// Project Include(s)
+#include "StatusBar/IndexBriefQuoteItem.h"
 
 class MainWindowStatusBar : public QStatusBar {
     Q_OBJECT
@@ -20,5 +15,5 @@ public:
     explicit MainWindowStatusBar(QWidget* parent = nullptr);
     ~MainWindowStatusBar();
 private:
-
+    void initIndexBriefQuotePart();
 };

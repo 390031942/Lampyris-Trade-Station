@@ -75,6 +75,7 @@ enum QuoteCycleEnum {
 
 class RealTimeQuoteData {
 private:
+    KLineData m_realTimeBar;
 };
 
 class HistoryTimeQuoteData:public ISerializable {
@@ -123,17 +124,33 @@ LAMPYRIS_SERIALIZATION_IMPL_END
 /*
  * 一个股票行情对象，包含以下部分：历史数据 + 实时数据(快照+Tick) + 基本面
 */
-class QuoteBaseData {
+class QuoteBaseData :public ISerializable {
+    LAMPYRIS_DECLARE_SERILIZATION(QuoteBaseData);
 private:
-    QString code;
-    QString name;
+    QString              m_code;
+    QString              m_name;
+
     // 交易所名称
-    QString exchange;
+    QString              m_exchange;
     // 货币类型
-    QString currency;
+    QString              m_currency;
+
+    RealTimeQuoteData    m_realTimeData;
+    HistoryTimeQuoteData m_historyData;
 
     friend class QuoteDatabase;
 };
+
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(KLineData)
+{
+    LAMPYRIS_SERIALIZATION_FIELD(m_code);
+    LAMPYRIS_SERIALIZATION_FIELD(m_name);
+    LAMPYRIS_SERIALIZATION_FIELD(m_exchange);
+    LAMPYRIS_SERIALIZATION_FIELD(m_currency);
+    LAMPYRIS_SERIALIZATION_FIELD(m_historyData);
+}
+LAMPYRIS_SERIALIZATION_IMPL_END
+
 
 typedef std::shared_ptr<QuoteBaseData> QuoteBaseDataPtr;
 

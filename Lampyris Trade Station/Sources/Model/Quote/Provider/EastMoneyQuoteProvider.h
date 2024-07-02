@@ -23,6 +23,8 @@ public:
 
 	                        EastMoneyQuoteProvider();
 						   ~EastMoneyQuoteProvider();
+
+	void                    tick();
 private:
 	HttpRequestManager      m_httpRequestMgr;
 	IndexBriefQuoteDataMap  m_indexBriefQuoteDataMap;

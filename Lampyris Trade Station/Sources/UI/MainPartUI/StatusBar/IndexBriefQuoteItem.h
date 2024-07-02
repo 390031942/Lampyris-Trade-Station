@@ -14,8 +14,11 @@ class IndexBriefQuoteItem :public QWidget {
 public:
 	explicit     IndexBriefQuoteItem(QWidget* parent = nullptr);
 	            ~IndexBriefQuoteItem();
+
+	inline void  subscribe(const QString& code) { this->m_code = code;}
 protected:
 	virtual void paintEvent(QPaintEvent* event) override;
 private:
+	QString      m_code;
 	QHBoxLayout* m_layout;
 };

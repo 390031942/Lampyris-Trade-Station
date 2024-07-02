@@ -45,6 +45,8 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 						pData->change = change;
 						pData->percentage = percentage;
 					}
+
+					this->IIndexBriefQuoteProvider::m_isReady = true;
 					return;
 				}
 			}
@@ -57,4 +59,8 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 }
 
 EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
+}
+
+void EastMoneyQuoteProvider::tick() {
+	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote);
 }
