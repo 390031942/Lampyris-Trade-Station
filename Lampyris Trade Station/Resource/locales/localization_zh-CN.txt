@@ -14,3 +14,8 @@ ConnectDialog_5,如果勾选，下次启动程序将自动连接上一次登录�
 ConnectDialog_6,连接失败...正在第%d次重试
 ConnectDialog_7,连接失败，请检查IB网关/TWS的IP地址/端口号 是否输入正确
 ConnectDialog_8,尝试连接中
+
+// ConnectionStatusItem
+ConnectionStatusItem_1,已连接
+ConnectionStatusItem_2,已断开
+ConnectionStatusItem_3,重连中

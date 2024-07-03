@@ -38,17 +38,17 @@ bool Application::connect(const QString& ip, int port, int clientId) {
 }
 
 void Application::disconnect() {
-	if (isConnected()) {
+	if (ms_clientSocket->isConnected()) {
 		ms_clientSocket->eDisconnect();
 	}
 }
 
-bool Application::isConnected() {
+ConnectState Application::connectState() {
 	if (ms_clientSocket == nullptr) {
-		return false;
+		return ConnectState::Disconnected;
 	}
 
-	return ms_clientSocket->isConnected();
+	return ms_clientSocket->isConnected() ? ConnectState::Connected : ConnectState::Disconnected;
 }
 
 int Application::mainLoop() {

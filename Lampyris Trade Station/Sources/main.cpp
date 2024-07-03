@@ -6,6 +6,7 @@
 #include "UI/ConnectDialog.h"
 #include "Core/Application.h"
 #include "Const/AppReturnCode.h"
+#include "UI/MainPartUI/StatusBar/ConnectionStatusItem.h"
 
 int main(int argc, char *argv[]) {
     Application a(argc, argv);
@@ -14,7 +15,7 @@ int main(int argc, char *argv[]) {
         return AppReturnCode::AppInstanceAlreadyExists;
     }
 
-    ConnectDialog* w = new ConnectDialog;
+    ConnectionStatusItem* w = new ConnectionStatusItem;
     w->show();
     return a.mainLoop();
 }

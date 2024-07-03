@@ -84,26 +84,27 @@ public:
     std::vector<KLineDataPtr> query(QuoteCycleEnum cycle, 
                                     const QDateTime& startDateTime, 
                                     const QDateTime& endDateTime = QDateTime()) {
+        typedef std::pair<const QDateTime, KLineDataPtr> Pair;
         std::vector<KLineDataPtr> result;
         auto& scaleData = m_runtimeData[cycle];
 
-        auto lower = std::lower_bound(scaleData.begin(), 
-                                      scaleData.end(),
-                                      KLineData(),
-                                      /** comparator */[&startDateTime](const KLineDataPtr& k,
-                                                                        const KLineDataPtr& ref) {
-                                          return k->dateTime < startDateTime; 
-                                      });
+        // auto lower = std::lower_bound(scaleData.begin(), 
+        //                               scaleData.end(),
+        //                               nullptr,
+        //                               /** comparator */[&startDateTime](const Pair& k,
+        //                                                                 const Pair& ref) {
+        //                                   return k.second->dateTime < startDateTime; 
+        //                               });
+        // 
+        // auto upper = std::upper_bound(lower, 
+        //                               scaleData.end(), 
+        //                               nullptr,
+        //                               /** comparator */[&endDateTime](const Pair& k,
+        //                                                               const Pair& ref) {
+        //                                 return k.second->dateTime <= endDateTime; 
+        //                               });
 
-        auto upper = std::upper_bound(lower, 
-                                      scaleData.end(), 
-                                      KLineData(),
-                                      /** comparator */[&endDateTime](const KLineDataPtr& k, 
-                                                                      const KLineDataPtr ref) { 
-                                        return k->dateTime <= endDateTime; 
-                                      });
-
-        result.assign(lower, upper);
+        // result.assign(lower, upper);
         return result;
     }
 
@@ -115,9 +116,9 @@ private:
     std::vector<std::vector<KLineDataPtr>> m_serializableData;
 };
 
-LAMPYRIS_SERIALIZATION_IMPL_BEGIN(KLineData)
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(HistoryTimeQuoteData)
 {
-    LAMPYRIS_SERIALIZATION_FIELD(m_serializableData);
+    // LAMPYRIS_SERIALIZATION_FIELD(m_serializableData);
 }
 LAMPYRIS_SERIALIZATION_IMPL_END
 
@@ -141,7 +142,7 @@ private:
     friend class QuoteDatabase;
 };
 
-LAMPYRIS_SERIALIZATION_IMPL_BEGIN(KLineData)
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(QuoteBaseData)
 {
     LAMPYRIS_SERIALIZATION_FIELD(m_code);
     LAMPYRIS_SERIALIZATION_FIELD(m_name);

@@ -9,19 +9,24 @@
 #include <Base/Singleton.h>
 #include <Model/Quote/QuoteDataDef.h>
 
-class MainUIStatusBarIndexBriefSubscription:public SerializableSingleton<MainUIStatusBarIndexBriefSubscription>{
-	LAMPYRIS_DECLARE_SERILIZATION(MainUIStatusBarIndexBriefSubscription);
+class IndexBriefQuoteSubscription
+	:public SerializableSingleton<IndexBriefQuoteSubscription>{
+	LAMPYRIS_DECLARE_SERILIZATION(IndexBriefQuoteSubscription);
+public:
+	inline std::vector<QString>& getSubscribedList()
+	{ return m_subscriptionList; }
+
 private:
-	std::vector<std::string> m_subscriptionList;
+	std::vector<QString> m_subscriptionList;
 
 	virtual void postDeserialize() override {
 		if (!m_subscriptionList.size()) {
-			m_subscriptionList = std::vector<std::string>({"IXIC","DJIA","SPX","HSI"});
+			m_subscriptionList = std::vector<QString>({"NDX","DJIA","SPX","HSI"});
 		}
 	}
 };
 
-LAMPYRIS_SERIALIZATION_IMPL_BEGIN(MainUIStatusBarIndexBriefSubscription) {
+LAMPYRIS_SERIALIZATION_IMPL_BEGIN(IndexBriefQuoteSubscription) {
 	LAMPYRIS_SERIALIZATION_FIELD(m_subscriptionList);
 }
 LAMPYRIS_SERIALIZATION_IMPL_END;

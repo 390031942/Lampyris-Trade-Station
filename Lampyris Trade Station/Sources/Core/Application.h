@@ -18,6 +18,7 @@
 
 // Project Include(s)
 #include <Base/Singleton.h>
+#include <Const/ConnectState.h>
 
 #ifndef LTS_COMPILE_TIME
 #define LTS_COMPILE_TIME __DATE__ " " __TIME__
@@ -47,9 +48,9 @@ public:
 	*/
 	static void           disconnect();
 	/*
-	 * 是否与IB网关/TWS连接成功：
+	 * 与IB网关/TWS连接状态：
 	*/
-	static bool           isConnected();
+	static ConnectState   connectState();
 	/*
 	 * 是否与IB网关/TWS连接成功：
 	*/

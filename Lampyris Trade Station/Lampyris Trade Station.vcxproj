@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Base\CallTimer.cpp" />
     <ClCompile Include="Sources\Base\Localization.cpp" />
     <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp" />
     <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
@@ -29,6 +30,7 @@
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
+    <ClCompile Include="Sources\UI\Common\QHoverableWidget.cpp" />
     <ClCompile Include="Sources\UI\Common\QStyledGroupBox.cpp" />
     <ClCompile Include="Sources\UI\Common\SearchWindow.cpp">
       <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
@@ -40,6 +42,7 @@
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
@@ -54,6 +57,7 @@
     <ClCompile Include="Sources\Utility\PathUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Base\CallTimer.h" />
     <ClInclude Include="Sources\Base\ClassInitializer.h" />
     <ClInclude Include="Sources\Base\CustomSerializable.h" />
     <ClInclude Include="Sources\Base\Delegate.h" />
@@ -72,6 +76,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Sources\Const\AppReturnCode.h" />
+    <ClInclude Include="Sources\Const\ConnectState.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
     <ClInclude Include="Sources\Core\MessageWrapper.h" />
@@ -89,7 +94,7 @@
     <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
-    <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h" />
+    <ClInclude Include="Sources\Model\UI\IndexBriefQuoteSubscription.h" />
     <QtMoc Include="Sources\Network\HttpRequestManager.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
@@ -99,10 +104,12 @@
     <ClInclude Include="Sources\UI\Common\MessageBox.h" />
     <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h" />
     <QtMoc Include="Sources\UI\Common\SearchWindow.h" />
+    <QtMoc Include="Sources\UI\Common\QHoverableWidget.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

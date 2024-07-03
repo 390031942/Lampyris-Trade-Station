@@ -188,6 +188,15 @@
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp">
       <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Base\CallTimer.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Common\QHoverableWidget.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -307,7 +316,7 @@
     <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h">
       <Filter>Source Files\Model\Quote</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Model\UI\MainUIStatusBarIndexBriefSubscription.h">
+    <ClInclude Include="Sources\Model\UI\IndexBriefQuoteSubscription.h">
       <Filter>Source Files\Model\UI</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h">
@@ -318,6 +327,12 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\App\AppUIStyle.h">
       <Filter>Source Files\Model\App</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\CallTimer.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\ConnectState.h">
+      <Filter>Source Files\Const</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +396,12 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h">
       <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.h">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\QHoverableWidget.h">
+      <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

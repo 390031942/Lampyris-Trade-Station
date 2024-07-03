@@ -22,6 +22,9 @@ IndexBriefQuoteItem::IndexBriefQuoteItem(QWidget* parent):
 	this->m_layout->addWidget(textName);
 	this->m_layout->addWidget(textPrice);
 	this->m_layout->addWidget(textChange);
+
+	// 限制宽度高度
+	this->setFixedSize(QSize(200, 30));
 }
 
 IndexBriefQuoteItem::~IndexBriefQuoteItem() {

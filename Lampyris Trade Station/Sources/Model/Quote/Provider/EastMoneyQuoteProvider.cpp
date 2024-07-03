@@ -7,8 +7,8 @@
 #include "EastMoneyQuoteProvider.h"
 #include <Base/LogManager.h>
 
-EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) const{
-
+EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
+	return m_indexBriefQuoteDataMap[code];
 }
 
 EastMoneyQuoteProvider::EastMoneyQuoteProvider() {

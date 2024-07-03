@@ -19,7 +19,7 @@ class EastMoneyQuoteProvider:public IIndexBriefQuoteProvider {
 		IndexBriefQuote = 1,
 	};
 public:
-	ROIndexBriefQuoteData   queryIndexBriefQuote(const QString& code) const;
+	ROIndexBriefQuoteData   queryIndexBriefQuote(const QString& code);
 
 	                        EastMoneyQuoteProvider();
 						   ~EastMoneyQuoteProvider();
