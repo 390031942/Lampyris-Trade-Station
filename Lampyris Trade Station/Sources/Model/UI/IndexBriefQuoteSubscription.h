@@ -21,7 +21,7 @@ private:
 
 	virtual void postDeserialize() override {
 		if (!m_subscriptionList.size()) {
-			m_subscriptionList = std::vector<QString>({"NDX","DJIA","SPX","HSI"});
+			m_subscriptionList = std::vector<QString>({"NDX","DJIA","SPX"});
 		}
 	}
 };

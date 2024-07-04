@@ -23,18 +23,22 @@
 #include <Interface/QuoteInterface/IIndexBriefQuoteProvider.h>
 
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
-	typedef Delegate<const std::vector<IndexBriefQuoteData>&> UpdateIndexBriefQuoteCallback;
+	typedef Delegate<> UpdateIndexBriefQuoteCallback;
 	typedef std::unordered_map<QString, std::unordered_map<QString, QuoteBaseDataPtr>> QuoteDataMap;
 	typedef std::vector<std::pair<QString, std::pair<QString, QuoteBaseDataPtr>>> QuoteDataList;
 
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
 	void                          query(const QString& code, const QString& currency = "USD");
+
+	// For 指数简要行情 IndexBriefQuote
+	const IndexBriefQuoteData&    queryIndexBriefQuote(const QString& code);
 	void                          subscribeIndexBriefQuote(const std::vector<QString>& codeList);
 	void                          setIndexBriefQuoteProvider(IIndexBriefQuoteProvider* provider);
-	                              QuoteDatabase();
-	// 外部更新行情数据的回调
 	UpdateIndexBriefQuoteCallback onUpdatendexBriefQuote;
+
+	// For 逐笔行情Tick-by-Tick
+	QuoteDatabase();
 private:
 	void                          tick();
 	std::vector<QString>          m_subscribeIndexBriefQuoteCodeList;
@@ -43,6 +47,8 @@ private:
 	QuoteDataList                 m_dataList;
 
 	IIndexBriefQuoteProvider*     m_indexBriefQuoteProvider;
+	ITickByTickQuoteProvider*     m_tickByTickQuoteProvider;
+
 	int                           m_indexBriefQuoteTickIntervalMs = 3000;
 };
 

@@ -6,7 +6,10 @@
 #include "UI/ConnectDialog.h"
 #include "Core/Application.h"
 #include "Const/AppReturnCode.h"
-#include "UI/MainPartUI/StatusBar/ConnectionStatusItem.h"
+#include "UI/MainWindow.h"
+#include "Model/Quote/QuoteDatabase.h"
+#include "Model/Quote/Provider/EastMoneyQuoteProvider.h"
+
 
 int main(int argc, char *argv[]) {
     Application a(argc, argv);
@@ -15,7 +18,10 @@ int main(int argc, char *argv[]) {
         return AppReturnCode::AppInstanceAlreadyExists;
     }
 
-    ConnectionStatusItem* w = new ConnectionStatusItem;
+    EastMoneyQuoteProvider provider;
+    QuoteDatabase::getInstance()->setIndexBriefQuoteProvider(&provider);
+
+    MainWindow* w = new MainWindow;
     w->show();
     return a.mainLoop();
 }

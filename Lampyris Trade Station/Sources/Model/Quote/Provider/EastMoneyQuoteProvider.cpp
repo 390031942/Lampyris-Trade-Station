@@ -7,10 +7,6 @@
 #include "EastMoneyQuoteProvider.h"
 #include <Base/LogManager.h>
 
-EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
-	return m_indexBriefQuoteDataMap[code];
-}
-
 EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 	m_httpRequestMgr.bind(ReqType::IndexBriefQuote, "http://42.push2.eastmoney.com/api/qt/clist/get",
 		/** handler*/ [=](const QByteArray& bytes) {
@@ -20,8 +16,6 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 				auto diff = data["diff"];
 				if (diff.isArray()) {
 					auto arr = diff.toArray();
-					IndexBriefQuoteData tempData {0};
-
 					for (int i = 0; i < arr.size(); i++) {
 						auto element = arr[i].toObject();
 
@@ -32,11 +26,12 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 						QString code = element["f12"].toString();
 						QString name = element["f14"].toString();
 
-						IndexBriefQuoteData* pData = &tempData;
+						IndexBriefQuoteData* pData = nullptr;
 						if (m_indexBriefQuoteDataMap.contains(code)) {
 							pData = &(m_indexBriefQuoteDataMap[code]);
 						}
 						else {
+							pData = &(m_indexBriefQuoteDataMap[code] = IndexBriefQuoteData{0});
 							pData->code = code;
 							pData->name = name;
 						}
@@ -62,5 +57,23 @@ EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
 }
 
 void EastMoneyQuoteProvider::tick() {
-	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote);
+	// 创建查询参数对象
+	QUrlQuery query;
+
+	// 添加查询参数
+	query.addQueryItem("po", "1");
+	query.addQueryItem("pz", "50");
+	query.addQueryItem("pn", "1");
+	query.addQueryItem("np", "1");
+	query.addQueryItem("fltt", "2");
+	query.addQueryItem("invt", "2");
+	// query.addQueryItem("fs", "i:1.000001,i:0.399001,i:100.HSI,i:100.NDX");
+	query.addQueryItem("fs", "i:100.NDX,i:100.DJIA,i:100.SPX");
+	query.addQueryItem("fields", "f2,f3,f4,f12,f14");
+
+	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote,query);
+}
+
+EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
+	return m_indexBriefQuoteDataMap[code];
 }

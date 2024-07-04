@@ -75,6 +75,7 @@ Application::Application(int argc, char* argv[]) {
             ms_tickFuncList[i]();
         }
     });
+    ms_tickTimer.start();
 
     // °ó¶¨¼àÌýÊÂ¼þ
     EventBind(EventType::onResCurrentTime, [=](long time) {

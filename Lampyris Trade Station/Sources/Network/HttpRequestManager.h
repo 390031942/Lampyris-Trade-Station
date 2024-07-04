@@ -8,6 +8,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QUrlQuery>
 
 typedef std::function<void(const QByteArray&)> ReplyCallback;
 typedef std::optional<std::function<void(const QString&)>> ErrorCallback;
@@ -23,9 +24,9 @@ class HttpRequestManager:public QObject {
 	Q_OBJECT
 public:
 	void  bind(int reqType, QString url, ReplyCallback callback, ErrorCallback errorCallback = ErrorCallback());
-	void  get(int reqType);
-	void  post(int reqType,const QString& content);
-	void  post(int reqType,const QByteArray& contentBytes);
+	void  get(int reqType, const QUrlQuery& query = QUrlQuery());
+	void  post(int reqType,const QString& content, const QUrlQuery& query = QUrlQuery());
+	void  post(int reqType,const QByteArray& contentBytes, const QUrlQuery& query = QUrlQuery());
 
 	      HttpRequestManager();
 	     ~HttpRequestManager();

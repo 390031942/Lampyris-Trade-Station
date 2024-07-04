@@ -19,13 +19,12 @@ class EastMoneyQuoteProvider:public IIndexBriefQuoteProvider {
 		IndexBriefQuote = 1,
 	};
 public:
-	ROIndexBriefQuoteData   queryIndexBriefQuote(const QString& code);
-
-	                        EastMoneyQuoteProvider();
-						   ~EastMoneyQuoteProvider();
-
-	void                    tick();
-private:
-	HttpRequestManager      m_httpRequestMgr;
-	IndexBriefQuoteDataMap  m_indexBriefQuoteDataMap;
+	ROIndexBriefQuoteData  queryIndexBriefQuote(const QString& code) override;
+	                       EastMoneyQuoteProvider();
+						  ~EastMoneyQuoteProvider();
+						  
+	void                   tick();
+private:				  
+	HttpRequestManager     m_httpRequestMgr;
+	IndexBriefQuoteDataMap m_indexBriefQuoteDataMap;
 };

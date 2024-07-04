@@ -10,6 +10,10 @@ void QuoteDatabase::query(const QString& code, const QString& currency) {
 
 }
 
+const IndexBriefQuoteData& QuoteDatabase::queryIndexBriefQuote(const QString& code) {
+	return this->m_indexBriefQuoteProvider->queryIndexBriefQuote(code);
+}
+
 void QuoteDatabase::subscribeIndexBriefQuote(const std::vector<QString>& codeList) {
 	m_subscribeIndexBriefQuoteCodeList = codeList;
 }
@@ -26,8 +30,15 @@ QuoteDatabase::QuoteDatabase() {
 
 void QuoteDatabase::tick() {
 	long timeStmap = QDateTime::currentDateTime().toTime_t();
-	if (timeStmap - m_indexBriefQuoteProvider->m_lastTickTimestmap > this->m_indexBriefQuoteTickIntervalMs) {
-		m_indexBriefQuoteProvider->tick();
-		m_indexBriefQuoteProvider->m_lastTickTimestmap = timeStmap;
+	if (m_indexBriefQuoteProvider->m_isReady) {
+		onUpdatendexBriefQuote();
+		m_indexBriefQuoteProvider->m_isReady = false;
 	}
+	else {
+		if (timeStmap - m_indexBriefQuoteProvider->m_lastTickTimestmap > this->m_indexBriefQuoteTickIntervalMs) {
+			m_indexBriefQuoteProvider->tick();
+			m_indexBriefQuoteProvider->m_lastTickTimestmap = timeStmap;
+		}
+	}
+
 }

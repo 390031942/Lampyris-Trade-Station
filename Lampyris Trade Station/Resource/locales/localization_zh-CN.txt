@@ -19,3 +19,11 @@ ConnectDialog_8,尝试连接中
 ConnectionStatusItem_1,已连接
 ConnectionStatusItem_2,已断开
 ConnectionStatusItem_3,重连中
+
+// TimeDisplayItem
+TimeDisplayItem_1,中国(CN)
+TimeDisplayItem_2,美东(US)
+
+// MainUIStatusBar
+StatusBar_1,Debug Log
+StatusBar_2,上证指数

@@ -4,7 +4,11 @@
 
 // Project Include(s)
 #include "MainWindowStatusBar.h"
+#include <Base/Localization.h>
 #include <Model/UI/IndexBriefQuoteSubscription.h>
+#include "StatusBar/IndexBriefQuoteItem.h"
+#include "StatusBar/ConnectionStatusItem.h"
+#include "StatusBar/TimeDisplayItem.h"
 
 // QT Include(s)
 #include <QSizeGrip>
@@ -12,6 +16,8 @@
 #include <QPushButton>
 
 MainWindowStatusBar::MainWindowStatusBar(QWidget* parent) {
+	this->setFixedHeight(30);
+	this->setContentsMargins(0,0,0,0);
 	this->createIndexBriefQuotePart();
 	this->createLogButtonPart();
 	this->createConnectionStatusPart();
@@ -29,18 +35,15 @@ void MainWindowStatusBar::createIndexBriefQuotePart() {
 
 	QWidget* containerWidget = new QWidget(this);
 	QHBoxLayout* layout = new QHBoxLayout(this);
+	layout->setContentsMargins(0,0,0,0);
+	layout->setSpacing(3);
 	containerWidget->setLayout(layout);
-	layout->setContentsMargins(0, 0, 0, 0);
 
 	for (int i = 0; i < list.size(); i++) {
 		auto item = new IndexBriefQuoteItem(this);
+		layout->addWidget(item);
 		item->subscribe(list[i]);
 		this->m_indexBriefQuoteItemList.push_back(item);
-		layout->addWidget(item);
-
-		if (i == 0) { /** containerWidget的宽度高度由IndexBriefQuoteItem数量决定 */
-			containerWidget->setFixedSize(item->width() * list.size(), item->height());
-		}
 	}
 
 	this->addPermanentWidget(containerWidget, 0);
@@ -49,6 +52,8 @@ void MainWindowStatusBar::createIndexBriefQuotePart() {
 
 void MainWindowStatusBar::createLogButtonPart() {
 	QPushButton* button = new QPushButton(this);
+	button->setFixedWidth(100);
+	button->setText(Localization->get("StatusBar_1"));
 	QObject::connect(button, &QPushButton::clicked, [=]() {
 		
 	});
@@ -57,8 +62,12 @@ void MainWindowStatusBar::createLogButtonPart() {
 }
 
 void MainWindowStatusBar::createConnectionStatusPart() {
+	ConnectionStatusItem* item = new ConnectionStatusItem(this);
+	this->addPermanentWidget(item, 2);
 	this->addPermanentWidget(new QSplitter(Qt::Orientation::Vertical, this));
 }
 
 void MainWindowStatusBar::createTimeDisplayPart() {
+	TimeDisplayItem* item = new TimeDisplayItem(this);
+	this->addPermanentWidget(item, 4);
 }

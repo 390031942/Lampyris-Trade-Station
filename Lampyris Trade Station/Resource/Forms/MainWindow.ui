@@ -13,6 +13,12 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+    background-color: rgb(53, 53, 53);
+	color: rgb(255, 255, 255);
+}</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <property name="leftMargin">
@@ -52,7 +58,7 @@
      <x>0</x>
      <y>0</y>
      <width>1204</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -64,9 +70,16 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="MainWindowStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>MainWindowStatusBar</class>
+   <extends>QStatusBar</extends>
+   <header>UI/MainPartUI/MainWindowStatusBar.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../Qrc/Resources.qrc"/>
  </resources>

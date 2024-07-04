@@ -23,9 +23,7 @@ ConnectionStatusItem::ConnectionStatusItem(QWidget* parent):QHoverableWidget(par
 	},100);
 
 	// 限制宽度高度
-	this->setFixedSize(QSize(150, 30));
-
-    this->setMouseTracking(true);
+	this->setFixedSize(QSize(100, 30));
 }
 
 ConnectionStatusItem::~ConnectionStatusItem() {
@@ -42,33 +40,26 @@ void ConnectionStatusItem::paintEvent(QPaintEvent* event) {
 
     // 获取窗口的中心点
     QPoint center = rect().center();
-
-    // 创建一个圆锥渐变
-    QConicalGradient gradient(center, 0);
-    gradient.setColorAt(0.0, Qt::red);    // 起始颜色
-    gradient.setColorAt(0.5, Qt::green);  // 中间颜色
-    gradient.setColorAt(1.0, Qt::blue);   // 结束颜色
-
     QRect circleRect(margin, margin, circleDiameter, circleDiameter);
 
-    painter.setBrush(gradient);
+    // 设置文本和颜色
+    QString text;
+    QColor color;
+    switch (this->m_connectState) {
+        case ConnectState::Connected:
+            text = Localization->get("ConnectionStatusItem_1"); color = QColor(Qt::green); break;
+        case ConnectState::Disconnected:
+            text = Localization->get("ConnectionStatusItem_2"); color = QColor(Qt::red); break;
+        case ConnectState::Reconnecting:
+            text = Localization->get("ConnectionStatusItem_3"); color = QColor(Qt::yellow); break;
+    }
+
+    painter.setBrush(color);
     painter.setPen(Qt::NoPen);
     painter.drawEllipse(circleRect);
 
-    // 设置文本
-    QString text;
-    switch (this->m_connectState) {
-        case ConnectState::Connected:
-            text = Localization->get("ConnectionStatusItem_1"); break;
-        case ConnectState::Disconnected:
-            text = Localization->get("ConnectionStatusItem_2"); break;
-        case ConnectState::Reconnecting:
-            text = Localization->get("ConnectionStatusItem_3"); break;
-    }
-
     QFont font = painter.font();
     font.setPointSize(10);
-    font.setUnderline(true);
     painter.setFont(font);
 
     QFontMetrics fm(font);
@@ -76,7 +67,7 @@ void ConnectionStatusItem::paintEvent(QPaintEvent* event) {
     int textHeight = fm.height();
 
     // 计算文本的位置
-    int textX = circleRect.right() + 10;
+    int textX = circleRect.right() + 20;
     int textY = (height() + textHeight) / 2 - fm.descent();
 
     painter.setPen(Qt::black);
@@ -92,4 +83,6 @@ void ConnectionStatusItem::paintEvent(QPaintEvent* event) {
         QRect thisRect = rect();
         painter.drawRect(thisRect);
     }
+
+    painter.restore();
 }

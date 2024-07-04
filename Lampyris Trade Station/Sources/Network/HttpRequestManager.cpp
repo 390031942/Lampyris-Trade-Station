@@ -11,18 +11,20 @@ void HttpRequestManager::bind(int reqType, QString url, ReplyCallback callback, 
 	}
 }
 
-void HttpRequestManager::get(int reqType) {
+void HttpRequestManager::get(int reqType, const QUrlQuery& query) {
 	if (m_reqType2RequestInfoMap.contains(reqType)) {
 		const HttpRequestInfo& info = m_reqType2RequestInfoMap[reqType];
-		m_manager.get(info.request);
+		QUrl url(info.url);
+		url.setQuery(query);
+		m_reply2reqTypeMap[m_manager.get(QNetworkRequest(url))] = reqType;
 	}
 }
 
-void HttpRequestManager::post(int reqType, const QString& content) {
-	this->post(reqType, content.toUtf8());
+void HttpRequestManager::post(int reqType, const QString& content, const QUrlQuery& query) {
+	this->post(reqType, content.toUtf8(), query);
 }
 
-void HttpRequestManager::post(int reqType, const QByteArray& contentBytes) {
+void HttpRequestManager::post(int reqType, const QByteArray& contentBytes, const QUrlQuery& query) {
 	if (m_reqType2RequestInfoMap.contains(reqType)) {
 		const HttpRequestInfo& info = m_reqType2RequestInfoMap[reqType];
 		m_manager.post(info.request, contentBytes);

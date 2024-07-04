@@ -29,7 +29,7 @@ public:
 	 * 参数{code}:指数代码
 	 * 返回: IndexBriefQuoteData常引用
 	*/
-	virtual ROIndexBriefQuoteData queryIndexBriefQuote(const QString& code) const = 0;
+	virtual ROIndexBriefQuoteData queryIndexBriefQuote(const QString& code) = 0;
 protected:
 	/* 
 	 * 指数代码列表

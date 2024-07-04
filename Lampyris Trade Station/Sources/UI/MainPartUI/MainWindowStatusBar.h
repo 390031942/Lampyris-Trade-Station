@@ -6,8 +6,7 @@
 // QT Include(s)
 #include <QStatusBar>
 
-// Project Include(s)
-#include "StatusBar/IndexBriefQuoteItem.h"
+class IndexBriefQuoteItem;
 
 class MainWindowStatusBar : public QStatusBar {
     typedef std::vector<IndexBriefQuoteItem*> QuoteItemList;

@@ -102,6 +102,12 @@
     <Filter Include="Source Files\UI\MainPartUI\StatusBar">
       <UniqueIdentifier>{26a39f46-57a0-427e-ac73-9c608d163160}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\JobSystem">
+      <UniqueIdentifier>{9665894c-278f-4704-af77-b3e320d6dd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PluginSupport">
+      <UniqueIdentifier>{f5bbac2b-9fd5-4b72-b590-807810b8f448}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -196,6 +202,12 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\Common\QHoverableWidget.cpp">
       <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\JobSystem\JobSystem.cpp">
+      <Filter>Source Files\JobSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -334,6 +346,9 @@
     <ClInclude Include="Sources\Const\ConnectState.h">
       <Filter>Source Files\Const</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\JobSystem\JobSystem.h">
+      <Filter>Source Files\JobSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -402,6 +417,9 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\QHoverableWidget.h">
       <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h">
+      <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

@@ -3,40 +3,59 @@
 */
 #pragma once
 
+// Project Include(s)
 #include <vector>
 #include <algorithm>
+#include <functional>
 
 template<typename... Args>
 class Delegate {
     /*
      * 函数指针的类型
     */ 
-    using Func = void(*)(Args...);
+    using Func = std::function<void(Args...)>;
+    /*
+     * 定义一个类型用于标识函数
+    */ 
+    using Identifier = int; 
+
+    struct FuncEntry {
+        Func       func;
+        Identifier id;
+    };
+
 public:
     /*
      * 添加监听函数
-     * 参数{func}待添加的函数的地址
+     * 参数{func}:待添加的函数的地址
+     * 返回值:函数唯一标识符
      */ 
-    Delegate& operator+=(Func func) {
-        m_funcList.push_back(func);
-        return *this;
+    Identifier operator+=(Func func) {
+        Identifier newId = m_increment++;
+        m_funcList.push_back(FuncEntry{ std::move(func), newId});
+        return newId;
     }
     /*
      * 移除监听函数
-     * 参数{func}待添加的函数的地址
+     * 参数{Identifier}:函数唯一标识符
      */
-    Delegate& operator-=(Func func) {
-        m_funcList.erase(std::remove_if(m_funcList.begin(), m_funcList.end(), [func](Func f) { return f == func; }), m_funcList.end());
-        return *this;
+    bool operator-=(Identifier id) {
+        auto it = std::remove_if(m_funcList.begin(), m_funcList.end(), [id](const FuncEntry& entry) { return entry.id == id; });
+        if (it != m_funcList.end()) {
+            m_funcList.erase(it, m_funcList.end());
+            return true;
+        }
+        return false;
     }
     /* 
      * 调用所有注册的函数
      */ 
     void operator()(Args... args) {
-        for (auto& func : m_funcList) {
-            func(args...);
+        for (auto& funcEntry : m_funcList) {
+            funcEntry.func(args...);
         }
     }
 private:
-    std::vector<Func> m_funcList;
+    std::vector<FuncEntry> m_funcList;
+    int                    m_increment = 0;
 };

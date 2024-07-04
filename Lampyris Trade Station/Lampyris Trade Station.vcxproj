@@ -20,6 +20,7 @@
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
     <ClCompile Include="Sources\Core\TradeApi.cpp" />
+    <ClCompile Include="Sources\JobSystem\JobSystem.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.cpp" />
@@ -44,6 +45,7 @@
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
@@ -85,6 +87,7 @@
     <ClInclude Include="Sources\Interface\ISerializable.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h" />
+    <ClInclude Include="Sources\JobSystem\JobSystem.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\App\AppUIStyle.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />
@@ -110,6 +113,7 @@
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -201,6 +205,13 @@
     <Link>
       <AdditionalDependencies>libboost_stacktrace_windbg_cached-vc143-mt-gd-x64-1_85.lib;libboost_serialization-vc143-mt-gd-x64-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>copy /Y "$(ProjectDir)Resource\locales" "$(SolutionDir)$(Platform)\$(Configuration)\locales"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

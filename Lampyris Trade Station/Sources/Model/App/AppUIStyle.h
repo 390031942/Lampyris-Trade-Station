@@ -41,7 +41,7 @@ public:
     QColor darkLessBgColor = QColor(53, 53, 53, 255);
 
     // 暗色-深背景
-    QColor darkLessBgColor = QColor(31, 31, 31, 255);
+    QColor darkBgColor = QColor(31, 31, 31, 255);
 
     // 涨跌颜色反转
     bool reverseRiseFallColor = false;
@@ -56,20 +56,24 @@ public:
 
         return normalWhiteColor;
     }
+
+    QColor getQuoteNameColor() {
+        return this->quoteNameColor;
+    }
 };
 
 LAMPYRIS_SERIALIZATION_IMPL_BEGIN(AppUIStyle)
 {
-    LAMPYRIS_SERIALIZATION_FIELD(quoteNameColor);
-    LAMPYRIS_SERIALIZATION_FIELD(quoteNormalColor);
-    LAMPYRIS_SERIALIZATION_FIELD(quoteRiseColor);
-    LAMPYRIS_SERIALIZATION_FIELD(quoteFallColor);
-    LAMPYRIS_SERIALIZATION_FIELD(quoteMoneyColor);
-    LAMPYRIS_SERIALIZATION_FIELD(normalWhiteColor);
-    LAMPYRIS_SERIALIZATION_FIELD(tipYellowColor);
-    LAMPYRIS_SERIALIZATION_FIELD(tipRedColor);
-    LAMPYRIS_SERIALIZATION_FIELD(darkLessBgColor);
-    LAMPYRIS_SERIALIZATION_FIELD(darkLessBgColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(quoteNameColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(quoteNormalColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(quoteRiseColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(quoteFallColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(quoteMoneyColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(normalWhiteColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(tipYellowColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(tipRedColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(darkLessBgColor);
+    // LAMPYRIS_SERIALIZATION_FIELD(darkLessBgColor);
     LAMPYRIS_SERIALIZATION_FIELD(reverseRiseFallColor);
 }
 LAMPYRIS_SERIALIZATION_IMPL_END
