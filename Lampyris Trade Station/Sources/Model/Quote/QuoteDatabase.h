@@ -21,6 +21,10 @@
 #include <Base/Delegate.h>
 #include <Base/SerializableSingleton.h>
 #include <Interface/QuoteInterface/IIndexBriefQuoteProvider.h>
+#include <Interface/QuoteInterface/ITickByTickQuoteProvider.h>
+
+// TWS Include(s)
+#include <TWS/ScannerSubscription.h>
 
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 	typedef Delegate<> UpdateIndexBriefQuoteCallback;
@@ -38,6 +42,11 @@ public:
 	UpdateIndexBriefQuoteCallback onUpdatendexBriefQuote;
 
 	// For 逐笔行情Tick-by-Tick
+
+	// For 查询TWS扫描器返回结果的合约列表(这里不用提供抽象的接口类了，因为一定要用TWS的)
+	void                          commitScannerSubscription(const ScannerSubscription& scannerSubscription);
+	void                          cancelScannerSubscription();
+
 	QuoteDatabase();
 private:
 	void                          tick();

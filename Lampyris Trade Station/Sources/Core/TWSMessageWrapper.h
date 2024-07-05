@@ -5,12 +5,12 @@
 
 // TWS API Include(s)
 #include "TWS/EWrapper.h"
+#include <Model/TWS/TWSMessageDataDef.h>
 
 // Project Include(s)
 #include <Base/LogManager.h>
-#include <Base/EventDispatcher.h>
 
-class MessageWrapper :public EWrapper {
+class TWSMessageWrapper :public EWrapper {
 public:
 	virtual void tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib& attrib) override;
 
@@ -189,5 +189,8 @@ public:
 	virtual void historicalSchedule(int reqId, const std::string& startDateTime, const std::string& endDateTime, const std::string& timeZone, const std::vector<HistoricalSession>& sessions) override;
 
 	virtual void userInfo(int reqId, const std::string& whiteBrandingId) override;
+private:
+	std::unordered_map<int, TWSDataListKepper<Contract>> m_scannerReqId2DataListMap;
+	TWSDataListKepper<PositionData> m_positionDataKeeper;
 };
 

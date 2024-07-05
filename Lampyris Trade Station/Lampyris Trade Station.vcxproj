@@ -18,8 +18,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Sources\Core\Application.cpp" />
-    <ClCompile Include="Sources\Core\MessageWrapper.cpp" />
-    <ClCompile Include="Sources\Core\TradeApi.cpp" />
+    <ClCompile Include="Sources\Core\TWSMessageWrapper.cpp" />
+    <ClCompile Include="Sources\Core\TWSTradeApi.cpp" />
     <ClCompile Include="Sources\JobSystem\JobSystem.cpp" />
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
@@ -63,7 +63,6 @@
     <ClInclude Include="Sources\Base\ClassInitializer.h" />
     <ClInclude Include="Sources\Base\CustomSerializable.h" />
     <ClInclude Include="Sources\Base\Delegate.h" />
-    <QtMoc Include="Sources\Base\EventDispatcher.h" />
     <ClInclude Include="Sources\Base\Localization.h" />
     <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
     <ClInclude Include="Sources\Base\LogManager.h" />
@@ -81,12 +80,18 @@
     <ClInclude Include="Sources\Const\ConnectState.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
-    <ClInclude Include="Sources\Core\MessageWrapper.h" />
-    <ClInclude Include="Sources\Core\TradeApi.h" />
+    <ClInclude Include="Sources\Const\TWSApiAbilities.h" />
+    <ClInclude Include="Sources\Core\TWSMessageWrapper.h" />
+    <ClInclude Include="Sources\Core\TWSTradeApi.h" />
+    <QtMoc Include="Sources\Core\TWSEventDispatcher.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalKLineQuoteProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalTickQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IRegularMarketQuoteListProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\ITickByTickQuoteProvider.h" />
     <ClInclude Include="Sources\JobSystem\JobSystem.h" />
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\App\AppUIStyle.h" />
@@ -97,6 +102,7 @@
     <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
+    <ClInclude Include="Sources\Model\TWS\TWSMessageDataDef.h" />
     <ClInclude Include="Sources\Model\UI\IndexBriefQuoteSubscription.h" />
     <QtMoc Include="Sources\Network\HttpRequestManager.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />

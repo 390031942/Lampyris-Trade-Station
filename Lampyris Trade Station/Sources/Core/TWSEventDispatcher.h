@@ -5,6 +5,7 @@
 
 // Project Include(s)
 #include <Base/Singleton.h>
+#include <Model/TWS/TWSMessageDataDef.h>
 
 // STD Include(s)
 #include <set>
@@ -14,7 +15,7 @@
 // TWS Include(s)
 #include <TWS/EWrapper.h>
 
-class EventDispatcherObject:public SingletonQObject<EventDispatcherObject> {
+class TWSEventDispatcherObject:public SingletonQObject<TWSEventDispatcherObject> {
 	Q_OBJECT
 Q_SIGNALS:
 	/*
@@ -294,9 +295,9 @@ Q_SIGNALS:
 	/*
 	 * 扫描仪数据请求结束
 	 * 当扫描仪数据请求完成时调用此函数
-	 * 参数{reqId}: 请求ID，用于标识特定的扫描仪请求
+	 * 参数{contractList}: 扫描仪得到的合约列表
 	 */
-	void onResScannerDataEnd(int reqId);
+	void onResScannerDataEnd(const std::vector<Contract>& contractList);
 
 	/*
 	 * 实时K线数据更新
@@ -365,7 +366,7 @@ Q_SIGNALS:
 	 * 持仓列表结束
 	 * 当接收到所有持仓信息后调用此函数，表示持仓列表结束
 	 */
-	void onResPositionEnd();
+	void onResPositionEnd(const std::vector<PositionData>& position);
 
 	/*
 	 * 账户摘要更新
@@ -751,11 +752,11 @@ Q_SIGNALS:
 	void onResUserInfo(int reqId, const std::string& whiteBrandingId);
 };
 
-#ifndef EventDispatcher
- #define EventDispatcher EventDispatcherObject::getInstance()
- #define EventBind(eventName,func) \
-	 QObject::connect(EventDispatcher,&eventName,func);
- #define EventUnbind(eventName,func) \
-	 QObject::disconnect(EventDispatcher,&eventName,func);
- #define EventType EventDispatcherObject
+#ifndef TWSEventDispatcherObject
+ #define TWSEventDispatcher TWSEventDispatcherObject::getInstance()
+ #define TWSEventBind(eventName,func) \
+	 QObject::connect(TWSEventDispatcher,&eventName,func);
+ #define TWSEventUnbind(eventName,func) \
+	 QObject::disconnect(TWSEventDispatcher,&eventName,func);
+ #define TWSEventType TWSEventDispatcherObject
 #endif // !EventDispatcher

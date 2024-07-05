@@ -5,8 +5,8 @@
 // Project Include(s)
 #include "Application.h"
 #include <Utility/MemoryUtil.h>
-#include <Core/MessageWrapper.h>
-#include <Base/EventDispatcher.h>
+#include <Core/TWSMessageWrapper.h>
+#include <Core/TWSEventDispatcher.h>
 #include <Base/Localization.h>
 
 // QT Include(s)
@@ -59,7 +59,7 @@ Application::Application(int argc, char* argv[]) {
     ms_qtApp = new QApplication(argc, argv);
 
     // TWS initialize
-    ms_wrapper = new MessageWrapper();
+    ms_wrapper = new TWSMessageWrapper();
     ms_signal = new EReaderOSSignal();
     ms_clientSocket = new EClientSocket(ms_wrapper, ms_signal);
     ms_reader = new EReader(ms_clientSocket, ms_signal);
@@ -78,7 +78,7 @@ Application::Application(int argc, char* argv[]) {
     ms_tickTimer.start();
 
     // °ó¶¨¼àÌýÊÂ¼þ
-    EventBind(EventType::onResCurrentTime, [=](long time) {
+    TWSEventBind(TWSEventType::onResCurrentTime, [=](long time) {
         ms_serverTime = QDateTime::fromTime_t(time);
         ms_receivedLocalTime = QDateTime::currentDateTime();
     });

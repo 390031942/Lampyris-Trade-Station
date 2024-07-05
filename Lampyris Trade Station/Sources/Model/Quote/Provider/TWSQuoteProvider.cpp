@@ -6,7 +6,7 @@
 // Project Include(s)
 #include "TWSQuoteProvider.h"
 
-// TWS API(s)
+// TWS Include(s)
 #include <TWS/ScannerSubscription.h>
 
 TWSQuoteProvider::TWSQuoteProvider() {

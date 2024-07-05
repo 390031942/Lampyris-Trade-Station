@@ -6,13 +6,14 @@
 // Project Include(s)
 #include <Core/Application.h>
 #include <Base/EventDispatcher.h>
+#include <Interface/QuoteInterface/ITickByTickQuoteProvider.h>
 
 // STD Include(s)
 #include <vector>
 #include <unordered_set>
 #include <unordered_map>
 
-class TWSQuoteProvider {
+class TWSQuoteProvider:public ITickByTickQuoteProvider {
 public:
 	void subscribeScanner(const ScannerSubscription subscription, 
 		                  const TagValueListSPtr& scannerSubscriptionOptions = TagValueListSPtr(),
@@ -28,7 +29,6 @@ private:
 	/************** 私有方法 begin **************/
 	void bindEvent();
 	/************** 私有方法 end **************/
-
 
 	/************** EWrapper事件的处理Lambda包装函数 begin **************/
 	std::function<void(int reqId,

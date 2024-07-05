@@ -17,6 +17,7 @@
 
 template<typename T>
 struct Generator {
+    struct promise_type;
     using Handle = std::coroutine_handle <promise_type>;
 
     struct promise_type {

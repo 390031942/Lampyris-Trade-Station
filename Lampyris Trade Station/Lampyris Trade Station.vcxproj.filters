@@ -108,6 +108,9 @@
     <Filter Include="Source Files\PluginSupport">
       <UniqueIdentifier>{f5bbac2b-9fd5-4b72-b590-807810b8f448}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Model\TWS">
+      <UniqueIdentifier>{c345a120-10a9-44ec-a59e-3fdf2cce45e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -122,7 +125,7 @@
     <ClCompile Include="Sources\Core\Application.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Core\MessageWrapper.cpp">
+    <ClCompile Include="Sources\Core\TWSMessageWrapper.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Utility\PathUtil.cpp">
@@ -167,7 +170,7 @@
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp">
       <Filter>Source Files\Model\Quote\Provider</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Core\TradeApi.cpp">
+    <ClCompile Include="Sources\Core\TWSTradeApi.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="Sources\UI\Tips\OrderFilledTipsWindow.cpp">
@@ -217,7 +220,7 @@
     <ClInclude Include="Sources\Utility\MemoryUtil.h">
       <Filter>Source Files\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Core\MessageWrapper.h">
+    <ClInclude Include="Sources\Core\TWSMessageWrapper.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Utility\PathUtil.h">
@@ -313,7 +316,7 @@
     <ClInclude Include="Sources\Collections\BufferedVector.h">
       <Filter>Source Files\Collections</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Core\TradeApi.h">
+    <ClInclude Include="Sources\Core\TWSTradeApi.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Collections\CircularQueue.h">
@@ -349,6 +352,24 @@
     <ClInclude Include="Sources\JobSystem\JobSystem.h">
       <Filter>Source Files\JobSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\ITickByTickQuoteProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IRegularMarketQuoteListProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalKLineQuoteProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalTickQuoteProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\TWSApiAbilities.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\TWS\TWSMessageDataDef.h">
+      <Filter>Source Files\Model\TWS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -381,9 +402,6 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h">
       <Filter>Source Files\UI\Common</Filter>
-    </QtMoc>
-    <QtMoc Include="Sources\Base\EventDispatcher.h">
-      <Filter>Source Files\Base</Filter>
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
@@ -420,6 +438,9 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h">
       <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Core\TWSEventDispatcher.h">
+      <Filter>Source Files\Core</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

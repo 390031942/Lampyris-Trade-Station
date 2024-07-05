@@ -22,6 +22,14 @@ void QuoteDatabase::setIndexBriefQuoteProvider(IIndexBriefQuoteProvider* provide
 	this->m_indexBriefQuoteProvider = provider;
 }
 
+void QuoteDatabase::commitScannerSubscription(const ScannerSubscription& scannerSubscription) {
+	TWS->reqScannerSubscription()
+}
+
+void QuoteDatabase::cancelScannerSubscription() {
+
+}
+
 QuoteDatabase::QuoteDatabase() {
 	Application::addTickFunc([=]() {
 		this->tick();
