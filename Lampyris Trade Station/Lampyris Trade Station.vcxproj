@@ -20,7 +20,9 @@
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\TWSMessageWrapper.cpp" />
     <ClCompile Include="Sources\Core\TWSTradeApi.cpp" />
-    <ClCompile Include="Sources\JobSystem\JobSystem.cpp" />
+    <ClCompile Include="Sources\JobSystem\JobSystem.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Sources\main.cpp" />
     <ClCompile Include="Sources\Model\Login\ConnectionHistoryData.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.cpp" />
@@ -92,7 +94,9 @@
     <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IRegularMarketQuoteListProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\ITickByTickQuoteProvider.h" />
-    <ClInclude Include="Sources\JobSystem\JobSystem.h" />
+    <ClInclude Include="Sources\JobSystem\JobSystem.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Sources\Model\App\AppConfig.h" />
     <ClInclude Include="Sources\Model\App\AppUIStyle.h" />
     <ClInclude Include="Sources\Model\Login\ConnectionHistoryData.h" />

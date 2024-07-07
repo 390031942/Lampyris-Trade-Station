@@ -101,8 +101,8 @@ template<typename T>
 bool Generator<T>::move_next() {
     m_handle.resume();
     if (m_handle.done()) {
-        if (m_handle.promise().exception_) {
-            std::rethrow_exception(m_handle.promise().exception_);
+        if (m_handle.promise().m_exception) {
+            std::rethrow_exception(m_handle.promise().m_exception);
         }
         return false;
     }
@@ -111,7 +111,7 @@ bool Generator<T>::move_next() {
 
 template<typename T>
 T Generator<T>::current_value() {
-    return m_handle.promise().value_;
+    return m_handle.promise().m_value;
 }
 
 /* Example: 

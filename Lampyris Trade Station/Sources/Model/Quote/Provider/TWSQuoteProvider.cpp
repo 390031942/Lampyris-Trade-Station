@@ -10,19 +10,6 @@
 #include <TWS/ScannerSubscription.h>
 
 TWSQuoteProvider::TWSQuoteProvider() {
-	this->m_onResScannerData = [=](int reqId, 
-		                           int rank, 
-		                           const ContractDetails& contractDetails, 
-		                           const std::string& distance, 
-		                           const std::string& benchmark,
-		                           const std::string& projection,
-		                           const std::string& legsStr) {
-		this->handleResScannerData(reqId,rank, contractDetails, distance, benchmark, projection, legsStr);
-	};
-
-	this->m_onResScannerDataEnd = [=](int reqId) {
-		this->handleResScannerDataEnd(reqId);
-	};
 }
 
 TWSQuoteProvider::~TWSQuoteProvider() {
@@ -74,24 +61,4 @@ void TWSQuoteProvider::cancelSubscribeStockList(const std::vector<std::string> l
 }
 
 void TWSQuoteProvider::bindEvent() {
-	EventBind(EventType::onResScannerData, this->m_onResScannerData);
-	EventBind(EventType::onResScannerDataEnd, this->m_onResScannerDataEnd);
-}
-
-void TWSQuoteProvider::handleResScannerData(int reqId, 
-	                                        int rank, 
-	                                        const ContractDetails& contractDetails, 
-	                                        const std::string& distance, 
-	                                        const std::string& benchmark,
-	                                        const std::string& projection, 
-	                                        const std::string& legsStr) {
-	if (this->m_scannerReqId < 0) {
-		m_scannerResult.clear();
-	}
-
-	m_scannerResult.push_back(contractDetails);
-}
-
-void TWSQuoteProvider::handleResScannerDataEnd(int reqId) {
-	this->m_scannerReqId = 0;
 }
