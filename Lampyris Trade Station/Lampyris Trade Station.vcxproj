@@ -43,6 +43,7 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp" />
@@ -124,6 +125,7 @@
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

@@ -212,6 +212,9 @@
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp">
       <Filter>Source Files\UI\MainPartUI\StatusBar</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.cpp">
+      <Filter>Source Files\UI\MainPartUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -441,6 +444,9 @@
     </QtMoc>
     <QtMoc Include="Sources\Core\TWSEventDispatcher.h">
       <Filter>Source Files\Core</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h">
+      <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
