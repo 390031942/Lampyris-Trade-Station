@@ -23,7 +23,6 @@ void QuoteDatabase::setIndexBriefQuoteProvider(IIndexBriefQuoteProvider* provide
 }
 
 void QuoteDatabase::commitScannerSubscription(const ScannerSubscription& scannerSubscription) {
-	TWS->reqScannerSubscription()
 }
 
 void QuoteDatabase::cancelScannerSubscription() {

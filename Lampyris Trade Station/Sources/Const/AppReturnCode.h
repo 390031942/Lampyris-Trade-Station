@@ -3,6 +3,6 @@
 */
 #pragma once
 
-enum AppReturnCode:int {
+enum AppReturnCode {
 	AppInstanceAlreadyExists = 188001,
 };

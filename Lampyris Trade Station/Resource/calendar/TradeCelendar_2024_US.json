@@ -1,0 +1,68 @@
+// Reference：https://www.nasdaq.com/market-activity/stock-market-holiday-schedule
+[
+  {
+    "Holiday": "New Year's Day",
+    "Date": "January 1",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "MLK, Jr. Day",
+    "Date": "January 15",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Presidents Day",
+    "Date": "February 19",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Good Friday",
+    "Date": "March 29",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Memorial Day",
+    "Date": "May 27",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Juneteenth",
+    "Date": "June 19",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Early Close",
+    "Date": "July 3",
+    "Market Status": "1:00 p.m."
+  },
+  {
+    "Holiday": "Independence Day",
+    "Date": "July 4",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Labor Day",
+    "Date": "September 2",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Thanksgiving Day",
+    "Date": "November 28",
+    "Market Status": "Closed"
+  },
+  {
+    "Holiday": "Early Close",
+    "Date": "November 29",
+    "Market Status": "1:00 p.m."
+  },
+  {
+    "Holiday": "Early Close",
+    "Date": "December 24",
+    "Market Status": "1:00 p.m."
+  },
+  {
+    "Holiday": "Christmas Day",
+    "Date": "December 25",
+    "Market Status": "Closed"
+  }
+]

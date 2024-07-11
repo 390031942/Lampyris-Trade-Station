@@ -5,9 +5,13 @@
 
 // Project Include(s)
 #include <Core/Application.h>
-#include <Model/Strategy/StrategyDescription.h>
+#include <Interface/IStrategy.h>
 
-class PreMarketLastHourActive {
+/*
+ * 盘前龙一模型 
+*/
+class PreMarketTopStrategy:public IStrategy {
+	Q_OBJECT
 public:
 	bool executeCondition() {
 		

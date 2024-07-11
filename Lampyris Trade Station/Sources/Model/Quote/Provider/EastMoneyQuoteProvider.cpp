@@ -31,7 +31,7 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 							pData = &(m_indexBriefQuoteDataMap[code]);
 						}
 						else {
-							pData = &(m_indexBriefQuoteDataMap[code] = IndexBriefQuoteData{0});
+							pData = &(m_indexBriefQuoteDataMap[code] = IndexBriefQuoteData{ 0 });
 							pData->code = code;
 							pData->name = name;
 						}
@@ -51,12 +51,37 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 			Logger->logError(QString("Failed to receive response, reason = \"%1\", reqType = ReqType::IndexBriefQuote").arg(error));
 		}
 	);
+
+	m_httpRequestMgr.bind(ReqType::AllStockCodeList, "https://72.push2.eastmoney.com/api/qt/clist/get",
+		/** handler*/ [=](const QByteArray& bytes) {
+			auto jsonDoc = QJsonDocument::fromJson(bytes);
+			auto data = jsonDoc["data"];
+			if (!data.isNull() && data.isObject()) {
+				auto diff = data["diff"];
+				if (diff.isArray()) {
+					auto arr = diff.toArray();
+					for (int i = 0; i < arr.size(); i++) {
+						auto element = arr[i].toObject();
+						// f12 = code,f14 = name
+						QString code = element["f12"].toString();
+						QString name = element["f14"].toString();
+					}
+
+					this->IStockCodeListProvider::m_isReady = true;
+					return;
+				}
+			}
+		},
+		/** error */ [=](const QString& error) {
+			Logger->logError(QString("Failed to receive the list of all US Stock, reason = \"%1\", reqType = ReqType::AllStockCodeList").arg(error));
+		}
+	);
 }
 
 EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
 }
 
-void EastMoneyQuoteProvider::tick() {
+void EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
 	// 创建查询参数对象
 	QUrlQuery query;
 
@@ -71,7 +96,11 @@ void EastMoneyQuoteProvider::tick() {
 	query.addQueryItem("fs", "i:100.NDX,i:100.DJIA,i:100.SPX");
 	query.addQueryItem("fields", "f2,f3,f4,f12,f14");
 
-	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote,query);
+	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote, query);
+}
+
+void EastMoneyQuoteProvider::onTickStockCodeListProvider() {
+	
 }
 
 EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {

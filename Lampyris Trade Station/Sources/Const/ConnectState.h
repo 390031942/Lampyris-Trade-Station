@@ -3,7 +3,7 @@
 */
 #pragma once
 
-enum class ConnectState {
+enum ConnectState {
 	Connected = 0,
 	Disconnected = 1,
 	Reconnecting = 2,

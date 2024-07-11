@@ -19,8 +19,8 @@ public:
 	}
 };
 
-template<class T>
-class SingletonQObject:public QObject {
+template<class T, class U = QObject>
+class SingletonQObject :public U {
 public:
 	static T* getInstance() {
 		static T t;

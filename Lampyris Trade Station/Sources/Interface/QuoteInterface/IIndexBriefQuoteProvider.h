@@ -13,7 +13,7 @@
 /*
  * 行情接口-指数简要行情：
 */
-class IIndexBriefQuoteProvider:public IQuoteProvider {
+class IIndexBriefQuoteProvider: public IQuoteProvider {
 protected:
 	typedef const IndexBriefQuoteData& ROIndexBriefQuoteData;
 public:

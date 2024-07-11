@@ -6,16 +6,13 @@
 #include "MainWindow.h"
 #include <Core/Application.h>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent) {
+MainWindow::MainWindow(QWidget *parent) {
     ui.setupUi(this);
+
+    this->setParent(parent);
     this->setWindowTitle(Application::getAppName());
 }
 
 MainWindow::~MainWindow() {
-
-}
-
-void MainWindow::initStatusBar() {
-
+    
 }

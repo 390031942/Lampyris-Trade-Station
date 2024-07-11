@@ -9,5 +9,6 @@
 struct StrategyDescription {
 	QString name;
 	QString desc;
+	QString author;
 	bool    active;
 };

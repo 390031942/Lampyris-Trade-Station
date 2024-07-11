@@ -9,8 +9,9 @@
 
 // Project Include(s)
 #include "ui_MainWindow.h"
+#include <Base/Singleton.h>
 
-class MainWindow : public QMainWindow {
+class MainWindow : public SingletonQObject<MainWindow,QMainWindow> {
     Q_OBJECT
 public:
      explicit MainWindow(QWidget *parent = nullptr);

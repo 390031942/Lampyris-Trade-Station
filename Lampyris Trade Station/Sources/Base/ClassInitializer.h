@@ -7,8 +7,6 @@
     static int __hiddenInteger; \
     static int __staticInitialize();
 
-#define LAMPYRIS_DECLARE_CLASS_BEGIN(clsName) \
-	int clsName::__hiddenInteger = clsName::__staticInitialize(); \ 
-	int clsName::__staticInitialize() {
+#define LAMPYRIS_DECLARE_CLASS_BEGIN(clsName) int clsName::__hiddenInteger = clsName::__staticInitialize(); int clsName::__staticInitialize() {
 
-#define LAMPYRIS_DECLARE_CLASS_END(clsName) return 1; }
+#define LAMPYRIS_DECLARE_CLASS_END return 1; }

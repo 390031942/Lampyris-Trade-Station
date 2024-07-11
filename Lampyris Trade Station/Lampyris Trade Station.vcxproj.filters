@@ -111,6 +111,24 @@
     <Filter Include="Source Files\Model\TWS">
       <UniqueIdentifier>{c345a120-10a9-44ec-a59e-3fdf2cce45e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\ThirdParty">
+      <UniqueIdentifier>{3aec2e7b-04fe-4e90-be51-d1092e883fb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\Function">
+      <UniqueIdentifier>{f9bfbf3d-1253-4f9e-b028-7d986dad8ba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Forms\Function">
+      <UniqueIdentifier>{3467f244-584b-4efd-876e-74191d0cd42a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\ToolBar">
+      <UniqueIdentifier>{fbf7782e-7d6d-4f7d-9d65-7038291dabd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\ThirdParty\qtpropertybrowser">
+      <UniqueIdentifier>{5e59a961-e9d6-4978-a6be-154faf111d32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Forms\Tips">
+      <UniqueIdentifier>{0f884398-d22f-4867-865b-5622c1cc9d6d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -127,9 +145,6 @@
     </ClCompile>
     <ClCompile Include="Sources\Core\TWSMessageWrapper.cpp">
       <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\Utility\PathUtil.cpp">
-      <Filter>Source Files\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Base\Logger\ConsoleLogger.cpp">
       <Filter>Source Files\Base\Logger</Filter>
@@ -162,9 +177,6 @@
       <Filter>Source Files\Model\Login</Filter>
     </ClCompile>
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp">
-      <Filter>Source Files\UI\MainPartUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </ClCompile>
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp">
@@ -214,6 +226,27 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Function\OneKeyTradeWindow.cpp">
+      <Filter>Source Files\UI\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.cpp">
+      <Filter>Source Files\UI\MainPartUI\ToolBar</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Model\UI\MainWindowFunctionToolBarData.cpp">
+      <Filter>Source Files\Model\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Function\StrategySettingWindow.cpp">
+      <Filter>Source Files\UI\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Function\StrategySettingItem.cpp">
+      <Filter>Source Files\UI\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Utility\PathUtil.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Model\Strategy\StrategyDatabase.cpp">
+      <Filter>Source Files\Model\Strategy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -301,9 +334,6 @@
     <ClInclude Include="Sources\Strategy\RthMarketActive.h">
       <Filter>Source Files\Strategy</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h">
-      <Filter>Source Files\Strategy</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Strategy\PreMarketMostActive.h">
       <Filter>Source Files\Strategy</Filter>
     </ClInclude>
@@ -373,6 +403,24 @@
     <ClInclude Include="Sources\Model\TWS\TWSMessageDataDef.h">
       <Filter>Source Files\Model\TWS</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\IStockCodeListProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\UI\MainWindowFunctionToolBarData.h">
+      <Filter>Source Files\Model\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Utility\DateTimeUtil.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\StrategyState.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\StrategyResult.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Model\Strategy\StrategyDatabase.h">
+      <Filter>Source Files\Model\Strategy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -381,11 +429,17 @@
     <QtUic Include="Resource\Forms\MainWindow.ui">
       <Filter>Resource Files\Forms</Filter>
     </QtUic>
-    <QtUic Include="Resource\Forms\MainPartUI\PanelMainUIOneKeyTrade.ui">
-      <Filter>Resource Files\Forms\MainPartUI</Filter>
+    <QtUic Include="Resource\Forms\Function\OneKeyTradeWindow.ui">
+      <Filter>Resource Files\Forms\Function</Filter>
     </QtUic>
-    <QtUic Include="Resource\Forms\OrderFilledTipsWindow.ui">
-      <Filter>Resource Files\Forms</Filter>
+    <QtUic Include="Resource\Forms\Tips\OrderFilledTipsWindow.ui">
+      <Filter>Resource Files\Forms\Tips</Filter>
+    </QtUic>
+    <QtUic Include="Resource\Forms\Function\StrategySettingWindow.ui">
+      <Filter>Resource Files\Forms\Function</Filter>
+    </QtUic>
+    <QtUic Include="Resource\Forms\Function\StrategySettingItem.ui">
+      <Filter>Resource Files\Forms\Function</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -407,9 +461,6 @@
       <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h">
-      <Filter>Source Files\UI\MainPartUI</Filter>
-    </QtMoc>
-    <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
@@ -447,6 +498,24 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Function\OneKeyTradeWindow.h">
+      <Filter>Source Files\UI\Function</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.h">
+      <Filter>Source Files\UI\MainPartUI\ToolBar</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Function\StrategySettingWindow.h">
+      <Filter>Source Files\UI\Function</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Function\StrategySettingItem.h">
+      <Filter>Source Files\UI\Function</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Strategy\PreMarketLastHourActive.h">
+      <Filter>Source Files\Strategy</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Interface\IStrategy.h">
+      <Filter>Source Files\Interface</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

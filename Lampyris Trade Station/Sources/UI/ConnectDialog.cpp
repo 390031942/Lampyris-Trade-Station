@@ -152,7 +152,7 @@ void ConnectDialog::tryConnect() {
 		// 打开主窗口
 		MainWindow* mainWindow = new MainWindow;
 		mainWindow->show();
-\
+
 		TWS->reqCurrentTime();
 
 		// 启动TWS 消息监听

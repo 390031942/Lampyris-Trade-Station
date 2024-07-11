@@ -10,7 +10,6 @@
 #include "Model/Quote/QuoteDatabase.h"
 #include "Model/Quote/Provider/EastMoneyQuoteProvider.h"
 
-
 int main(int argc, char *argv[]) {
     Application a(argc, argv);
 

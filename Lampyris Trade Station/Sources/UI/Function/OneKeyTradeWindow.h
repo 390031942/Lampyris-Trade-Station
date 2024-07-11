@@ -11,13 +11,13 @@
 #include <QItemDelegate>
 
 // Project Include(s)
-#include <ui_PanelMainUIOneKeyTrade.h>
+#include <ui_OneKeyTradeWindow.h>
 
-class PanelMainUIOneKeyTrade :public QWidget {
+class OneKeyTradeWindow :public QWidget {
 	Q_OBJECT
 public:
-	explicit                   PanelMainUIOneKeyTrade(QWidget* parent = NULL);
-	virtual                   ~PanelMainUIOneKeyTrade();
+	explicit                   OneKeyTradeWindow(QWidget* parent = NULL);
+	virtual                   ~OneKeyTradeWindow();
 private:
 	void                       OnClickButtonBuy();
 	void                       OnClickButtonSell();
@@ -32,7 +32,7 @@ private:
 	void                       InitHaltedStockTableView();
 	void                       InitPreMarketTableView();
 
-	Ui::PanelMainUIOneKeyTrade m_ui;
+	Ui::OneKeyTradeWindow m_ui;
 	QButtonGroup               m_buttonGroupRatio;
 	QButtonGroup               m_buttonGroupSell;
 	QTimer                     m_stockInfoCaptureTimer;

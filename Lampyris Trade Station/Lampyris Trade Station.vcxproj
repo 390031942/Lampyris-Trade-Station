@@ -28,6 +28,8 @@
     <ClCompile Include="Sources\Model\Quote\Provider\EastMoneyQuoteProvider.cpp" />
     <ClCompile Include="Sources\Model\Quote\Provider\TWSQuoteProvider.cpp" />
     <ClCompile Include="Sources\Model\Quote\QuoteDatabase.cpp" />
+    <ClCompile Include="Sources\Model\Strategy\StrategyDatabase.cpp" />
+    <ClCompile Include="Sources\Model\UI\MainWindowFunctionToolBarData.cpp" />
     <ClCompile Include="Sources\Network\HttpRequestManager.cpp" />
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
@@ -42,13 +44,16 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="Sources\UI\ConnectDialog.cpp" />
+    <ClCompile Include="Sources\UI\Function\OneKeyTradeWindow.cpp" />
+    <ClCompile Include="Sources\UI\Function\StrategySettingItem.cpp" />
+    <ClCompile Include="Sources\UI\Function\StrategySettingWindow.cpp" />
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
-    <ClCompile Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
@@ -83,17 +88,23 @@
     <ClInclude Include="Sources\Const\ConnectState.h" />
     <ClInclude Include="Sources\Const\LogLevel.h" />
     <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
+    <ClInclude Include="Sources\Const\StrategyResult.h" />
+    <ClInclude Include="Sources\Const\StrategyState.h" />
     <ClInclude Include="Sources\Const\TWSApiAbilities.h" />
     <ClInclude Include="Sources\Core\TWSMessageWrapper.h" />
     <ClInclude Include="Sources\Core\TWSTradeApi.h" />
     <QtMoc Include="Sources\Core\TWSEventDispatcher.h" />
     <ClInclude Include="Sources\Interface\ILogger.h" />
     <ClInclude Include="Sources\Interface\ISerializable.h" />
+    <QtMoc Include="Sources\Interface\IStrategy.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </QtMoc>
     <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalKLineQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IHistoricalTickQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IIndexBriefQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IQuoteProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IRegularMarketQuoteListProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\IStockCodeListProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\ITickByTickQuoteProvider.h" />
     <ClInclude Include="Sources\JobSystem\JobSystem.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -106,31 +117,37 @@
     <ClInclude Include="Sources\Model\Quote\Provider\TWSQuoteProvider.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDatabase.h" />
     <ClInclude Include="Sources\Model\Quote\QuoteDataDef.h" />
+    <ClInclude Include="Sources\Model\Strategy\StrategyDatabase.h" />
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h" />
     <ClInclude Include="Sources\Model\TWS\TWSMessageDataDef.h" />
     <ClInclude Include="Sources\Model\UI\IndexBriefQuoteSubscription.h" />
     <QtMoc Include="Sources\Network\HttpRequestManager.h" />
+    <ClInclude Include="Sources\Model\UI\MainWindowFunctionToolBarData.h" />
     <ClInclude Include="Sources\PlatformDependent\Windows\SEHHandler.h" />
     <QtMoc Include="Sources\UI\Common\QHistoryRecordLineEdit.h" />
-    <ClInclude Include="Sources\Strategy\PreMarketLastHourActive.h" />
+    <QtMoc Include="Sources\Strategy\PreMarketLastHourActive.h" />
     <ClInclude Include="Sources\Strategy\PreMarketMostActive.h" />
     <ClInclude Include="Sources\Strategy\RthMarketActive.h" />
     <ClInclude Include="Sources\UI\Common\MessageBox.h" />
     <QtMoc Include="Sources\UI\Common\QStyledGroupBox.h" />
     <QtMoc Include="Sources\UI\Common\SearchWindow.h" />
     <QtMoc Include="Sources\UI\Common\QHoverableWidget.h" />
+    <QtMoc Include="Sources\UI\Function\OneKeyTradeWindow.h" />
+    <QtMoc Include="Sources\UI\Function\StrategySettingWindow.h" />
+    <QtMoc Include="Sources\UI\Function\StrategySettingItem.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
-    <QtMoc Include="Sources\UI\MainPartUI\PanelMainUIOneKeyTrade.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </QtMoc>
     <QtMoc Include="Sources\UI\Tips\OrderFilledTips.h" />
+    <ClInclude Include="Sources\Utility\DateTimeUtil.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />
@@ -141,9 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui" />
-    <QtUic Include="Resource\Forms\MainPartUI\PanelMainUIOneKeyTrade.ui" />
+    <QtUic Include="Resource\Forms\Function\OneKeyTradeWindow.ui" />
+    <QtUic Include="Resource\Forms\Function\StrategySettingItem.ui" />
+    <QtUic Include="Resource\Forms\Function\StrategySettingWindow.ui" />
     <QtUic Include="Resource\Forms\MainWindow.ui" />
-    <QtUic Include="Resource\Forms\OrderFilledTipsWindow.ui" />
+    <QtUic Include="Resource\Forms\Tips\OrderFilledTipsWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resource\Qrc\Resources.qrc" />
@@ -201,10 +220,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(SolutionDir)ThirdParty\Qt\QtPropertyBrowser\includes\;$(IncludePath)</IncludePath>
     <ExternalIncludePath>
     </ExternalIncludePath>
-    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(SolutionDir)ThirdParty\boost\libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(SolutionDir)ThirdParty\boost\libs;$(SolutionDir)ThirdParty\Qt\QtPropertyBrowser\libs\;$(LibraryPath)</LibraryPath>
     <PublicIncludeDirectories>$(PublicIncludeDirectories)</PublicIncludeDirectories>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -213,9 +232,10 @@
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <ExceptionHandling>Async</ExceptionHandling>
+      <PreprocessorDefinitions>_SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNIN;QT_QTPROPERTYBROWSER_IMPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libboost_stacktrace_windbg_cached-vc143-mt-gd-x64-1_85.lib;libboost_serialization-vc143-mt-gd-x64-1_85.lib;TWSTradeLib.lib;biddll.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libboost_stacktrace_windbg_cached-vc143-mt-gd-x64-1_85.lib;libboost_serialization-vc143-mt-gd-x64-1_85.lib;TWSTradeLib.lib;biddll.lib;QPropertyBrowser_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Command>
