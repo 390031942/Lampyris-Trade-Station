@@ -139,6 +139,8 @@ private:
     RealTimeQuoteData    m_realTimeData;
     HistoryTimeQuoteData m_historyData;
 
+public:
+    const RealTimeQuoteData* realTimeData() const { return &this->m_realTimeData; }
     friend class QuoteDatabase;
 };
 

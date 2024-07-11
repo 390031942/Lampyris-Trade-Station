@@ -248,6 +248,9 @@
     <ClCompile Include="Sources\Model\Strategy\StrategyDatabase.cpp">
       <Filter>Source Files\Model\Strategy</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Strategy\PreMarketTopStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -334,7 +337,7 @@
     <ClInclude Include="Sources\Strategy\RthMarketActive.h">
       <Filter>Source Files\Strategy</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Strategy\PreMarketMostActive.h">
+    <ClInclude Include="Sources\Strategy\PreMarketSuddenlyActive.h">
       <Filter>Source Files\Strategy</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Model\Strategy\StrategyDescription.h">
@@ -420,6 +423,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\Strategy\StrategyDatabase.h">
       <Filter>Source Files\Model\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Strategy\PreMarketTopStrategy.h">
+      <Filter>Source Files\Strategy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -510,9 +516,6 @@
     </QtMoc>
     <QtMoc Include="Sources\UI\Function\StrategySettingItem.h">
       <Filter>Source Files\UI\Function</Filter>
-    </QtMoc>
-    <QtMoc Include="Sources\Strategy\PreMarketLastHourActive.h">
-      <Filter>Source Files\Strategy</Filter>
     </QtMoc>
     <QtMoc Include="Sources\Interface\IStrategy.h">
       <Filter>Source Files\Interface</Filter>

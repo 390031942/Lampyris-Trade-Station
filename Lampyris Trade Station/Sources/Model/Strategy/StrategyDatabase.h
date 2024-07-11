@@ -43,8 +43,6 @@ public:
 	void registerStrategy(IStrategy* strategy);
 private:
 	std::unordered_map<QString, StrategyStateObject> m_name2StateObjectMap;
-
-	void registerBuildInStrategy();
 };
 
 LAMPYRIS_SERIALIZATION_IMPL_BEGIN(StrategyDataBase)
