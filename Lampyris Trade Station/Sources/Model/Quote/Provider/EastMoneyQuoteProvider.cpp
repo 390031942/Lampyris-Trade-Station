@@ -7,7 +7,7 @@
 #include "EastMoneyQuoteProvider.h"
 #include <Base/LogManager.h>
 
-EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
+Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 	m_httpRequestMgr.bind(ReqType::IndexBriefQuote, "http://42.push2.eastmoney.com/api/qt/clist/get",
 		/** handler*/ [=](const QByteArray& bytes) {
 			auto jsonDoc = QJsonDocument::fromJson(bytes);
@@ -78,10 +78,10 @@ EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 	);
 }
 
-EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
+Detailed::EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
 }
 
-void EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
+void Detailed::EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
 	// 创建查询参数对象
 	QUrlQuery query;
 
@@ -99,10 +99,10 @@ void EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
 	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote, query);
 }
 
-void EastMoneyQuoteProvider::onTickStockCodeListProvider() {
+void Detailed::EastMoneyQuoteProvider::onTickStockCodeListProvider() {
 	
 }
 
-EastMoneyQuoteProvider::ROIndexBriefQuoteData EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
+const IndexBriefQuoteData& Detailed::EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
 	return m_indexBriefQuoteDataMap[code];
 }

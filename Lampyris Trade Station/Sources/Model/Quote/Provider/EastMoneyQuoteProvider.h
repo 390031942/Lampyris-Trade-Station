@@ -13,7 +13,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-class EastMoneyQuoteProvider:public IIndexBriefQuoteProvider, public IStockCodeListProvider {
+namespace Detailed {
+class EastMoneyQuoteProvider:public Singleton<EastMoneyQuoteProvider> {
 	typedef std::unordered_map<QString, IndexBriefQuoteData> IndexBriefQuoteDataMap;
 
 	enum ReqType {
@@ -21,19 +22,35 @@ class EastMoneyQuoteProvider:public IIndexBriefQuoteProvider, public IStockCodeL
 		AllStockCodeList = 2,
 	};
 public:
-	ROIndexBriefQuoteData  queryIndexBriefQuote(const QString& code) override;
-	                       EastMoneyQuoteProvider();
-						  ~EastMoneyQuoteProvider();
-private:				  
-	HttpRequestManager     m_httpRequestMgr;
-	IndexBriefQuoteDataMap m_indexBriefQuoteDataMap;
+	const IndexBriefQuoteData& queryIndexBriefQuote(const QString& code);
 
-	inline void            IIndexBriefQuoteProvider::IQuoteProvider::tick()
-	{ this->onTickIndexBriefQuoteProvider();}
+	// ticker(s)
+	void                       onTickIndexBriefQuoteProvider();
+	void                       onTickStockCodeListProvider();
 
-	// inline void            IStockCodeListProvider::IQuoteProvider::tick()
-	// { this->onTickStockCodeListProvider(); }
+	                           EastMoneyQuoteProvider();
+						      ~EastMoneyQuoteProvider();
+private:				      
+	HttpRequestManager         m_httpRequestMgr;
+	IndexBriefQuoteDataMap     m_indexBriefQuoteDataMap;
+						      
+};						       
+} // end of namespace 'Detailed'
 
-	void                   onTickIndexBriefQuoteProvider();
-	void                   onTickStockCodeListProvider();
+class EastMoneyIndexBriefQuoteProvider :public IIndexBriefQuoteProvider {
+public:
+	virtual inline const IndexBriefQuoteData& queryIndexBriefQuote(const QString& code) override {
+		return Detailed::EastMoneyQuoteProvider::getInstance()->queryIndexBriefQuote(code);
+	}
+
+	virtual inline void tick() override {
+		return Detailed::EastMoneyQuoteProvider::getInstance()->onTickIndexBriefQuoteProvider();
+	}
+};
+
+class EastMoneyIStockCodeListProvider :public IStockCodeListProvider {
+public:
+	virtual inline void tick() override {
+		return Detailed::EastMoneyQuoteProvider::getInstance()->onTickStockCodeListProvider();
+	}
 };

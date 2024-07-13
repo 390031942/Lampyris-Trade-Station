@@ -173,7 +173,7 @@ void TWSMessageWrapper::scannerData(int reqId, int rank, const ContractDetails& 
 void TWSMessageWrapper::scannerDataEnd(int reqId) {
 	auto& kepper = m_scannerReqId2DataListMap[reqId];
 	kepper.ready = true;
-	emit TWSEventDispatcher->onResScannerDataEnd(kepper.data);
+	emit TWSEventDispatcher->onResScannerDataEnd(reqId,kepper.data);
 }
 
 void TWSMessageWrapper::realtimeBar(TickerId reqId, long time, double open, double high, double low, double close, Decimal volume, Decimal wap, int count) {

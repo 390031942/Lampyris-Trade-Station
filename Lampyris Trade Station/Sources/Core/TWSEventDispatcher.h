@@ -295,9 +295,10 @@ Q_SIGNALS:
 	/*
 	 * 扫描仪数据请求结束
 	 * 当扫描仪数据请求完成时调用此函数
+	 * 参数{reqId}: 扫描仪请求ID
 	 * 参数{contractList}: 扫描仪得到的合约列表
 	 */
-	void onResScannerDataEnd(const std::vector<Contract>& contractList);
+	void onResScannerDataEnd(int reqId, const std::vector<Contract>& contractList);
 
 	/*
 	 * 实时K线数据更新
@@ -755,7 +756,7 @@ Q_SIGNALS:
 #ifndef TWSEventDispatcherObject
  #define TWSEventDispatcher TWSEventDispatcherObject::getInstance()
  #define TWSEventBind(eventName,func) \
-	 QObject::connect(TWSEventDispatcher,&eventName,func);
+	 QObject::connect(TWSEventDispatcher,&eventName,TWSEventDispatcher,std::move(func),Qt::ConnectionType::QueuedConnection);
  #define TWSEventUnbind(eventName,func) \
 	 QObject::disconnect(TWSEventDispatcher,&eventName,func);
  #define TWSEventType TWSEventDispatcherObject

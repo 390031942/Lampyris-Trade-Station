@@ -427,6 +427,9 @@
     <ClInclude Include="Sources\Strategy\PreMarketTopStrategy.h">
       <Filter>Source Files\Strategy</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Interface\QuoteInterface\INormalQuoteUpdateProvider.h">
+      <Filter>Source Files\Interface\QuoteProvider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">

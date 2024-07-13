@@ -20,10 +20,10 @@ bool PreMarketTopStrategy::executeCondition() {
 }
 
 bool PreMarketTopStrategy::tick() {
-	auto codeList = QuoteDatabase::getInstance()->getScannerResult(QuoteDatabase::BuildInScannerType::PreMarketMostActive);
-	auto code = codeList.size() > 0 ? codeList[0] : "";
+	auto codeList = QuoteDatabase::getInstance()->getScannerResult(QuoteDatabase::BuildInScannerType::PreMarketTopGainer);
+	auto contract = codeList.size() > 0 ? codeList[0] : Contract();
 
-	QuoteBaseDataPtr quoteData = QuoteDatabase::getInstance()->query(code);
+	QuoteBaseDataPtr quoteData = QuoteDatabase::getInstance()->query(contract.secId.c_str());
 	TickByTickData tickByTickData = quoteData->realTimeData()->getLastTickByTick();
 	float price = tickByTickData.price;
 }

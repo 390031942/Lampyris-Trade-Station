@@ -73,9 +73,21 @@ enum QuoteCycleEnum {
     Count = Year,
 };
 
+struct TickByTickData {
+    long  timestamp;
+    float price;
+    float count;
+};
+
 class RealTimeQuoteData {
+public:
+	TickByTickData getLastTickByTick() const { return TickByTickData(); }
+
+	KLineData* realTimerBar() { return &this->m_realTimeBar; }
+
+	const KLineData* realTimerBar() const { return &this->m_realTimeBar; }
 private:
-    KLineData m_realTimeBar;
+	KLineData m_realTimeBar;
 };
 
 class HistoryTimeQuoteData:public ISerializable {
@@ -140,7 +152,12 @@ private:
     HistoryTimeQuoteData m_historyData;
 
 public:
-    const RealTimeQuoteData* realTimeData() const { return &this->m_realTimeData; }
+	const RealTimeQuoteData* realTimeData() const { return &this->m_realTimeData; }
+	RealTimeQuoteData* realTimeData() { return &this->m_realTimeData; }
+
+	const HistoryTimeQuoteData* historyData() const { return &this->m_historyData; }
+    HistoryTimeQuoteData* historyData() { return &this->m_historyData; }
+
     friend class QuoteDatabase;
 };
 

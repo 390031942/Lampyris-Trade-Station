@@ -107,6 +107,7 @@
     <ClInclude Include="Sources\Interface\QuoteInterface\IRegularMarketQuoteListProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\IStockCodeListProvider.h" />
     <ClInclude Include="Sources\Interface\QuoteInterface\ITickByTickQuoteProvider.h" />
+    <ClInclude Include="Sources\Interface\QuoteInterface\INormalQuoteUpdateProvider.h" />
     <ClInclude Include="Sources\JobSystem\JobSystem.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>

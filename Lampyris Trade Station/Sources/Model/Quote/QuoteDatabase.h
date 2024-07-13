@@ -33,7 +33,14 @@ class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
-	void                          query(const QString& code, const QString& currency = "USD");
+	enum BuildInScannerType {
+		PreMarketTopGainer = 0,
+		InMarketTopGainer = 1,
+		AfterHourTopGainer = 2,
+		Count = 3,
+	};
+
+	QuoteBaseDataPtr              query(const QString& code, const QString& currency = "USD");
 
 	// For 指数简要行情 IndexBriefQuote
 	const IndexBriefQuoteData&    queryIndexBriefQuote(const QString& code);
@@ -44,8 +51,10 @@ public:
 	// For 逐笔行情Tick-by-Tick
 
 	// For 查询TWS扫描器返回结果的合约列表(这里不用提供抽象的接口类了，因为一定要用TWS的)
-	void                          commitScannerSubscription(const ScannerSubscription& scannerSubscription);
-	void                          cancelScannerSubscription();
+	int                           commitScannerSubscription(const ScannerSubscription& scannerSubscription);
+	void                          cancelScannerSubscription(int scannerId);
+	std::vector<Contract>         getScannerResult(int scannerId);
+	int                           m_scannerIdIncrement = BuildInScannerType::Count;
 
 	QuoteDatabase();
 private:
@@ -59,6 +68,7 @@ private:
 	ITickByTickQuoteProvider*     m_tickByTickQuoteProvider;
 
 	int                           m_indexBriefQuoteTickIntervalMs = 3000;
+	std::unordered_map<int, std::vector<Contract>> m_scannerReqId2DataListMap;
 };
 
 LAMPYRIS_SERIALIZATION_IMPL_BEGIN(QuoteDatabase) 
