@@ -129,6 +129,21 @@
     <Filter Include="Resource Files\Forms\Tips">
       <UniqueIdentifier>{0f884398-d22f-4867-865b-5622c1cc9d6d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\Trade">
+      <UniqueIdentifier>{ce1fcb3e-1501-44b8-b4fa-855921d5bd95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\Trade\PlaceOrder">
+      <UniqueIdentifier>{c058b37e-adf0-4e14-ad51-651202ebf520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\Trade\Order">
+      <UniqueIdentifier>{e6921828-b793-44d2-a57c-36cb62ed4d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\Trade\AccountSummary">
+      <UniqueIdentifier>{8ea03c61-e06a-4dbf-8f1a-7fecc8408f1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI\MainPartUI\Trade\Position">
+      <UniqueIdentifier>{395d9217-a93f-4637-b56f-9f80fa948d75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -251,6 +266,9 @@
     <ClCompile Include="Sources\Strategy\PreMarketTopStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\PanelMainUITrade.cpp">
+      <Filter>Source Files\UI\MainPartUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -355,7 +373,7 @@
     <ClInclude Include="Sources\Core\TWSTradeApi.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Collections\CircularQueue.h">
+    <ClInclude Include="Sources\Collections\CirculateQueue.h">
       <Filter>Source Files\Collections</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Model\PlannedTask\PlannedTaskInfo.h">
@@ -430,6 +448,12 @@
     <ClInclude Include="Sources\Interface\QuoteInterface\INormalQuoteUpdateProvider.h">
       <Filter>Source Files\Interface\QuoteProvider</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Utility\DecimalUtil.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Collections\CirculateVector.h">
+      <Filter>Source Files\Collections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -449,6 +473,9 @@
     </QtUic>
     <QtUic Include="Resource\Forms\Function\StrategySettingItem.ui">
       <Filter>Resource Files\Forms\Function</Filter>
+    </QtUic>
+    <QtUic Include="Resource\Forms\MainPartUI\PanelMainUITrade.ui">
+      <Filter>Resource Files\Forms\MainPartUI</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
@@ -522,6 +549,9 @@
     </QtMoc>
     <QtMoc Include="Sources\Interface\IStrategy.h">
       <Filter>Source Files\Interface</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\PanelMainUITrade.h">
+      <Filter>Source Files\UI\MainPartUI</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

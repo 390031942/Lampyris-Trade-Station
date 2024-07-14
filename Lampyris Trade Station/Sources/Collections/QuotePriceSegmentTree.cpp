@@ -5,7 +5,7 @@
 // Project Include(s)
 #include "QuotePriceSegmentTree.h"
 
-QuotePriceSegmentTree::QuotePriceSegmentTree(QuoteData quoteData) :
+QuotePriceSegmentTree::QuotePriceSegmentTree(const QuoteBaseDataPtr quoteData) :
     m_quoteData(quoteData), root(nullptr) {
     if (!quoteData.perDayKLineList.empty()) {
         root = BuildSegmentTree(0, m_quoteData.perDayKLineList.size() - 1);

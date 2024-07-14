@@ -41,7 +41,7 @@ Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 						pData->percentage = percentage;
 					}
 
-					this->IIndexBriefQuoteProvider::m_isReady = true;
+					// this->IIndexBriefQuoteProvider::m_isReady = true;
 					return;
 				}
 			}
@@ -67,7 +67,7 @@ Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 						QString name = element["f14"].toString();
 					}
 
-					this->IStockCodeListProvider::m_isReady = true;
+					// this->IStockCodeListProvider::m_isReady = true;
 					return;
 				}
 			}

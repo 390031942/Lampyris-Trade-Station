@@ -37,7 +37,7 @@ struct QuotePriceSegmentTreeNode {
 
 class QuotePriceSegmentTree {
 public:
-                                 QuotePriceSegmentTree(QuoteData quoteData);
+                                 QuotePriceSegmentTree(const QuoteBaseDataPtr quoteData);
                                 
     std::pair<float, int>        QueryMax(int left, int right);
                                 
@@ -49,6 +49,6 @@ private:
                                  
     std::pair<float, int>        QueryHelperMin(QuotePriceSegmentTreeNodePtr node, int left, int right);
 
-    QuoteData m_quoteData;
+    const QuoteBaseDataPtr       m_quoteData;
     QuotePriceSegmentTreeNodePtr root;
 };

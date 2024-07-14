@@ -17,8 +17,8 @@ class INormalQuoteUpdateProvider :public IQuoteProvider {
 protected:
 	typedef std::unordered_map<QString, QuoteBaseDataPtr> QuoteDataMap;
 public:
-	virtual void  subscribeQuoteUpdate(QuoteBaseDataPtr quoteData) = 0;						
-	virtual void  caancelSubscribeQuoteUpdate(QuoteBaseDataPtr quoteData) = 0;
+	virtual void subscribeQuoteUpdate(QuoteBaseDataPtr quoteData) = 0;						
+	virtual void cancelSubscribeQuoteUpdate(QuoteBaseDataPtr quoteData) = 0;
 protected:			 
-	QuoteDataMap  m_quoteDataMap;
+	QuoteDataMap m_quoteDataMap;
 };

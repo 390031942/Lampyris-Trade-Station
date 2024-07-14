@@ -7,26 +7,23 @@
 #include <Core/Application.h>
 #include <Core/TWSEventDispatcher.h>
 #include <Interface/QuoteInterface/ITickByTickQuoteProvider.h>
+#include <Interface/QuoteInterface/INormalQuoteUpdateProvider.h>
 
 // STD Include(s)
 #include <vector>
 #include <unordered_set>
 #include <unordered_map>
 
-class TWSQuoteProvider:public ITickByTickQuoteProvider {
+namespace Detailed {
+class TWSQuoteProvider:public Singleton<TWSQuoteProvider> {
 public:
-	void          subscribeScanner(const ScannerSubscription subscription, 
-		                           const TagValueListSPtr& scannerSubscriptionOptions = TagValueListSPtr(),
-		                           const TagValueListSPtr& scannerSubscriptionFilterOptions = TagValueListSPtr());
+	void subscribeQuoteUpdate(QuoteBaseDataPtr quoteData);
+	void subscribeTickByTick(QuoteBaseDataPtr quoteData);
+	void cancelSubscribeQuoteUpdate(QuoteBaseDataPtr quoteData);
+	void cancelSubscribeTickByTick(QuoteBaseDataPtr quoteData);
 
-	void          subscribeMarketData(const std::string& name, const std::string& currency = "USD");
-	void          subscribeMarketData(const std::vector<std::string> list, const std::string& currency = "USD");
-
-	void          cancelSubscribeMarketData(const std::string& name);
-	void          cancelSubscribeMarketData(const std::vector<std::string> list);
-  
-	              TWSQuoteProvider();
-	             ~TWSQuoteProvider();
+  	     TWSQuoteProvider();
+	    ~TWSQuoteProvider();
 private:
 	void bindEvent();
 	
@@ -34,6 +31,33 @@ private:
 	int m_scannerTickerId = -1;
 	int m_scannerReqId = -1;
 
-	std::unordered_map<std::string,int> m_subscribeStockCode2TickerId;
+	std::unordered_map<int,QuoteBaseDataPtr> m_tickerId2DataMap;
 	std::vector<ContractDetails> m_scannerResult;
+};
+} // end of namespace 'Detailed'
+
+class TWSNormalQuoteUpdateProvider:public INormalQuoteUpdateProvider {
+public:
+	virtual void subscribeQuoteUpdate(QuoteBaseDataPtr quoteData) override {
+		Detailed::TWSQuoteProvider::getInstance()->subscribeQuoteUpdate(quoteData);
+	}
+	virtual void cancelSubscribeQuoteUpdate(QuoteBaseDataPtr quoteData) override {
+		Detailed::TWSQuoteProvider::getInstance()->cancelSubscribeQuoteUpdate(quoteData);
+	}
+	virtual void tick() override {
+
+	}
+};
+
+class TWSTickByTickQuoteProvider:public ITickByTickQuoteProvider {
+public:
+	virtual inline void subscribeTickByTick(QuoteBaseDataPtr quoteData) override {
+		Detailed::TWSQuoteProvider::getInstance()->subscribeTickByTick(quoteData);
+	}
+	virtual inline void cancelSubscribeTickByTick(QuoteBaseDataPtr quoteData) override {
+		Detailed::TWSQuoteProvider::getInstance()->cancelSubscribeTickByTick(quoteData);
+	}
+	virtual void tick() override {
+
+	}
 };

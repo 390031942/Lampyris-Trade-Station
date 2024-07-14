@@ -51,6 +51,7 @@
     <ClCompile Include="Sources\UI\Helper\MenuHelper.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\MainWindowStatusBar.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\PanelMainUITrade.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\ConnectionStatusItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp" />
@@ -81,7 +82,8 @@
     <ClInclude Include="Sources\Base\Singleton.h" />
     <ClInclude Include="Sources\Base\SingletonQObject.h" />
     <ClInclude Include="Sources\Collections\BufferedVector.h" />
-    <ClInclude Include="Sources\Collections\CircularQueue.h" />
+    <ClInclude Include="Sources\Collections\CirculateQueue.h" />
+    <ClInclude Include="Sources\Collections\CirculateVector.h" />
     <ClInclude Include="Sources\Collections\QuotePriceSegmentTree.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClInclude>
@@ -144,12 +146,14 @@
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\PanelMainUITrade.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </QtMoc>
     <QtMoc Include="Sources\UI\Tips\OrderFilledTips.h" />
     <ClInclude Include="Sources\Utility\DateTimeUtil.h" />
+    <ClInclude Include="Sources\Utility\DecimalUtil.h" />
     <ClInclude Include="Sources\Utility\StringUtil.h" />
     <QtMoc Include="Sources\UI\Common\QGifImage.h" />
     <ClInclude Include="Sources\Utility\MemoryUtil.h" />
@@ -163,6 +167,7 @@
     <QtUic Include="Resource\Forms\Function\OneKeyTradeWindow.ui" />
     <QtUic Include="Resource\Forms\Function\StrategySettingItem.ui" />
     <QtUic Include="Resource\Forms\Function\StrategySettingWindow.ui" />
+    <QtUic Include="Resource\Forms\MainPartUI\PanelMainUITrade.ui" />
     <QtUic Include="Resource\Forms\MainWindow.ui" />
     <QtUic Include="Resource\Forms\Tips\OrderFilledTipsWindow.ui" />
   </ItemGroup>
@@ -222,7 +227,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(SolutionDir)ThirdParty\Qt\QtPropertyBrowser\includes\;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)Sources;$(SolutionDir)ThirdParty\TWSAPI\includes\;$(SolutionDir)ThirdParty\boost\includes\;$(SolutionDir)ThirdParty\Qt\QtPropertyBrowser\includes\;$(SolutionDir)ThirdParty\libbid\includes\;$(IncludePath)</IncludePath>
     <ExternalIncludePath>
     </ExternalIncludePath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(SolutionDir)ThirdParty\libbid\libs;$(SolutionDir)ThirdParty\boost\libs;$(SolutionDir)ThirdParty\Qt\QtPropertyBrowser\libs\;$(LibraryPath)</LibraryPath>

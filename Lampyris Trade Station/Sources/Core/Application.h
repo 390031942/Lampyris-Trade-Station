@@ -24,9 +24,11 @@
 #define LTS_COMPILE_TIME __DATE__ " " __TIME__
 #endif // !LTS_COMPILE_TIME
 
-#ifndef TWS
-#define TWS Application::getClientSocket()
-#endif // !TWS
+#ifndef TWS_MACRO
+ #define TWS_MACRO
+ #define TWSTrade Application::getClientSocket()
+ #define TWSQuote Application::getClientSocket()
+#endif // !TWS_MACRO
 
 class QWidget;
 
