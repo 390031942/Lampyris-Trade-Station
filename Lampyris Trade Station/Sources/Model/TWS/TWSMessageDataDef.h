@@ -56,16 +56,12 @@ struct TWSAccountSummary {
 struct TWSPositionData {
 	// 持仓数量
 	float count;
-
 	// 成本均价
 	float avgCost;
-
 	// 今日盈亏
 	float dailyPnL;
-
 	// 未实现盈亏
 	float unrealizedPnL;
-
 	// 已实现盈亏
 	float realizedPnL;
 };
@@ -74,18 +70,42 @@ struct TWSPositionData {
  * TWS账户委托订单信息
 */
 struct TWSOrderData {
-	// 持仓数量
+	// 合约
+	Contract    contract;
+	// 订单ID
 	OrderId     orderId;
-
 	// 下单时间
 	QString     orderTime;
+	// 委托方向
+	bool        isBuy;
+	// 委托价格
+	float       price;
+	// 状态
+	QString     status;
+	// 委托数量
+	int         count;
+	// 成交数量
+	int         count;
+	// 订单类型
+	QString     orderType;
+	// 有效期
+	QString     orderType;
+};
 
+/*
+ * TWS账户委托订单成交信息
+*/
+struct TWSOrderExecutionData {
+	// 合约
+	Contract    contract;
+	// 订单ID
+	OrderId     orderId;
+	// 执行时间
+	QString     orderTime;
 	// 价格
 	float       price;
-
 	// 数量
 	int         count;
-
 	// 订单类型
 	QString     orderType;
 };

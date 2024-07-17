@@ -26,4 +26,16 @@ TimeDisplayItem_2,美东(US)
 
 // MainUIStatusBar
 StatusBar_1,Debug Log
-StatusBar_2,上证指数
+
+// PanelMainUITrade 订单视图
+PanelMainUITrade_Order_1,股票代码
+PanelMainUITrade_Order_2,股票名称
+PanelMainUITrade_Order_3,委托方向
+PanelMainUITrade_Order_4,状态
+PanelMainUITrade_Order_5,委托价格
+PanelMainUITrade_Order_6,委托数量
+PanelMainUITrade_Order_7,已成交
+PanelMainUITrade_Order_8,订单类型
+PanelMainUITrade_Order_9,币种
+PanelMainUITrade_Order_10,成交均价
+PanelMainUITrade_Order_11,委托时间

@@ -56,6 +56,9 @@
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\StatusBar\TimeDisplayItem.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\OrderModel.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\PositionModel.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
@@ -147,6 +150,9 @@
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowFunctionToolBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\ToolBar\MainWindowFunctionToolBarButton.h" />
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUITrade.h" />
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.h" />
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\OrderModel.h" />
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\PositionModel.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

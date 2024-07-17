@@ -25,13 +25,13 @@ void QuoteDatabase::setIndexBriefQuoteProvider(IIndexBriefQuoteProvider* provide
 
 int QuoteDatabase::commitScannerSubscription(const ScannerSubscription& scannerSubscription) {
 	int tickerId = this->m_scannerIdIncrement++;
-	TWS->reqScannerSubscription(tickerId,scannerSubscription,TagValueListSPtr(), TagValueListSPtr());
+	TWSQuote->reqScannerSubscription(tickerId,scannerSubscription,TagValueListSPtr(), TagValueListSPtr());
 
 	return tickerId;
 }
 
 void QuoteDatabase::cancelScannerSubscription(int scannerId) {
-	TWS->cancelScannerSubscription(scannerId);
+	TWSQuote->cancelScannerSubscription(scannerId);
 }
 
 std::vector<Contract> QuoteDatabase::getScannerResult(int scannerId) {

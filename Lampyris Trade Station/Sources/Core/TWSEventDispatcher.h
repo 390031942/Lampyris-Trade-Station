@@ -367,7 +367,7 @@ Q_SIGNALS:
 	 * 持仓列表结束
 	 * 当接收到所有持仓信息后调用此函数，表示持仓列表结束
 	 */
-	void onResPositionEnd(const std::vector<PositionData>& position);
+	void onResPositionEnd(const std::vector<TWSPositionData>& position);
 
 	/*
 	 * 账户摘要更新

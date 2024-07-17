@@ -46,7 +46,8 @@ void TWSMessageWrapper::orderStatus(OrderId orderId, const std::string& status, 
 
 void TWSMessageWrapper::openOrder(OrderId orderId, const Contract& contract, const Order& order, const OrderState& orderState) {
 	Logger->logMessageReceived("openOrder", orderId, contract, order, orderState);
-	emit TWSEventDispatcher->onResOpenOrder(orderId, contract, order, orderState);
+	// emit TWSEventDispatcher->onResOpenOrder(orderId, contract, order, orderState);
+	this->m_orderDataKeeper.data.push_back();
 }
 
 void TWSMessageWrapper::openOrderEnd() {
@@ -216,7 +217,7 @@ void TWSMessageWrapper::position(const std::string& account, const Contract& con
 	// emit TWSEventDispatcher->onResPosition(account, contract, position, avgCost);
 
 	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(m_positionDataKeeper);
-	m_positionDataKeeper.data.push_back(PositionData{ contract,position,avgCost });
+	m_positionDataKeeper.data.push_back(TWSPositionData());
 }
 
 void TWSMessageWrapper::positionEnd() {

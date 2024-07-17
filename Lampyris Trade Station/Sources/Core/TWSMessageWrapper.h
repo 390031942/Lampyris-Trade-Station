@@ -191,6 +191,8 @@ public:
 	virtual void userInfo(int reqId, const std::string& whiteBrandingId) override;
 private:
 	std::unordered_map<int, TWSDataListKepper<Contract>> m_scannerReqId2DataListMap;
-	TWSDataListKepper<PositionData> m_positionDataKeeper;
+	TWSDataListKepper<TWSPositionData> m_positionDataKeeper;
+	TWSDataListKepper<TWSOrderData> m_orderDataKeeper;
+	TWSDataListKepper<TWSOrderExecutionData> m_orderExecDataKeeper;
 };
 

@@ -132,18 +132,6 @@
     <Filter Include="Source Files\UI\MainPartUI\Trade">
       <UniqueIdentifier>{ce1fcb3e-1501-44b8-b4fa-855921d5bd95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\UI\MainPartUI\Trade\PlaceOrder">
-      <UniqueIdentifier>{c058b37e-adf0-4e14-ad51-651202ebf520}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI\MainPartUI\Trade\Order">
-      <UniqueIdentifier>{e6921828-b793-44d2-a57c-36cb62ed4d49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI\MainPartUI\Trade\AccountSummary">
-      <UniqueIdentifier>{8ea03c61-e06a-4dbf-8f1a-7fecc8408f1c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\UI\MainPartUI\Trade\Position">
-      <UniqueIdentifier>{395d9217-a93f-4637-b56f-9f80fa948d75}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\main.cpp">
@@ -268,6 +256,15 @@
     </ClCompile>
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUITrade.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\OrderModel.cpp">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\PositionModel.cpp">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.cpp">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -453,6 +450,15 @@
     </ClInclude>
     <ClInclude Include="Sources\Collections\CirculateVector.h">
       <Filter>Source Files\Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\OrderModel.h">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\PositionModel.h">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.h">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
