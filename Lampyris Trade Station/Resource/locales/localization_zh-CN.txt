@@ -40,6 +40,16 @@ PanelMainUITrade_Order_9,币种
 PanelMainUITrade_Order_10,成交均价
 PanelMainUITrade_Order_11,委托时间
 
+// PanelMainUITrade 订单成交视图
+PanelMainUITrade_OrderExecution_1,成交时间
+PanelMainUITrade_OrderExecution_2,股票代码
+PanelMainUITrade_OrderExecution_3,股票名称
+PanelMainUITrade_OrderExecution_4,委托方向
+PanelMainUITrade_OrderExecution_5,成交均价
+PanelMainUITrade_OrderExecution_6,成交数量
+PanelMainUITrade_OrderExecution_7,成交金额
+PanelMainUITrade_OrderExecution_8,佣金
+
 // 委托单方向
 TradeDirectionBuy,买入
 TradeDirectionSell,卖出

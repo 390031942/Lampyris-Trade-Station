@@ -26,9 +26,11 @@ QLocalServer   Application::ms_server;
 QString        Application::ms_uniqueKey;
 QWidget*       Application::ms_topWidget;
 QTimer         Application::ms_tickTimer;
-QDateTime      Application::ms_serverTime;
-QDateTime      Application::ms_receivedLocalTime;
+long           Application::ms_serverTimestamp;
+long           Application::ms_timeStampDiff;
+bool           Application::ms_timeStampDiffRecorded;
 TickFuncList   Application::ms_tickFuncList;
+int            Application::ms_requestId = 0;
 
 bool Application::connect(const QString& ip, int port, int clientId) {
 	if (ms_clientSocket == nullptr) {
@@ -79,8 +81,12 @@ Application::Application(int argc, char* argv[]) {
 
     // 绑定监听事件
     TWSEventBind(TWSEventType::onResCurrentTime, [=](long time) {
-        ms_serverTime = QDateTime::fromTime_t(time);
-        ms_receivedLocalTime = QDateTime::currentDateTime();
+        ms_serverTimestamp = time;
+        // 本地时间戳与服务器时间戳之差
+        if (!ms_timeStampDiffRecorded) {
+            ms_timeStampDiff = QDateTime::currentDateTime().toTime_t() - time;
+            ms_timeStampDiffRecorded = true;
+        }
     });
 
     // App Icon
@@ -100,6 +106,26 @@ void Application::tickTwsMessage() {
         // ms_signal->waitForSignal();
         ms_reader->processMsgs();
     }
+}
+
+int Application::getNextRequestId() {
+    const int round = 100000;
+    if (connectState() != Connected) {
+        return 0;
+    }
+
+    // 请求ID = 客户端*round + ms_requestId, 其中ms_requestId会自增
+    ms_requestId = ms_requestId == (round - 1) ? round + 1 : 1;
+    return round * ms_clientSocket->clientId() + round;
+}
+
+long Application::getSeverTimestamp() {
+    // 不必再向服务器询问时间，只需要根据 本地和服务器时间的差 减去对应偏移 就可以了
+    return QDateTime::currentDateTime().toTime_t() - ms_timeStampDiff;
+}
+
+QDateTime Application::getSeverDateTime() {
+    return QDateTime::fromTime_t(getSeverTimestamp());
 }
 
 void Application::addTickFunc(TickFunc func) {

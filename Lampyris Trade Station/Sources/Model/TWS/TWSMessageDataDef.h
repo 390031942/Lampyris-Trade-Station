@@ -9,6 +9,7 @@
 // TWS Include(s)
 #include <TWS/Order.h>
 #include <TWS/Contract.h>
+#include <TWS/Execution.h>
 
 #ifndef LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET
 #define LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(dataKeeper) \
@@ -27,25 +28,18 @@ struct TWSDataListKepper {
 struct TWSAccountSummary {
 	// 总资产
 	float netLiquidation;
-
 	// 持仓市值
 	float grossPositionValue;
-
 	// 可用资金
 	float availableFunds;
-
 	// 购买力
 	float buyingPower;
-
 	// 杠杆值
 	float leverage;
-
 	// 总计初始保证金要求
 	float initMarginReq;
-
 	// 总计维持保证金要求
 	float maintMarginReq;
-
 	// 日内剩余交易次数, -1表示无限制
 	int dayTradesRemaining;
 };

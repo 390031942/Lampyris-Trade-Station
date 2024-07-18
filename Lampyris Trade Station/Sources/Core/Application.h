@@ -41,7 +41,7 @@ public:
 	 * 连接到IB网关/TWS：
 	 * 参数{ip}:IP地址字符串
 	 * 参数{port}:端口号
-	 * 参数{clientId}:客户端ID，如果有多个客户端连接同一个IB网关/TWS，那么clientId应该互不相同
+	 * 参数{clientId}:客户端ID，如果有多个客户端连接同一个IB网关/TWS，那么clientId应该互不相同,范围应该在[0,9之间]
 	 * 返回:是否连接成功
 	*/
 	static bool           connect(const QString& ip,int port,int clientId);
@@ -86,9 +86,21 @@ public:
 	*/
 	static void           stopMessageHandler() { ms_tickTimer.stop(); }
 	/*
-	 * 添加 Tick事件：
+	 * 添加 Tick 事件
 	*/
 	static void           addTickFunc(TickFunc func);
+	/*
+	 * 获取当前client的下一个有效的请求ID
+	*/
+	static int            getNextRequestId();
+	/*
+	 * 获取IB的服务器时间戳
+	*/
+	static long           getSeverTimestamp();
+	/*
+	 * 获取IB的服务器时间
+	*/
+	static QDateTime      getSeverDateTime();
 	/*
 	 * 构造函数：
 	*/
@@ -133,12 +145,18 @@ private:
 	 *  2) 标准北京时间时间
 	*/
 
-	// resCurrentTime返回的时间
-	static QDateTime      ms_serverTime;
+	// resCurrentTime返回的时间戳
+	static long           ms_serverTimestamp;
 
-	// 收到resCurrentTime时候的本地时间
-	static QDateTime      ms_receivedLocalTime;
+	// 第一次收到resCurrentTime时候的本地时间戳与服务器时间戳之差
+	static long           ms_timeStampDiff;
+
+	// 是否在收到resCurrentTime时候，记录了本地时间戳与服务器时间戳之差
+	static bool           ms_timeStampDiffRecorded;
 
 	// 需要被Tick的函数
 	static TickFuncList   ms_tickFuncList;
+
+	// 请求ID
+	static int            ms_requestId;
 };
