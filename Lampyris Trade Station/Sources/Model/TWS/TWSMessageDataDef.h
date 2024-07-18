@@ -74,8 +74,6 @@ struct TWSOrderData {
 	Contract    contract;
 	// 订单ID
 	OrderId     orderId;
-	// 下单时间
-	QString     orderTime;
 	// 委托方向
 	bool        isBuy;
 	// 委托价格
@@ -85,11 +83,11 @@ struct TWSOrderData {
 	// 委托数量
 	int         count;
 	// 成交数量
-	int         count;
+	int         filledCount;
 	// 订单类型
 	QString     orderType;
 	// 有效期
-	QString     orderType;
+	QString     timeInForce;
 };
 
 /*
@@ -101,11 +99,11 @@ struct TWSOrderExecutionData {
 	// 订单ID
 	OrderId     orderId;
 	// 执行时间
-	QString     orderTime;
+	QString     executionTime;
 	// 价格
 	float       price;
 	// 数量
 	int         count;
-	// 订单类型
-	QString     orderType;
+	// 委托方向
+	bool        isBuy;
 };

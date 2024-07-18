@@ -8,6 +8,8 @@
 
 // TWS Include(s)
 #include <TWS/Contract.h>
+#include <TWS/OrderState.h>
+#include <TWS/Execution.h>
 
 void TWSMessageWrapper::tickPrice(TickerId tickerId, TickType field, double price, const TickAttrib& attrib) {
 	Logger->logMessageReceived("tickPrice", tickerId, field, price, attrib);
@@ -47,12 +49,27 @@ void TWSMessageWrapper::orderStatus(OrderId orderId, const std::string& status, 
 void TWSMessageWrapper::openOrder(OrderId orderId, const Contract& contract, const Order& order, const OrderState& orderState) {
 	Logger->logMessageReceived("openOrder", orderId, contract, order, orderState);
 	// emit TWSEventDispatcher->onResOpenOrder(orderId, contract, order, orderState);
-	this->m_orderDataKeeper.data.push_back();
+	
+	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(m_orderDataKeeper);
+
+	TWSOrderData orderData;
+	orderData.contract = contract;
+	orderData.orderId = orderId;
+	orderData.isBuy = (order.action == "BUY");
+	orderData.price = order.lmtPrice;
+	orderData.status = QString::fromStdString(orderState.status);
+	orderData.count = order.totalQuantity;
+	orderData.filledCount = order.filledQuantity;
+	orderData.orderType = QString::fromStdString(order.orderType);
+	orderData.timeInForce = QString::fromStdString(order.tif);
+
+	this->m_orderDataKeeper.data.push_back(orderData);
 }
 
 void TWSMessageWrapper::openOrderEnd() {
-	Logger->logMessageReceived("openOrderEnd");
-	emit TWSEventDispatcher->onResOpenOrderEnd();
+	// Logger->logMessageReceived("openOrderEnd");
+	this->m_orderDataKeeper.ready = true;
+	emit TWSEventDispatcher->onResOpenOrderEnd(this->m_orderDataKeeper.data);
 }
 
 void TWSMessageWrapper::winError(const std::string& str, int lastError) {
@@ -96,22 +113,31 @@ void TWSMessageWrapper::contractDetails(int reqId, const ContractDetails& contra
 }
 
 void TWSMessageWrapper::bondContractDetails(int reqId, const ContractDetails& contractDetails) {
-	Logger->logMessageReceived(reqId, contractDetails);
+	// Logger->logMessageReceived(reqId, contractDetails);
+	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(this->m_orderExecDataKeeper);
 	emit TWSEventDispatcher->onResBondContractDetails(reqId, contractDetails);
 }
 
 void TWSMessageWrapper::contractDetailsEnd(int reqId) {
-	Logger->logMessageReceived(reqId);
+	// Logger->logMessageReceived(reqId);
 	emit TWSEventDispatcher->onResContractDetailsEnd(reqId);
 }
 
 void TWSMessageWrapper::execDetails(int reqId, const Contract& contract, const Execution& execution) {
-	Logger->logMessageReceived(reqId, contract, execution);
-	emit TWSEventDispatcher->onResExecDetails(reqId, contract, execution);
+	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(this->m_orderExecDataKeeper);
+	TWSOrderExecutionData data;
+
+	data.contract = contract;
+	data.orderId = execution.orderId;
+	data.executionTime = QString::fromStdString(execution.time);
+	data.price = execution.price;
+	data.count = execution.shares;
+	data.isBuy = execution.side == "BUY";
+	this->m_orderExecDataKeeper.data.push_back(data);
 }
 
 void TWSMessageWrapper::execDetailsEnd(int reqId) {
-	Logger->logMessageReceived(reqId);
+	this->m_orderExecDataKeeper.ready = true;
 	emit TWSEventDispatcher->onResExecDetailsEnd(reqId);
 }
 
@@ -222,6 +248,7 @@ void TWSMessageWrapper::position(const std::string& account, const Contract& con
 
 void TWSMessageWrapper::positionEnd() {
 	Logger->logMessageReceived("positionEnd");
+	m_positionDataKeeper.ready = false;
 	emit TWSEventDispatcher->onResPositionEnd(m_positionDataKeeper.data);
 }
 

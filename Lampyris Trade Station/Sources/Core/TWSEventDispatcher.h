@@ -110,7 +110,7 @@ Q_SIGNALS:
 	 * 表示订单信息列表的结束
 	 * 此函数在接收到所有订单信息后被调用，用于通知应用程序订单信息列表结束
 	 */
-	void onResOpenOrderEnd();
+	void onResOpenOrderEnd(const std::vector<TWSOrderData>& data);
 
 	/*
 	 * 接收错误信息

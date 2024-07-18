@@ -39,3 +39,7 @@ PanelMainUITrade_Order_8,订单类型
 PanelMainUITrade_Order_9,币种
 PanelMainUITrade_Order_10,成交均价
 PanelMainUITrade_Order_11,委托时间
+
+// 委托单方向
+TradeDirectionBuy,买入
+TradeDirectionSell,卖出
