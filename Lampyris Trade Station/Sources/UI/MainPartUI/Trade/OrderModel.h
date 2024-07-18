@@ -30,17 +30,17 @@ public:
 				     OrderModel(QObject* parent = nullptr);
 	void             setOrderData(const std::vector<TWSOrderData>& orders);
 	void             setOrderExecutionData(const std::vector<TWSOrderExecutionData>& orderExecutions);
-	void             requestImmediately();
 	void             switchTab(Tab tab);
 	void             requestTabData(Tab tab);
 	void             setFilterStartDate(const QDate& date);
 	void             setFilterEndDate(const QDate& date);
 	void             setFilterStockCode(const QString& code);
 	void             setFilterExecDirection(ExecDirection direction);
+	void             resetFilter();
 protected:		     
 	Qt::ItemFlags    flags(const QModelIndex& index) const override;
 private:		     
-	void             requestCurrentTabDataAfterTabChanged();
+	void             requestCurrentTabDataAfterFilterChanged();
 
 	Tab              m_curTab;
 	QStringList      m_headerOrder;

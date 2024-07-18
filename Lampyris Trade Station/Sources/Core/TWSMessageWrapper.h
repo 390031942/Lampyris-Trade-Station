@@ -194,5 +194,6 @@ private:
 	TWSDataListKepper<TWSPositionData> m_positionDataKeeper;
 	TWSDataListKepper<TWSOrderData> m_orderDataKeeper;
 	TWSDataListKepper<TWSOrderExecutionData> m_orderExecDataKeeper;
+	TWSAccountSummaryData m_accountSummarydata;
 };
 

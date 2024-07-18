@@ -19,4 +19,13 @@ namespace StringUtil {
         // 如果匹配成功，则返回true，表示是有效的IP地址
         return match.hasMatch();
     }
+
+    /*
+     * 计算字符串的哈希值
+    */
+	static std::uint32_t getHashCode(const std::string& str) {
+		std::hash<std::string> hasher;
+		return hasher(str);
+	}
+
 } // end of namespace 'StringUtil'

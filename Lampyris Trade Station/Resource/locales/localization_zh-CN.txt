@@ -50,6 +50,26 @@ PanelMainUITrade_OrderExecution_6,成交数量
 PanelMainUITrade_OrderExecution_7,成交金额
 PanelMainUITrade_OrderExecution_8,佣金
 
+// PanelMainUITrade 持仓视图
+PanelMainUITrade_Position_1,股票代码
+PanelMainUITrade_Position_2,股票名称
+PanelMainUITrade_Position_3,持仓数量
+PanelMainUITrade_Position_4,持仓均价
+PanelMainUITrade_Position_5,持仓金额
+PanelMainUITrade_Position_6,今日盈亏($)
+PanelMainUITrade_Position_7,今日盈亏(%)
+PanelMainUITrade_Position_8,持仓盈亏($)
+PanelMainUITrade_Position_9,持仓盈亏(%)
+
+PanelMainUITrade_AccountSummary_1,总资产
+PanelMainUITrade_AccountSummary_2,持仓市值
+PanelMainUITrade_AccountSummary_3,可用资金
+PanelMainUITrade_AccountSummary_4,购买力
+PanelMainUITrade_AccountSummary_5,杠杆值
+PanelMainUITrade_AccountSummary_6,初始保证金要求
+PanelMainUITrade_AccountSummary_7,维持保证金要求
+PanelMainUITrade_AccountSummary_8,日内剩余交易次数
+
 // 委托单方向
 TradeDirectionBuy,买入
 TradeDirectionSell,卖出

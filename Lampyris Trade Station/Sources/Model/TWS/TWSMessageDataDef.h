@@ -25,29 +25,31 @@ struct TWSDataListKepper {
 /*
  * TWS账户资产信息
 */
-struct TWSAccountSummary {
+struct TWSAccountSummaryData {
 	// 总资产
-	float netLiquidation;
+	QString netLiquidation;
 	// 持仓市值
-	float grossPositionValue;
+	QString grossPositionValue;
 	// 可用资金
-	float availableFunds;
+	QString availableFunds;
 	// 购买力
-	float buyingPower;
+	QString buyingPower;
 	// 杠杆值
-	float leverage;
+	QString leverage;
 	// 总计初始保证金要求
-	float initMarginReq;
+	QString initMarginReq;
 	// 总计维持保证金要求
-	float maintMarginReq;
+	QString maintMarginReq;
 	// 日内剩余交易次数, -1表示无限制
-	int dayTradesRemaining;
+	QString dayTradesRemaining;
 };
 
 /*
  * TWS账户持仓信息
 */
 struct TWSPositionData {
+	// 合约
+	Contract contract;
 	// 持仓数量
 	float count;
 	// 成本均价
@@ -58,6 +60,8 @@ struct TWSPositionData {
 	float unrealizedPnL;
 	// 已实现盈亏
 	float realizedPnL;
+	// 市场价(快照)
+	float marketPrice;
 };
 
 /*
@@ -100,4 +104,6 @@ struct TWSOrderExecutionData {
 	int         count;
 	// 委托方向
 	bool        isBuy;
+	// 佣金
+	float       commission;
 };

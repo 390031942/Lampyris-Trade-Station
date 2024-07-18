@@ -99,18 +99,8 @@ Q_SIGNALS:
 
 	/*
 	 * 接收订单详细信息更新
-	 * 参数{orderId}: 订单ID，用于标识特定的订单
-	 * 参数{contract}: 合约信息，包含订单相关的合约详情
-	 * 参数{order}: 订单信息，包含订单的类型、数量、价格等
-	 * 参数{orderState}: 订单状态，包含订单的成交情况、剩余情况等
 	 */
-	void onResOpenOrder(OrderId orderId, const Contract& contract, const Order& order, const OrderState& orderState);
-
-	/*
-	 * 表示订单信息列表的结束
-	 * 此函数在接收到所有订单信息后被调用，用于通知应用程序订单信息列表结束
-	 */
-	void onResOpenOrderEnd(const std::vector<TWSOrderData>& data);
+	void onResOpenOrder(const std::vector<TWSOrderData>& data);
 
 	/*
 	 * 接收错误信息
@@ -356,35 +346,13 @@ Q_SIGNALS:
 
 	/*
 	 * 持仓更新
-	 * 参数{account}: 账户名称，标识账户的所有者
-	 * 参数{contract}: 合约对象，包含持仓相关的合约详情
-	 * 参数{position}: 持仓数量
-	 * 参数{avgCost}: 平均成本价格
 	 */
-	void onResPosition(const std::string& account, const Contract& contract, Decimal position, double avgCost);
-
-	/*
-	 * 持仓列表结束
-	 * 当接收到所有持仓信息后调用此函数，表示持仓列表结束
-	 */
-	void onResPositionEnd(const std::vector<TWSPositionData>& position);
+	void onResPosition(const std::vector<TWSPositionData>& positions);
 
 	/*
 	 * 账户摘要更新
-	 * 参数{reqId}: 请求ID，用于标识特定的账户摘要请求
-	 * 参数{account}: 账户名称，标识账户的所有者
-	 * 参数{tag}: 摘要标签，标识摘要的特定属性
-	 * 参数{value}: 摘要值，对应标签的具体数值
-	 * 参数{curency}: 摘要值的货币单位
 	 */
-	void onResAccountSummary(int reqId, const std::string& account, const std::string& tag, const std::string& value, const std::string& currency);
-
-	/*
-	 * 账户摘要请求结束
-	 * 当账户摘要请求完成时调用此函数
-	 * 参数{reqId}: 请求ID，用于标识特定的账户摘要请求
-	 */
-	void onResAccountSummaryEnd(int reqId);
+	void onResAccountSummary(const TWSAccountSummaryData& accountsummary);
 
 	/*
 	 * API消息验证响应

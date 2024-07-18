@@ -17,6 +17,7 @@
     <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Sources\Const\TWSAccountSummaryTags.cpp" />
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\TWSMessageWrapper.cpp" />
     <ClCompile Include="Sources\Core\TWSTradeApi.cpp" />
@@ -96,6 +97,7 @@
     <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
     <ClInclude Include="Sources\Const\StrategyResult.h" />
     <ClInclude Include="Sources\Const\StrategyState.h" />
+    <ClInclude Include="Sources\Const\TWSAccountSummaryTags.h" />
     <ClInclude Include="Sources\Const\TWSApiAbilities.h" />
     <ClInclude Include="Sources\Core\TWSMessageWrapper.h" />
     <ClInclude Include="Sources\Core\TWSTradeApi.h" />

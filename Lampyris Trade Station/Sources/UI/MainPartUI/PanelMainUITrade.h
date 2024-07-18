@@ -16,5 +16,9 @@ class PanelMainUITrade : public QWidget {
 public:
     explicit             PanelMainUITrade(QWidget* parent = nullptr);
 private:
+	void                 createPlaceOrderPartUI();
+	void                 createOrderPartUI();
+	void                 createPositionPartUI();
+	void                 createAccountSummaryPartUI();
     Ui::PanelMainUITrade m_ui;
 };

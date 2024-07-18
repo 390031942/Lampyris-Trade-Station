@@ -5,6 +5,9 @@
 // Project Include(s)
 #include "TWSMessageWrapper.h"
 #include "TWSEventDispatcher.h"
+#include <Utility/DecimalUtil.h>
+#include <Utility/StringUtil.h>
+#include <Const/TWSAccountSummaryTags.h>
 
 // TWS Include(s)
 #include <TWS/Contract.h>
@@ -69,7 +72,7 @@ void TWSMessageWrapper::openOrder(OrderId orderId, const Contract& contract, con
 void TWSMessageWrapper::openOrderEnd() {
 	// Logger->logMessageReceived("openOrderEnd");
 	this->m_orderDataKeeper.ready = true;
-	emit TWSEventDispatcher->onResOpenOrderEnd(this->m_orderDataKeeper.data);
+	emit TWSEventDispatcher->onResOpenOrder(this->m_orderDataKeeper.data);
 }
 
 void TWSMessageWrapper::winError(const std::string& str, int lastError) {
@@ -88,8 +91,17 @@ void TWSMessageWrapper::updateAccountValue(const std::string& key, const std::st
 }
 
 void TWSMessageWrapper::updatePortfolio(const Contract& contract, Decimal position, double marketPrice, double marketValue, double averageCost, double unrealizedPNL, double realizedPNL, const std::string& accountName) {
-	Logger->logMessageReceived(contract, position, marketPrice, marketValue, averageCost, unrealizedPNL, realizedPNL, accountName);
-	emit TWSEventDispatcher->onResUpdatePortfolio(contract, position, marketPrice, marketValue, averageCost, unrealizedPNL, realizedPNL, accountName);
+	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(m_positionDataKeeper);
+	TWSPositionData positionData;
+	positionData.contract = contract;
+	positionData.avgCost = averageCost;
+	positionData.dailyPnL = 0.0;
+	positionData.realizedPnL = realizedPNL;
+	positionData.unrealizedPnL = unrealizedPNL;
+	positionData.count = DecimalUtil::toSingle(position);
+	positionData.marketPrice = marketPrice;
+
+	m_positionDataKeeper.data.push_back(positionData);
 }
 
 void TWSMessageWrapper::updateAccountTime(const std::string& timeStamp) {
@@ -98,8 +110,8 @@ void TWSMessageWrapper::updateAccountTime(const std::string& timeStamp) {
 }
 
 void TWSMessageWrapper::accountDownloadEnd(const std::string& accountName) {
-	Logger->logMessageReceived(accountName);
-	emit TWSEventDispatcher->onResAccountDownloadEnd(accountName);
+	m_positionDataKeeper.ready = true;
+	emit TWSEventDispatcher->onResPosition(m_positionDataKeeper.data);
 }
 
 void TWSMessageWrapper::nextValidId(OrderId orderId) {
@@ -239,27 +251,35 @@ void TWSMessageWrapper::commissionReport(const CommissionReport& commissionRepor
 }
 
 void TWSMessageWrapper::position(const std::string& account, const Contract& contract, Decimal position, double avgCost) {
-	// Logger->logMessageReceived("position", account, contract, position, avgCost);
-	// emit TWSEventDispatcher->onResPosition(account, contract, position, avgCost);
 
-	LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(m_positionDataKeeper);
-	m_positionDataKeeper.data.push_back(TWSPositionData());
 }
 
 void TWSMessageWrapper::positionEnd() {
-	Logger->logMessageReceived("positionEnd");
-	m_positionDataKeeper.ready = false;
-	emit TWSEventDispatcher->onResPositionEnd(m_positionDataKeeper.data);
+
 }
 
 void TWSMessageWrapper::accountSummary(int reqId, const std::string& account, const std::string& tag, const std::string& value, const std::string& currency) {
-	Logger->logMessageReceived("accountSummary", reqId, account, tag, value, currency);
-	emit TWSEventDispatcher->onResAccountSummary(reqId, account, tag, value, currency);
+	std::uint32_t hash = StringUtil::getHashCode(tag);
+	if (hash == TWSAccountSummaryTags::NetLiquidationHash)
+		m_accountSummarydata.netLiquidation = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::GrossPositionValueHash)
+		m_accountSummarydata.grossPositionValue = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::AvailableFundsHash)
+		m_accountSummarydata.availableFunds = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::BuyingPowerHash)
+		m_accountSummarydata.buyingPower = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::LeverageHash)
+		m_accountSummarydata.leverage = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::InitMarginReqHash)
+		m_accountSummarydata.initMarginReq = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::MaintMarginReqHash)
+		m_accountSummarydata.maintMarginReq = QString::fromStdString(value);
+	else if (hash == TWSAccountSummaryTags::DayTradesRemainingHash)
+		m_accountSummarydata.dayTradesRemaining = value == "-1" ? "--" :QString::fromStdString(value);
 }
 
 void TWSMessageWrapper::accountSummaryEnd(int reqId) {
-	Logger->logMessageReceived("accountSummaryEnd", reqId);
-	emit TWSEventDispatcher->onResAccountSummaryEnd(reqId);
+	emit TWSEventDispatcher->onResAccountSummary(m_accountSummarydata);
 }
 
 void TWSMessageWrapper::verifyMessageAPI(const std::string& apiData) {

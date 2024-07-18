@@ -266,6 +266,9 @@
     <ClCompile Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.cpp">
       <Filter>Source Files\UI\MainPartUI\Trade</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\Const\TWSAccountSummaryTags.cpp">
+      <Filter>Source Files\Const</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -459,6 +462,9 @@
     </ClInclude>
     <ClInclude Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.h">
       <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\TWSAccountSummaryTags.h">
+      <Filter>Source Files\Const</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -25,7 +25,7 @@ OrderModel::OrderModel(QObject* parent) : QStandardItemModel(parent) {
 		this->setOrderData(data);
 	});
 
-	TWSEventBind(TWSEventType::onResExecDetailsEnd, [=](const std::vector<TWSOrderExecutionData>& data) {
+	TWSEventBind(TWSEventType::onResExecDetails, [=](const std::vector<TWSOrderExecutionData>& data) {
 		this->setOrderExecutionData(data);
 	});
 
@@ -87,47 +87,34 @@ void OrderModel::setOrderExecutionData(const std::vector<TWSOrderExecutionData>&
 
 	// 添加新数据
 	for (const auto& orderExec : orderExecutions) {
-		QStandardItem* stockCode = new QStandardItem(QString::fromStdString(order.contract.secId));
+		QStandardItem* execTime = new QStandardItem(orderExec.executionTime);
+		execTime->setEditable(false);
+
+		QStandardItem* stockCode = new QStandardItem(QString::fromStdString(orderExec.contract.secId));
 		stockCode->setEditable(false);
 
-		QStandardItem* stockName = new QStandardItem(QString::fromStdString(order.contract.symbol));
+		QStandardItem* stockName = new QStandardItem(QString::fromStdString(orderExec.contract.symbol));
 		stockName->setEditable(false);
 
-		QStandardItem* direction = new QStandardItem(Localization->get(order.isBuy ? "TradeDirectionBuy" : "TradeDirectionSell"));
+		QStandardItem* direction = new QStandardItem(Localization->get(orderExec.isBuy ? "TradeDirectionBuy" : "TradeDirectionSell"));
 		direction->setEditable(false);
-
-		QStandardItem* status = new QStandardItem(order.status);
-		status->setEditable(false);
 			
-		QStandardItem* price = new QStandardItem(QString::number(order.price));
+		QStandardItem* price = new QStandardItem(QString::number(orderExec.price));
 		price->setEditable(false);
 
-		QStandardItem* quantity = new QStandardItem(QString::number(order.count));
+		QStandardItem* quantity = new QStandardItem(QString::number(orderExec.count));
 		quantity->setEditable(false);
 
-		QStandardItem* executed = new QStandardItem(QString::number(order.filledCount));
-		executed->setEditable(false);
+		QStandardItem* money = new QStandardItem(QString::number(orderExec.price * orderExec.count));
+		money->setEditable(false);
+		
+		QStandardItem* commission = new QStandardItem(QString::number(orderExec.commission));
+		money->setEditable(false);
 
-		QStandardItem* orderType = new QStandardItem(order.orderType);
-		orderType->setEditable(false);
-
-		QStandardItem* currency = new QStandardItem(QString::fromStdString(order.contract.currency));
-		currency->setEditable(false);
-
-		QStandardItem* averagePrice = new QStandardItem(QString::number(order.price));
-		averagePrice->setEditable(false);
-
-		QStandardItem* orderTime = new QStandardItem(order.timeInForce);
-		orderTime->setEditable(false);
-
-		this->appendRow(QList<QStandardItem*>{stockCode, stockName, direction, status, price, quantity, executed, orderType, currency, averagePrice, orderTime});
+		this->appendRow(QList<QStandardItem*>{execTime, stockCode, stockName, direction, price, quantity, money, commission});
 	}
 
 	this->endResetModel();
-}
-
-void OrderModel::requestImmediately() {
-
 }
 
 void OrderModel::switchTab(Tab tab) {
@@ -170,7 +157,8 @@ void OrderModel::requestTabData(Tab tab) {
 	}
 }
 
-void OrderModel::requestCurrentTabDataAfterTabChanged() {
+void OrderModel::requestCurrentTabDataAfterFilterChanged() {
+	// 当过滤的值发生改变后，只有生效中的订单不需要被重新请求。
 	if (this->m_curTab == Tab::ActiveOrder)
 		return;
 
@@ -180,7 +168,7 @@ void OrderModel::requestCurrentTabDataAfterTabChanged() {
 void OrderModel::setFilterStartDate(const QDate& date) {
 	if (this->m_fitterStartDate != date) {
 		this->m_fitterStartDate = date;
-		this->requestCurrentTabDataAfterTabChanged();
+		this->requestCurrentTabDataAfterFilterChanged();
 	}
 }
 
@@ -199,8 +187,17 @@ void OrderModel::setFilterStockCode(const QString& code) {
 void OrderModel::setFilterExecDirection(ExecDirection direction) {
 	if (this->m_filterExecDirection != direction) {
 		this->m_filterExecDirection = direction;
-		this->requestCurrentTabDataAfterTabChanged();
+		this->requestCurrentTabDataAfterFilterChanged();
 	}
+}
+
+void OrderModel::resetFilter() {
+	this->m_fitterStartDate = QDate();
+	this->m_fitterEndDate = QDate();
+	this->m_filterStockCode = QString();
+	this->m_filterExecDirection = ExecDirection::All;
+
+	this->requestCurrentTabDataAfterFilterChanged();
 }
 
 Qt::ItemFlags OrderModel::flags(const QModelIndex& index) const {
