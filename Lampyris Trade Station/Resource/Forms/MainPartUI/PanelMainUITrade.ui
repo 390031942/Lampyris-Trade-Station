@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
-    <height>597</height>
+    <width>1035</width>
+    <height>775</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -58,209 +58,516 @@
         <property name="title">
          <string>交易</string>
         </property>
-        <widget class="QComboBox" name="comboBoxValidTime">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>240</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="constTextPrice">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>130</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>价格</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBoxOrderType">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>80</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="constTextCount2">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>210</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>交易所</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="textCode">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>40</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QTabWidget" name="tabTradeDirection">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>16</y>
-           <width>251</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="currentIndex">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
           <number>0</number>
          </property>
-         <widget class="QWidget" name="tabBuy">
-          <attribute name="title">
-           <string>buy</string>
-          </attribute>
-         </widget>
-         <widget class="QWidget" name="tabSell">
-          <attribute name="title">
-           <string>sell</string>
-          </attribute>
-         </widget>
-        </widget>
-        <widget class="QLabel" name="constTextCode">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>45</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
+         <property name="leftMargin">
+          <number>18</number>
          </property>
-         <property name="text">
-          <string>股票代码</string>
+         <property name="rightMargin">
+          <number>18</number>
          </property>
-        </widget>
-        <widget class="QLineEdit" name="textPrice">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>120</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBoxExchange">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>200</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="constTextOrderType">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>90</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>订单类型</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-        <widget class="QLabel" name="constTextCount1">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>170</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>数量</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-        <widget class="QLineEdit" name="textCount">
-         <property name="geometry">
-          <rect>
-           <x>120</x>
-           <y>160</y>
-           <width>140</width>
-           <height>27</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="constTextCount3">
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>250</y>
-           <width>72</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>有效期</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="buttonReset">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>280</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>重置</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="buttonEnter">
-         <property name="geometry">
-          <rect>
-           <x>160</x>
-           <y>280</y>
-           <width>75</width>
-           <height>23</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>确认</string>
-         </property>
-        </widget>
+         <item>
+          <widget class="QTabWidget" name="tabTradeDirection">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <widget class="QWidget" name="tabBuy">
+            <attribute name="title">
+             <string>buy</string>
+            </attribute>
+           </widget>
+           <widget class="QWidget" name="tabSell">
+            <attribute name="title">
+             <string>sell</string>
+            </attribute>
+           </widget>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetCode" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextCode">
+              <property name="text">
+               <string>股票代码</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="textCode">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetBriefQuote" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>20</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_12">
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <spacer name="horizontalSpacerBriefQuote">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="textBriefQuote">
+              <property name="text">
+               <string>110.00 +11.00 +11.00%</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetOrderType" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextOrderType">
+              <property name="text">
+               <string>订单类型</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBoxOrderType">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetPrice" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextPrice">
+              <property name="text">
+               <string>价格</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="textPrice">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetUnit" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_14">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextUnit">
+              <property name="text">
+               <string>数量单位</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacerUnit1_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtnStock">
+              <property name="text">
+               <string>根据股数</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtnMoney">
+              <property name="text">
+               <string>根据金额</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacerUnit1">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetRatio" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_13">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextRatio">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>仓位</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacerRatio">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtnAll">
+              <property name="text">
+               <string>All</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtn2">
+              <property name="text">
+               <string>1/2</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtn3">
+              <property name="text">
+               <string>1/3</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QRadioButton" name="radioBtn4">
+              <property name="text">
+               <string>1/4</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetCount" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextCount">
+              <property name="text">
+               <string>数量</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="textCount">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetExchange" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextExchange">
+              <property name="text">
+               <string>交易所</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBoxExchange">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetValidTime" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_10">
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="constTextValidTime">
+              <property name="text">
+               <string>有效期</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="comboBoxValidTime">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>16777215</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetBtns" native="true">
+           <layout class="QHBoxLayout" name="horizontalLayout_11">
+            <item>
+             <spacer name="__horizontalSpacerTradeBtn2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonReset">
+              <property name="text">
+               <string>重置</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="__horizontalSpacerTradeBtn1">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="buttonEnter">
+              <property name="text">
+               <string>确认</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="__horizontalSpacerTradeBtn3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
        </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QGroupBox" name="__groupBoxAccountSummary">
@@ -287,7 +594,7 @@
           <number>3</number>
          </property>
          <item>
-          <widget class="QTableView" name="tableView"/>
+          <widget class="QListView" name="listViewAccountSummary"/>
          </item>
         </layout>
        </widget>
