@@ -7,8 +7,6 @@
 #include "Core/Application.h"
 #include "Const/AppReturnCode.h"
 #include "UI/MainWindow.h"
-#include "Model/Quote/QuoteDatabase.h"
-#include "Model/Quote/Provider/EastMoneyQuoteProvider.h"
 
 int main(int argc, char *argv[]) {
     Application a(argc, argv);
@@ -16,9 +14,6 @@ int main(int argc, char *argv[]) {
     if (!a.createAppInstanceMutex()) {
         return AppReturnCode::AppInstanceAlreadyExists;
     }
-
-    EastMoneyQuoteProvider provider;
-    QuoteDatabase::getInstance()->setIndexBriefQuoteProvider(&provider);
 
     MainWindow* w = new MainWindow;
     w->show();

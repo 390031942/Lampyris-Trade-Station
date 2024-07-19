@@ -5,8 +5,9 @@
 
 // Project Include(s)
 #include <Interface/QuoteInterface/IIndexBriefQuoteProvider.h>
-#include <Interface/QuoteInterface/IStockCodeListProvider.h>
+#include <Interface/QuoteInterface/ISnapshotQuoteListProvider.h>
 #include <Network/HttpRequestManager.h>
+#include <Base/GlobalEventManager.h>
 
 // QT Include(s)
 #include <QJsonDocument>
@@ -16,29 +17,35 @@
 namespace Detailed {
 class EastMoneyQuoteProvider:public Singleton<EastMoneyQuoteProvider> {
 	typedef std::unordered_map<QString, IndexBriefQuoteData> IndexBriefQuoteDataMap;
-
+	typedef std::vector<SnapshotQuoteData> SnapshotQuoteDataList;
 	enum ReqType {
 		IndexBriefQuote = 1,
-		AllStockCodeList = 2,
+		AllSnapShotQuoteList = 2,
 	};
 public:
-	const IndexBriefQuoteData& queryIndexBriefQuote(const QString& code);
-
+	const IndexBriefQuoteData&  queryIndexBriefQuote(const QString& code) const;
+	const SnapshotQuoteDataList getSnapshotQuoteList() const;
 	// ticker(s)
-	void                       onTickIndexBriefQuoteProvider();
-	void                       onTickStockCodeListProvider();
-
-	                           EastMoneyQuoteProvider();
-						      ~EastMoneyQuoteProvider();
-private:				      
-	HttpRequestManager         m_httpRequestMgr;
-	IndexBriefQuoteDataMap     m_indexBriefQuoteDataMap;
-						      
+	void                        onTickIndexBriefQuoteProvider();
+	void                        onTickSnapShotQuoteListProvider();
+							   
+	                            EastMoneyQuoteProvider();
+						       ~EastMoneyQuoteProvider();
+private:				       
+	HttpRequestManager          m_httpRequestMgr;
+	IndexBriefQuoteDataMap      m_indexBriefQuoteDataMap;
+	SnapshotQuoteDataList       m_snapshotQuoteDataList;
 };						       
 } // end of namespace 'Detailed'
 
 class EastMoneyIndexBriefQuoteProvider :public IIndexBriefQuoteProvider {
 public:
+	EastMoneyIndexBriefQuoteProvider() {
+		GlobalEventManager::getInstance()->addEventHandler(GlobalEventType::EasyMoneyIndexBriefQuoteReady, [this](void** param) {
+			
+		});
+	}
+
 	virtual inline const IndexBriefQuoteData& queryIndexBriefQuote(const QString& code) override {
 		return Detailed::EastMoneyQuoteProvider::getInstance()->queryIndexBriefQuote(code);
 	}
@@ -48,9 +55,15 @@ public:
 	}
 };
 
-class EastMoneyIStockCodeListProvider :public IStockCodeListProvider {
+class EastMoneySnapshotQuoteListProvider :public ISnapshotQuoteListProvider {
 public:
+	EastMoneySnapshotQuoteListProvider() {
+		GlobalEventManager::getInstance()->addEventHandler(GlobalEventType::EastMoneySnapshotQuoteListReady, [this](void** param) {
+			this->updateSnapshotQuoteList(Detailed::EastMoneyQuoteProvider::getInstance()->getSnapshotQuoteList());
+		});
+	}
+
 	virtual inline void tick() override {
-		return Detailed::EastMoneyQuoteProvider::getInstance()->onTickStockCodeListProvider();
+		return Detailed::EastMoneyQuoteProvider::getInstance()->onTickSnapShotQuoteListProvider();
 	}
 };

@@ -41,7 +41,7 @@ Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 						pData->percentage = percentage;
 					}
 
-					// this->IIndexBriefQuoteProvider::m_isReady = true;
+					GlobalEventManager::getInstance()->raiseEvent(GlobalEventType::EasyMoneyIndexBriefQuoteReady);
 					return;
 				}
 			}
@@ -52,7 +52,7 @@ Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 		}
 	);
 
-	m_httpRequestMgr.bind(ReqType::AllStockCodeList, "https://72.push2.eastmoney.com/api/qt/clist/get",
+	m_httpRequestMgr.bind(ReqType::AllSnapShotQuoteList, "https://72.push2.eastmoney.com/api/qt/clist/get",
 		/** handler*/ [=](const QByteArray& bytes) {
 			auto jsonDoc = QJsonDocument::fromJson(bytes);
 			auto data = jsonDoc["data"];
@@ -60,14 +60,22 @@ Detailed::EastMoneyQuoteProvider::EastMoneyQuoteProvider() {
 				auto diff = data["diff"];
 				if (diff.isArray()) {
 					auto arr = diff.toArray();
+					m_snapshotQuoteDataList.clear();
+
 					for (int i = 0; i < arr.size(); i++) {
 						auto element = arr[i].toObject();
-						// f12 = code,f14 = name
-						QString code = element["f12"].toString();
-						QString name = element["f14"].toString();
+						// f2 = price,f3 = percentage,f4 = change,f12 = code,f14 = name
+						SnapshotQuoteData data = {};
+						data.price = element["f2"].toDouble();
+						data.percentage = element["f3"].toDouble();
+						data.change = element["f4"].toDouble();
+						data.code = element["f12"].toString();
+						data.name = element["f14"].toString();
+
+						m_snapshotQuoteDataList.push_back(data);
 					}
 
-					// this->IStockCodeListProvider::m_isReady = true;
+					GlobalEventManager::getInstance()->raiseEvent(GlobalEventType::EastMoneySnapshotQuoteListReady);
 					return;
 				}
 			}
@@ -82,10 +90,8 @@ Detailed::EastMoneyQuoteProvider::~EastMoneyQuoteProvider() {
 }
 
 void Detailed::EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
-	// 创建查询参数对象
 	QUrlQuery query;
 
-	// 添加查询参数
 	query.addQueryItem("po", "1");
 	query.addQueryItem("pz", "50");
 	query.addQueryItem("pn", "1");
@@ -99,10 +105,23 @@ void Detailed::EastMoneyQuoteProvider::onTickIndexBriefQuoteProvider() {
 	this->m_httpRequestMgr.get(ReqType::IndexBriefQuote, query);
 }
 
-void Detailed::EastMoneyQuoteProvider::onTickStockCodeListProvider() {
-	
+void Detailed::EastMoneyQuoteProvider::onTickSnapShotQuoteListProvider() {
+	QUrlQuery query;
+
+	query.addQueryItem("po", "1");
+	query.addQueryItem("pz", "100000");
+	query.addQueryItem("pn", "1");
+	query.addQueryItem("np", "1");
+	query.addQueryItem("fltt", "2");
+	query.addQueryItem("invt", "2");
+	query.addQueryItem("fs", "m:105,m:106,m:107");
+	query.addQueryItem("fields", "f2,f3,f4,f12,f14");
 }
 
-const IndexBriefQuoteData& Detailed::EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
+const IndexBriefQuoteData& Detailed::EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) const {
 	return m_indexBriefQuoteDataMap[code];
+}
+
+const Detailed::EastMoneyQuoteProvider::SnapshotQuoteDataList Detailed::EastMoneyQuoteProvider::getSnapshotQuoteList() const {
+	return m_snapshotQuoteDataList;
 }

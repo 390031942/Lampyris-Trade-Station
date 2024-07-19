@@ -33,7 +33,6 @@ protected:
 
 #ifndef LAMPYRIS_STRATEGY_MACRO
  #define LAMPYRIS_STRATEGY_DECLARE(clsName) \
-     Q_OBJECT;  \
      LAMPYRIS_DECLARE_CLASS_INITIALIZE(clsName);
 
  #define LAMPYRIS_STRATEGY_IMPL(clsName,_name,_author,_desc) \

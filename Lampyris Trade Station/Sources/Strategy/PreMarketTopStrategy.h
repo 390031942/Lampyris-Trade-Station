@@ -11,13 +11,14 @@
  * 盘前龙一模型 
 */
 class PreMarketTopStrategy:public IStrategy {
+	Q_OBJECT
 	LAMPYRIS_STRATEGY_DECLARE(PreMarketTopStrategy);
 
-	Q_PROPERTY(float takeProfitPercentag MEMBER m_takeProfitPercentage);
+	Q_PROPERTY(float fixedModeTakeProfitPercentage MEMBER m_fixedModeTakeProfitPercentage);
 	Q_PROPERTY(float fixedModeFallAndBuyPercentage MEMBER m_fixedModeFallAndBuyPercentage);
 	Q_PROPERTY(float fixedModePositionSize MEMBER m_fixedModePositionSize);
-	Q_PROPERTY(float stepModeFallAndBuyPercentage MEMBER m_stepModeFallAndBuyPercentage);
-	Q_PROPERTY(float stepModeFallAndBuyPositionSize MEMBER m_stepModeFallAndBuyPositionSize);
+	Q_PROPERTY(QVector<float> stepModeFallAndBuyPercentage MEMBER m_stepModeFallAndBuyPercentage);
+	Q_PROPERTY(QVector<float> stepModeFallAndBuyPositionSize MEMBER m_stepModeFallAndBuyPositionSize);
 	Q_PROPERTY(PreMarketTopStrategy::PreMarketTopStrategyMode mode MEMBER m_mode);
 
 public:

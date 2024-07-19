@@ -25,7 +25,7 @@ OrderModel::OrderModel(QObject* parent) : QStandardItemModel(parent) {
 		this->setOrderData(data);
 	});
 
-	TWSEventBind(TWSEventType::onResExecDetails, [=](const std::vector<TWSOrderExecutionData>& data) {
+	TWSEventBind(TWSEventType::onResExecDetails, [=](int req,const std::vector<TWSOrderExecutionData>& data) {
 		this->setOrderExecutionData(data);
 	});
 
@@ -141,11 +141,11 @@ void OrderModel::requestTabData(Tab tab) {
 			auto execFilter = ExecutionFilter();
 
 			if (!m_filterStockCode.isEmpty()) {
-				execFilter.m_symbol = m_filterStockCode.toUtf8();
+				execFilter.m_symbol = m_filterStockCode.toUtf8().constData();
 			}
 
 			if (!m_fitterStartDate.isNull()) {
-				execFilter.m_time = m_fitterStartDate.toString("yyyyMMdd hh:mm:ss").toUtf8();
+				execFilter.m_time = m_fitterStartDate.toString("yyyyMMdd hh:mm:ss").toUtf8().constData();
 			}
 
 			if(!m_filterExecDirection != ExecDirection::All) {

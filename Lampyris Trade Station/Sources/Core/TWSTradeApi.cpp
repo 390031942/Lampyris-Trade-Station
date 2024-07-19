@@ -30,7 +30,7 @@ void TWSTradeApi::buy(const std::string& code, float price, float count) {
 		order.orderType = "MKT";
 	}
 
-	TWS->placeOrder(this->m_nextValidOrderId, contract, order);
+	TWSTrade->placeOrder(this->m_nextValidOrderId, contract, order);
 }
 
 void TWSTradeApi::sell(const std::string& code, float price, float count) {
@@ -52,7 +52,7 @@ void TWSTradeApi::sell(const std::string& code, float price, float count) {
 		order.orderType = "MKT";
 	}
 
-	TWS->placeOrder(this->m_nextValidOrderId, contract, order);
+	TWSTrade->placeOrder(this->m_nextValidOrderId, contract, order);
 }
 
 void TWSTradeApi::shortBuy(const std::string& code, float price, float count) {
@@ -86,23 +86,6 @@ void TWSTradeApi::queryTodayDealDetail() {
 void TWSTradeApi::bindEvent() {
 	TWSEventBind(TWSEventType::onResNextValidId, [=](OrderId orderId) {
 		this->m_nextValidOrderId = orderId;
-	});
-
-	TWSEventBind(TWSEventType::onResOpenOrder, [=](OrderId orderId,
-		                                           const Contract& contract,
-		                                           const Order& order,
-		                                           const OrderState& orderState) {
-
-	});
-
-	TWSEventBind(TWSEventType::onResExecDetails, [=](int reqId,
-		                                             const Contract& contract, 
-		                                             const Execution& execution) {
-		
-	});
-
-	TWSEventBind(TWSEventType::onResExecDetailsEnd, [=](int reqId) {
-
 	});
 
 	TWSEventBind(TWSEventType::onResOrderStatus, [=](OrderId orderId,

@@ -170,6 +170,14 @@ public:
     inline void                  setVWAP(float value) { m_vwap = value; }
     inline float                 getVWAP() const { return m_vwap; }
 
+	// 变化值
+	inline void                  setChange(float value) { this->m_realTimeBar.priceChange = value; }
+	inline float                 getChange() { return this->m_realTimeBar.priceChange; }
+
+	// 变化(%)
+	inline void                  setChangePercentage(float value) { this->m_realTimeBar.percentage = value; }
+	inline float                 getChangePercentage() { return this->m_realTimeBar.percentage; }
+
     // Listeners
     TickByTickListener           tickByTickListener;
     UpdateListener               updateListener;
@@ -281,9 +289,9 @@ public:
 
     inline Contract toContract() const {
         Contract contract;
-        contract.symbol   = m_infoData.getCode().toUtf8();
+        contract.symbol   = m_infoData.getCode().toUtf8().constData();
         contract.secType  = "STK";
-        contract.currency = m_infoData.getCurrency().toUtf8();
+        contract.currency = m_infoData.getCurrency().toUtf8().constData();
         contract.exchange = "SMART";
 
         return contract;
@@ -315,6 +323,17 @@ typedef std::shared_ptr<QuoteBaseData> QuoteBaseDataPtr;
 struct IndexBriefQuoteData {
     QString code;
     QString name;
+    float   price;
+    float   change;
+    float   percentage;
+};
+
+/*
+ * 快照行情信息
+*/
+struct SnapshotQuoteData {
+	QString code;
+	QString name;
     float   price;
     float   change;
     float   percentage;

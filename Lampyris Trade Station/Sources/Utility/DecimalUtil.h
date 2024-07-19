@@ -4,20 +4,19 @@
 #pragma once
 
 // Intel Decimal Floating Point Library Include(s)
-#include <bid/bid_conf.h>
-#include <bid/bid_functions.h>
+#include <TWS/Decimal.h>
 
 class DecimalUtil {
 public:
-	static float toSingle(BID_UINT64 decimal) {
+	static float toSingle(Decimal decimal) {
 		float result = 0.0f;
-		__bid64_to_binary32(result, BID_ROUNDING_TO_NEAREST, nullptr);
+		__bid64_to_binary64(result, 0, nullptr);
 		return result;
 	}
 
-	static double toDouble(BID_UINT64 decimal) {
+	static double toDouble(Decimal decimal) {
 		double result  = 0.0f;
-		__bid64_to_binary64(result, BID_ROUNDING_TO_NEAREST, nullptr);
+		__bid64_to_binary64(result, 0, nullptr);
 		return result;
 	}
 };

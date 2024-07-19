@@ -15,7 +15,7 @@ class MainWindowFunctionToolBarDataObject:public Singleton<MainWindowFunctionToo
 	LAMPYRIS_DECLARE_CLASS_INITIALIZE(MainWindowFunctionToolBarDataObject);
 	struct MainWindowFunctionToolBarData {
 		QString               name;
-		QIcon                 icon;
+		QString              icon;
 		std::function<void()> action;
 	};
 	typedef std::vector<MainWindowFunctionToolBarData> DataList;

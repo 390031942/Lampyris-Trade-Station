@@ -6,7 +6,7 @@
 // Project Include(s)
 #include "OrderFilledTipsWindow.h"
 #include <Base/Singleton.h>
-#include <Collections/CircularQueue.h>
+#include <Collections/CirculateQueue.h>
 
 class OrderFilledTips :public SingletonQObject<OrderFilledTips> {
 	Q_OBJECT

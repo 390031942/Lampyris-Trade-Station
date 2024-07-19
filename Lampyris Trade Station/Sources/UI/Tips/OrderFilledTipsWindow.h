@@ -11,7 +11,7 @@
 // Project Include(s)
 #include "ui_OrderFilledTipsWindow.h"
 #include <Base/Singleton.h>
-#include <Collections/CircularQueue.h>
+#include <Collections/CirculateQueue.h>
 
 // STD Include(s)
 #include <queue>

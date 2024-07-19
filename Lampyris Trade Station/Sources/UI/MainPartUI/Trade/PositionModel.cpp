@@ -7,6 +7,8 @@
 #include <Core/TWSEventDispatcher.h>
 #include <Core/Application.h>
 
+const int PositionModel::ms_orderColumn = 9;
+
 PositionModel::PositionModel(QObject* parent) {
 	for (int i = 0; i < ms_orderColumn; i++) {
 		std::string key = "PanelMainUITrade_Position_" + (i + 1);
@@ -16,10 +18,6 @@ PositionModel::PositionModel(QObject* parent) {
 	this->setHorizontalHeaderLabels(m_header);
 
 	TWSEventBind(TWSEventType::onResPosition, [=](const std::vector<TWSPositionData>& data) {
-		this->setPositionData(data);
-	});
-
-	TWSEventBind(TWSEventType::onResPnl, [=](const std::vector<TWSPositionData>& data) {
 		this->setPositionData(data);
 	});
 }

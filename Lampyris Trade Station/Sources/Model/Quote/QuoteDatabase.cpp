@@ -8,7 +8,48 @@
 #include <Core/TWSEventDispatcher.h>
 
 QuoteBaseDataPtr QuoteDatabase::query(const QString& code, const QString& currency) {
+	return nullptr;
+}
 
+QuoteDatabase::SearchResultList QuoteDatabase::search(const QString& input) {
+	SearchResultList result;
+
+	return result;
+}
+
+void QuoteDatabase::refreshStockList() {
+	if (this->m_snapshotQuoteListProvider) {
+		this->m_snapshotQuoteListProvider->tick();
+	}
+}
+
+void QuoteDatabase::setSnapShotQuoteListProvider(ISnapshotQuoteListProvider* provider) {
+	if (provider == nullptr || this->m_snapshotQuoteListProvider == provider)
+		return;
+
+	if (this->m_snapshotQuoteListProvider != nullptr) {
+		this->m_snapshotQuoteListProvider->updateSnapshotQuoteList -= this->m_updateSnapShotQuoteListCallbackId;
+	}
+	this->m_snapshotQuoteListProvider = provider;
+
+	this->m_updateSnapShotQuoteListCallbackId = (this->m_snapshotQuoteListProvider->updateSnapshotQuoteList
+		+= [=](const std::vector<SnapshotQuoteData>& snapShotQuoteDataList) {
+			for (auto& snapShot : snapShotQuoteDataList) {
+				if (!m_dataMap.contains(snapShot.code)) {
+					auto quoteData = m_dataMap[snapShot.code] = std::make_shared<QuoteBaseData>();
+					auto infoData = quoteData->infoData();
+
+					infoData->setCode(snapShot.code);
+					infoData->setName(snapShot.name);
+				}
+
+				auto quoteData = m_dataMap[snapShot.code];
+				auto realTimeQuoteData = quoteData->realTimeData();
+				realTimeQuoteData->setPrice(snapShot.price);
+				realTimeQuoteData->setChange(snapShot.change);
+				realTimeQuoteData->setChangePercentage(snapShot.percentage);
+			}
+	});
 }
 
 const IndexBriefQuoteData& QuoteDatabase::queryIndexBriefQuote(const QString& code) {

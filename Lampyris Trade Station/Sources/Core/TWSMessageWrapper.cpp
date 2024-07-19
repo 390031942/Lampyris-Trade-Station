@@ -150,7 +150,7 @@ void TWSMessageWrapper::execDetails(int reqId, const Contract& contract, const E
 
 void TWSMessageWrapper::execDetailsEnd(int reqId) {
 	this->m_orderExecDataKeeper.ready = true;
-	emit TWSEventDispatcher->onResExecDetailsEnd(reqId);
+	emit TWSEventDispatcher->onResExecDetails(reqId,this->m_orderExecDataKeeper.data);
 }
 
 void TWSMessageWrapper::error(int id, int errorCode, const std::string& errorString, const std::string& advancedOrderRejectJson) {

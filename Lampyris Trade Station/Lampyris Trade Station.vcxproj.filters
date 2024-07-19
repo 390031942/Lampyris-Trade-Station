@@ -251,9 +251,6 @@
     <ClCompile Include="Sources\Model\Strategy\StrategyDatabase.cpp">
       <Filter>Source Files\Model\Strategy</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Strategy\PreMarketTopStrategy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\UI\MainPartUI\PanelMainUITrade.cpp">
       <Filter>Source Files\UI\MainPartUI</Filter>
     </ClCompile>
@@ -268,6 +265,18 @@
     </ClCompile>
     <ClCompile Include="Sources\Const\TWSAccountSummaryTags.cpp">
       <Filter>Source Files\Const</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Common\AbstractSuggestionLineEdit.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Strategy\PreMarketTopStrategy.cpp">
+      <Filter>Source Files\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\ApplicationLifecycle.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Base\GlobalEventManager.cpp">
+      <Filter>Source Files\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -335,9 +344,6 @@
       <Filter>Source Files\Model\Login</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Base\Singleton.h">
-      <Filter>Source Files\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Base\SingletonQObject.h">
       <Filter>Source Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Base\LogManager.h">
@@ -424,7 +430,7 @@
     <ClInclude Include="Sources\Model\TWS\TWSMessageDataDef.h">
       <Filter>Source Files\Model\TWS</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Interface\QuoteInterface\IStockCodeListProvider.h">
+    <ClInclude Include="Sources\Interface\QuoteInterface\ISnapshotQuoteListProvider.h">
       <Filter>Source Files\Interface\QuoteProvider</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Model\UI\MainWindowFunctionToolBarData.h">
@@ -441,9 +447,6 @@
     </ClInclude>
     <ClInclude Include="Sources\Model\Strategy\StrategyDatabase.h">
       <Filter>Source Files\Model\Strategy</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Strategy\PreMarketTopStrategy.h">
-      <Filter>Source Files\Strategy</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Interface\QuoteInterface\INormalQuoteUpdateProvider.h">
       <Filter>Source Files\Interface\QuoteProvider</Filter>
@@ -464,6 +467,18 @@
       <Filter>Source Files\UI\MainPartUI\Trade</Filter>
     </ClInclude>
     <ClInclude Include="Sources\Const\TWSAccountSummaryTags.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Interface\IStrategy.h">
+      <Filter>Source Files\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Core\ApplicationLifecycle.h">
+      <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Base\GlobalEventManager.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\GlobalEventType.h">
       <Filter>Source Files\Const</Filter>
     </ClInclude>
   </ItemGroup>
@@ -559,11 +574,14 @@
     <QtMoc Include="Sources\UI\Function\StrategySettingItem.h">
       <Filter>Source Files\UI\Function</Filter>
     </QtMoc>
-    <QtMoc Include="Sources\Interface\IStrategy.h">
-      <Filter>Source Files\Interface</Filter>
-    </QtMoc>
     <QtMoc Include="Sources\UI\MainPartUI\PanelMainUITrade.h">
       <Filter>Source Files\UI\MainPartUI</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\Strategy\PreMarketTopStrategy.h">
+      <Filter>Source Files\Strategy</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\AbstractSuggestionLineEdit.h">
+      <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

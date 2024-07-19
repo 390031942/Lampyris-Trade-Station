@@ -16,7 +16,7 @@ LAMPYRIS_STRATEGY_IMPL(
 
 
 bool PreMarketTopStrategy::executeCondition() {
-	
+	return false;
 }
 
 bool PreMarketTopStrategy::tick() {
@@ -24,6 +24,8 @@ bool PreMarketTopStrategy::tick() {
 	auto contract = codeList.size() > 0 ? codeList[0] : Contract();
 
 	QuoteBaseDataPtr quoteData = QuoteDatabase::getInstance()->query(contract.secId.c_str());
-	TickByTickData tickByTickData = quoteData->realTimeData()->getLastTickByTick();
-	float price = tickByTickData.price;
+	const TickByTickData* tickByTickData = quoteData->realTimeData()->getLastTickByTick();
+	float price = tickByTickData->price;
+
+	return false;
 }

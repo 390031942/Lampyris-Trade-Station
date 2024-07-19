@@ -60,7 +60,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <property name="spacing">
-          <number>0</number>
+          <number>3</number>
          </property>
          <property name="leftMargin">
           <number>18</number>
@@ -81,12 +81,12 @@
            </property>
            <widget class="QWidget" name="tabBuy">
             <attribute name="title">
-             <string>buy</string>
+             <string> 买入</string>
             </attribute>
            </widget>
            <widget class="QWidget" name="tabSell">
             <attribute name="title">
-             <string>sell</string>
+             <string>卖出</string>
             </attribute>
            </widget>
           </widget>
@@ -257,7 +257,7 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacerUnit1_2">
+             <spacer name="horizontalSpacerUnit1">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -272,19 +272,19 @@
             <item>
              <widget class="QRadioButton" name="radioBtnStock">
               <property name="text">
-               <string>根据股数</string>
+               <string>股数</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioBtnMoney">
               <property name="text">
-               <string>根据金额</string>
+               <string>金额</string>
               </property>
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacerUnit1">
+             <spacer name="horizontalSpacerUnit2">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
               </property>
@@ -374,6 +374,56 @@
              <widget class="QRadioButton" name="radioBtn4">
               <property name="text">
                <string>1/4</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetCountInfo" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_15">
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="textCountInfo">
+              <property name="text">
+               <string>可卖数量: 10000</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QWidget" name="__widgetShortable" native="true">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>0</height>
+            </size>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_16">
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="textShortable">
+              <property name="text">
+               <string>可沽数量：200000000</string>
               </property>
              </widget>
             </item>

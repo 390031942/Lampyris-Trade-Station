@@ -10,6 +10,10 @@
 #include <TWS/Order.h>
 #include <TWS/Contract.h>
 #include <TWS/Execution.h>
+#include <TWS/CommonDefs.h>
+
+// QT Include(s)
+#include <QString>
 
 #ifndef LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET
 #define LAMPYRIS_TWS_MSG_DATA_KEEPER_RESET(dataKeeper) \

@@ -9,6 +9,7 @@
 #include <UI/Common/MessageBox.h>
 #include <UI/MainWindow.h>
 #include <Base/Localization.h>
+#include <Core/ApplicationLifecycle.h>
 
 // QT Include(s)
 #include <QMouseEvent>
@@ -148,15 +149,8 @@ void ConnectDialog::tryConnect() {
 		m_connectTimer.stop();
 		IBGatewayHistoryConnection->storage(m_connectInfo);
 		this->deleteLater();
-
-		// 打开主窗口
-		MainWindow* mainWindow = new MainWindow;
-		mainWindow->show();
-
-		TWS->reqCurrentTime();
-
-		// 启动TWS 消息监听
-		Application::startMessageHandler();
+		
+		ApplicationLifecyle::onLoginSuccess();
 	}
 }
 

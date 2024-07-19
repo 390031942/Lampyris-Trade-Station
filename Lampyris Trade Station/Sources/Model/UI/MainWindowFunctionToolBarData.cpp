@@ -14,7 +14,7 @@ LAMPYRIS_DECLARE_CLASS_END;
 void MainWindowFunctionToolBarDataObject::initFunctionData() {
 	m_dataList = 
 	{
-		{ Localization->get("ToolBarFunctionTitle_1"),QIcon("TitleBarFunctionIcon/TitleBarFunctionIcon_1"),[]() {} },
-		{ Localization->get("ToolBarFunctionTitle_2"),QIcon("TitleBarFunctionIcon/TitleBarFunctionIcon_2"),[]() {} },
+		{ Localization->get("ToolBarFunctionTitle_1"),"TitleBarFunctionIcon/TitleBarFunctionIcon_1",[]() {} },
+		{ Localization->get("ToolBarFunctionTitle_2"),"TitleBarFunctionIcon/TitleBarFunctionIcon_2",[]() {} },
 	};
 }

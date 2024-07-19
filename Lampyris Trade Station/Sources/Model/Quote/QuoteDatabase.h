@@ -22,14 +22,16 @@
 #include <Base/SerializableSingleton.h>
 #include <Interface/QuoteInterface/IIndexBriefQuoteProvider.h>
 #include <Interface/QuoteInterface/ITickByTickQuoteProvider.h>
+#include <Interface/QuoteInterface/ISnapshotQuoteListProvider.h>
 
 // TWS Include(s)
 #include <TWS/ScannerSubscription.h>
 
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 	typedef Delegate<> UpdateIndexBriefQuoteCallback;
-	typedef std::unordered_map<QString, std::unordered_map<QString, QuoteBaseDataPtr>> QuoteDataMap;
-	typedef std::vector<std::pair<QString, std::pair<QString, QuoteBaseDataPtr>>> QuoteDataList;
+	typedef std::unordered_map<QString, QuoteBaseDataPtr> QuoteDataMap;
+	typedef std::vector<std::pair<QString, QuoteBaseDataPtr>> QuoteDataList;
+	typedef std::vector<const QuoteBaseDataPtr> SearchResultList;
 
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
@@ -41,6 +43,11 @@ public:
 	};
 
 	QuoteBaseDataPtr              query(const QString& code, const QString& currency = "USD");
+	SearchResultList              search(const QString& input);
+
+	// For 股票列表
+	void                          refreshStockList();
+	void                          setSnapShotQuoteListProvider(ISnapshotQuoteListProvider* provider);
 
 	// For 指数简要行情 IndexBriefQuote
 	const IndexBriefQuoteData&    queryIndexBriefQuote(const QString& code);
@@ -66,6 +73,10 @@ private:
 
 	IIndexBriefQuoteProvider*     m_indexBriefQuoteProvider;
 	ITickByTickQuoteProvider*     m_tickByTickQuoteProvider;
+	ISnapshotQuoteListProvider*   m_snapshotQuoteListProvider;
+
+	// callback id(s)
+	int                           m_updateSnapShotQuoteListCallbackId;
 
 	int                           m_indexBriefQuoteTickIntervalMs = 3000;
 	std::unordered_map<int, std::vector<Contract>> m_scannerReqId2DataListMap;

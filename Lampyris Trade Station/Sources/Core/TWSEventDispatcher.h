@@ -180,18 +180,8 @@ Q_SIGNALS:
 
 	/*
 	 * 接收执行详情
-	 * 参数{reqId}: 请求ID，用于标识特定的请求
-	 * 参数{contract}: 合约信息，包含执行详情相关的合约详情
-	 * 参数{execution}: 执行信息，包含订单的成交详情
 	 */
-	void onResExecDetails(int reqId, const Contract& contract, const Execution& execution);
-
-	/*
-	 * 执行详情列表结束
-	 * 当接收到所有执行详情后调用此函数，表示列表结束
-	 * 参数{reqId}: 请求ID，用于标识特定的请求
-	 */
-	void onResExecDetailsEnd(int reqId);
+	void onResExecDetails(int reqId, const std::vector<TWSOrderExecutionData>& data);
 
 	/*
 	 * 接收错误信息
