@@ -9,5 +9,6 @@
         <file>Image/ConnectDialog/ConnectDialog_0001.png</file>
         <file>Image/Comm/Comm_0001.png</file>
         <file>Image/Comm/Comm_0002.png</file>
+        <file>Image/Comm/Comm_0003.png</file>
     </qresource>
 </RCC>

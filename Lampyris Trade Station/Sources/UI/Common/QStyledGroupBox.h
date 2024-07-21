@@ -20,11 +20,8 @@ public:
 	};
 protected:
 	void paintEvent(QPaintEvent* e);
-
 	void mouseMoveEvent(QMouseEvent* e);
-
 	void mousePressEvent(QMouseEvent* e);
-
 	void leaveEvent(QEvent* e);
 public:
 	QStyledGroupBoxInternal(DisplayMode mode,

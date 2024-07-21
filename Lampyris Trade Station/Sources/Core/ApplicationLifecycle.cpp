@@ -12,11 +12,11 @@
 #include <Model/Quote/Provider/EastMoneyQuoteProvider.h>
 
 void ApplicationLifecyle::onLoginSuccess() {
+	// 请求IB的服务器时间
+	// TWSTrade->reqCurrentTime();
+
 	// 启动TWS 消息监听
 	Application::startMessageHandler();
-
-	// 请求IB的服务器时间
-	TWSTrade->reqCurrentTime();
 
 	// 设置默认的QuoteProviders
 	QuoteDatabase::getInstance()->setIndexBriefQuoteProvider(new EastMoneyIndexBriefQuoteProvider);

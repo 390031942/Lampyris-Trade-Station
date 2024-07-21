@@ -92,7 +92,15 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	m_ui.textIP->setText(info.ip);
 	m_ui.textPort->setText(info.port > 0 ?QString::number(info.port) : "");
 	m_ui.toggleSaveIP->setChecked(IBGatewayHistoryConnection->getSaveIP());
-	m_ui.toggleAutoConnect->setChecked(IBGatewayHistoryConnection->getAutoConnect());
+	bool autoConnect = IBGatewayHistoryConnection->getAutoConnect();
+	m_ui.toggleAutoConnect->setChecked(autoConnect);
+
+	// 如果IP和端口号非空，则执行连接
+	if (autoConnect) {
+		if (!info.ip.isEmpty() && info.port > 0) {
+			// onClickButtonConnect();
+		}
+	}
 }
 
 ConnectDialog::~ConnectDialog() {

@@ -11,7 +11,6 @@ enum TradeOrderType {
 	Market = 1,
 };
 
-
 /*
 1.SMART-Smart Route:智能路由交易系统，由多个交易所和市场参与者组成，旨在提供最优的交易价格,
 2.AMEX-American Stock Exchange: 美国证券交易所，现为纽约证券交易所的一部分。
