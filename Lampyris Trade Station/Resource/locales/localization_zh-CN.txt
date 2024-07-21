@@ -1,6 +1,7 @@
 // Copyright (c) HongJin Investment Ltd. All rights reserved.
 
 // Application
+AppInstanceAlreadyExists,检测到另外一个程序实例，LTS应用程序将退出
 ApplicationName,LTS程序化交易工作站 Build %s Version %s
 ApplicationVerson,alpha 1.0.1
 

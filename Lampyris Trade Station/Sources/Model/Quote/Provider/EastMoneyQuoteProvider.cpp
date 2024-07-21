@@ -118,10 +118,10 @@ void Detailed::EastMoneyQuoteProvider::onTickSnapShotQuoteListProvider() {
 	query.addQueryItem("fields", "f2,f3,f4,f12,f14");
 }
 
-const IndexBriefQuoteData& Detailed::EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) const {
+const IndexBriefQuoteData& Detailed::EastMoneyQuoteProvider::queryIndexBriefQuote(const QString& code) {
 	return m_indexBriefQuoteDataMap[code];
 }
 
-const Detailed::EastMoneyQuoteProvider::SnapshotQuoteDataList Detailed::EastMoneyQuoteProvider::getSnapshotQuoteList() const {
+const Detailed::EastMoneyQuoteProvider::SnapshotQuoteDataList Detailed::EastMoneyQuoteProvider::getSnapshotQuoteList() {
 	return m_snapshotQuoteDataList;
 }

@@ -23,8 +23,8 @@ class EastMoneyQuoteProvider:public Singleton<EastMoneyQuoteProvider> {
 		AllSnapShotQuoteList = 2,
 	};
 public:
-	const IndexBriefQuoteData&  queryIndexBriefQuote(const QString& code) const;
-	const SnapshotQuoteDataList getSnapshotQuoteList() const;
+	const IndexBriefQuoteData&  queryIndexBriefQuote(const QString& code);
+	const SnapshotQuoteDataList getSnapshotQuoteList();
 	// ticker(s)
 	void                        onTickIndexBriefQuoteProvider();
 	void                        onTickSnapShotQuoteListProvider();

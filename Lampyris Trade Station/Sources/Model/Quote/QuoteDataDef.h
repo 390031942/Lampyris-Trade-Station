@@ -172,11 +172,11 @@ public:
 
 	// 变化值
 	inline void                  setChange(float value) { this->m_realTimeBar.priceChange = value; }
-	inline float                 getChange() { return this->m_realTimeBar.priceChange; }
+	inline float                 getChange() const { return this->m_realTimeBar.priceChange; }
 
 	// 变化(%)
 	inline void                  setChangePercentage(float value) { this->m_realTimeBar.percentage = value; }
-	inline float                 getChangePercentage() { return this->m_realTimeBar.percentage; }
+	inline float                 getChangePercentage() const { return this->m_realTimeBar.percentage; }
 
     // Listeners
     TickByTickListener           tickByTickListener;
@@ -314,8 +314,31 @@ LAMPYRIS_SERIALIZATION_IMPL_BEGIN(QuoteBaseData)
 }
 LAMPYRIS_SERIALIZATION_IMPL_END
 
+typedef QuoteBaseData* QuoteBaseDataPtr;
+class QuoteDataReader {
+public:
+    QuoteDataReader():m_data(nullptr) {}
 
-typedef std::shared_ptr<QuoteBaseData> QuoteBaseDataPtr;
+    QuoteDataReader(const QuoteDataReader& other) {
+        m_data = other.m_data;
+    }
+
+    QuoteDataReader& operator=(const QuoteDataReader& other) {
+        m_data = other.m_data;
+        return *this;
+    }
+
+    const QuoteBaseDataPtr operator->() const {
+        return m_data;
+    }
+private:
+    QuoteDataReader(QuoteBaseDataPtr data) {
+        m_data = data;
+    }
+    QuoteBaseDataPtr m_data;
+    friend class QuoteDatabase;
+};
+
 
 /*
  * 指数简要行情信息

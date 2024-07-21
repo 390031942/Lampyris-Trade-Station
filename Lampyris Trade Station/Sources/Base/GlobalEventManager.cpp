@@ -6,11 +6,13 @@
 
 int GlobalEventManager::addEventHandler(GlobalEventType type, GlobalEventCallback callback) {
 	if (callback == nullptr)
-		return;
+		return -1;
 	GlobalEventData eventData;
 	eventData.callbackId = ++this->m_callbackIdAutoIncrement;
 	eventData.callback   = std::move(callback);
 	this->m_eventMap[type].push_back(eventData);
+
+	return eventData.callbackId;
 }
 
 void GlobalEventManager::removeEventHandler(GlobalEventType type, int callbackId) {

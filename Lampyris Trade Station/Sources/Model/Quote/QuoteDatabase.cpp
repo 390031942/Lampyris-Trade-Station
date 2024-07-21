@@ -7,14 +7,24 @@
 #include <Core/Application.h>
 #include <Core/TWSEventDispatcher.h>
 
-QuoteBaseDataPtr QuoteDatabase::query(const QString& code, const QString& currency) {
-	return nullptr;
+QuoteDataReader QuoteDatabase::query(const QString& code, const QString& currency) {
+	return QuoteDataReader(nullptr);
 }
 
 QuoteDatabase::SearchResultList QuoteDatabase::search(const QString& input) {
 	SearchResultList result;
-
+	searchNoAlloc(input, result);
 	return result;
+}
+
+void QuoteDatabase::searchNoAlloc(const QString& input, SearchResultList& result) {
+	result.clear();
+	for (auto pair : m_dataMap) {
+		auto info = pair.second->infoData();
+		if (info->getCode().startsWith(input) || info->getName().contains(input)) {
+			result.push_back(pair.second);
+		}
+	}
 }
 
 void QuoteDatabase::refreshStockList() {
@@ -36,7 +46,7 @@ void QuoteDatabase::setSnapShotQuoteListProvider(ISnapshotQuoteListProvider* pro
 		+= [=](const std::vector<SnapshotQuoteData>& snapShotQuoteDataList) {
 			for (auto& snapShot : snapShotQuoteDataList) {
 				if (!m_dataMap.contains(snapShot.code)) {
-					auto quoteData = m_dataMap[snapShot.code] = std::make_shared<QuoteBaseData>();
+					auto quoteData = m_dataMap[snapShot.code] = new QuoteBaseData();
 					auto infoData = quoteData->infoData();
 
 					infoData->setCode(snapShot.code);

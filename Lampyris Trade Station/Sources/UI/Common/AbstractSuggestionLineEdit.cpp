@@ -16,6 +16,8 @@ AbstractSuggestionLineEdit::AbstractSuggestionLineEdit(QWidget* parent) : QLineE
 
 void AbstractSuggestionLineEdit::keyPressEvent(QKeyEvent* event) {
 	if (m_suggestionWidget->isVisible()) {
+		auto suggestText = this->m_suggestionList[this->m_suggestIndex].toString();
+
 		switch (event->key()) {
 		case Qt::Key_Up:
 			this->m_suggestIndex = std::clamp(this->m_suggestIndex - 1, 0, (int)this->m_suggestionList.size() - 1);
@@ -31,7 +33,8 @@ void AbstractSuggestionLineEdit::keyPressEvent(QKeyEvent* event) {
 			m_suggestionWidget->hide();
 			return;
 		case Qt::Key_Return:
-			this->setText(this->m_suggestionList[this->m_suggestIndex].toString());
+			this->setText(suggestText);
+			emit suggestedTextChanged(suggestText);
 			m_suggestionWidget->hide();
 			return;
 		default:

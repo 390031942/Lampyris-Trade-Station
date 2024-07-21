@@ -20,7 +20,7 @@ void ApplicationLifecyle::onLoginSuccess() {
 
 	// ÉèÖÃÄ¬ÈÏµÄQuoteProviders
 	QuoteDatabase::getInstance()->setIndexBriefQuoteProvider(new EastMoneyIndexBriefQuoteProvider);
-	QuoteDatabase::getInstance()->setSnapShotQuoteListProvider(new EastMoneyStockCodeListProvider);
+	QuoteDatabase::getInstance()->setSnapShotQuoteListProvider(new EastMoneySnapshotQuoteListProvider);
 	
 	QuoteDatabase::getInstance()->refreshStockList();
 

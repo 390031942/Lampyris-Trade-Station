@@ -30,8 +30,7 @@
 class QuoteDatabase:public SerializableSingleton<QuoteDatabase> {
 	typedef Delegate<> UpdateIndexBriefQuoteCallback;
 	typedef std::unordered_map<QString, QuoteBaseDataPtr> QuoteDataMap;
-	typedef std::vector<std::pair<QString, QuoteBaseDataPtr>> QuoteDataList;
-	typedef std::vector<const QuoteBaseDataPtr> SearchResultList;
+	typedef std::vector<QuoteBaseDataPtr> SearchResultList;
 
 	LAMPYRIS_DECLARE_SERILIZATION(QuoteDatabase);
 public:
@@ -42,8 +41,9 @@ public:
 		Count = 3,
 	};
 
-	QuoteBaseDataPtr              query(const QString& code, const QString& currency = "USD");
+	QuoteDataReader               query(const QString& code, const QString& currency = "USD");
 	SearchResultList              search(const QString& input);
+	void                          searchNoAlloc(const QString& input, SearchResultList& list);
 
 	// For ¹ÉÆ±ÁÐ±í
 	void                          refreshStockList();
@@ -69,7 +69,6 @@ private:
 	std::vector<QString>          m_subscribeIndexBriefQuoteCodeList;
 	//  currency -> [code -> SecurityDataPtr]
 	QuoteDataMap                  m_dataMap;
-	QuoteDataList                 m_dataList;
 
 	IIndexBriefQuoteProvider*     m_indexBriefQuoteProvider;
 	ITickByTickQuoteProvider*     m_tickByTickQuoteProvider;

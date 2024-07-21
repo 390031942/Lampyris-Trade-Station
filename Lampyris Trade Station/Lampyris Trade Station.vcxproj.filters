@@ -278,6 +278,15 @@
     <ClCompile Include="Sources\Base\GlobalEventManager.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\TradeStockSearchLineEdit.cpp">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\UI\Common\QEnumComboBox.cpp">
+      <Filter>Source Files\UI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Const\TradeOptionEnum.cpp">
+      <Filter>Source Files\Const</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Core\Application.h">
@@ -481,6 +490,12 @@
     <ClInclude Include="Sources\Const\GlobalEventType.h">
       <Filter>Source Files\Const</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Base\EnumManager.h">
+      <Filter>Source Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Const\TradeOptionEnum.h">
+      <Filter>Source Files\Const</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Resource\Forms\ConnectDialog.ui">
@@ -581,6 +596,12 @@
       <Filter>Source Files\Strategy</Filter>
     </QtMoc>
     <QtMoc Include="Sources\UI\Common\AbstractSuggestionLineEdit.h">
+      <Filter>Source Files\UI\Common</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\MainPartUI\Trade\TradeStockSearchLineEdit.h">
+      <Filter>Source Files\UI\MainPartUI\Trade</Filter>
+    </QtMoc>
+    <QtMoc Include="Sources\UI\Common\QEnumComboBox.h">
       <Filter>Source Files\UI\Common</Filter>
     </QtMoc>
   </ItemGroup>

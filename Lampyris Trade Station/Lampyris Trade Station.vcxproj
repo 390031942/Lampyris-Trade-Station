@@ -18,6 +18,7 @@
     <ClCompile Include="Sources\Collections\QuotePriceSegmentTree.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Sources\Const\TradeOptionEnum.cpp" />
     <ClCompile Include="Sources\Const\TWSAccountSummaryTags.cpp" />
     <ClCompile Include="Sources\Core\Application.cpp" />
     <ClCompile Include="Sources\Core\ApplicationLifecycle.cpp" />
@@ -37,6 +38,7 @@
     <ClCompile Include="Sources\PlatformDependent\Windows\SEHHandler.cpp" />
     <ClCompile Include="Sources\Strategy\PreMarketTopStrategy.cpp" />
     <ClCompile Include="Sources\UI\Common\MessageBox.cpp" />
+    <ClCompile Include="Sources\UI\Common\QEnumComboBox.cpp" />
     <ClCompile Include="Sources\UI\Common\QGifImage.cpp" />
     <ClCompile Include="Sources\UI\Common\QHistoryRecordLineEdit.cpp" />
     <ClCompile Include="Sources\UI\Common\QHoverableWidget.cpp" />
@@ -63,6 +65,7 @@
     <ClCompile Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\Trade\OrderModel.cpp" />
     <ClCompile Include="Sources\UI\MainPartUI\Trade\PositionModel.cpp" />
+    <ClCompile Include="Sources\UI\MainPartUI\Trade\TradeStockSearchLineEdit.cpp" />
     <ClCompile Include="Sources\UI\MainWindow.cpp" />
     <ClCompile Include="Sources\UI\SystemTrayIcon.cpp" />
     <ClCompile Include="Sources\UI\Tips\OrderFilledTips.cpp" />
@@ -80,6 +83,7 @@
     <ClInclude Include="Sources\Base\ClassInitializer.h" />
     <ClInclude Include="Sources\Base\CustomSerializable.h" />
     <ClInclude Include="Sources\Base\Delegate.h" />
+    <ClInclude Include="Sources\Base\EnumManager.h" />
     <ClInclude Include="Sources\Base\GlobalEventManager.h" />
     <ClInclude Include="Sources\Base\Localization.h" />
     <ClInclude Include="Sources\Base\Logger\ConsoleLogger.h" />
@@ -101,6 +105,7 @@
     <ClInclude Include="Sources\Const\PlannedTaskExecuteMode.h" />
     <ClInclude Include="Sources\Const\StrategyResult.h" />
     <ClInclude Include="Sources\Const\StrategyState.h" />
+    <ClInclude Include="Sources\Const\TradeOptionEnum.h" />
     <ClInclude Include="Sources\Const\TWSAccountSummaryTags.h" />
     <ClInclude Include="Sources\Const\TWSApiAbilities.h" />
     <ClInclude Include="Sources\Core\ApplicationLifecycle.h" />
@@ -150,6 +155,7 @@
     <QtMoc Include="Sources\UI\Function\StrategySettingWindow.h" />
     <QtMoc Include="Sources\UI\Function\StrategySettingItem.h" />
     <QtMoc Include="Sources\UI\Common\AbstractSuggestionLineEdit.h" />
+    <QtMoc Include="Sources\UI\Common\QEnumComboBox.h" />
     <ClInclude Include="Sources\UI\Helper\MenuHelper.h" />
     <QtMoc Include="Sources\UI\MainPartUI\MainWindowStatusBar.h" />
     <QtMoc Include="Sources\UI\MainPartUI\StatusBar\IndexBriefQuoteItem.h" />
@@ -161,6 +167,7 @@
     <ClInclude Include="Sources\UI\MainPartUI\Trade\AccountSummaryModel.h" />
     <ClInclude Include="Sources\UI\MainPartUI\Trade\OrderModel.h" />
     <ClInclude Include="Sources\UI\MainPartUI\Trade\PositionModel.h" />
+    <QtMoc Include="Sources\UI\MainPartUI\Trade\TradeStockSearchLineEdit.h" />
     <ClInclude Include="Sources\UI\SystemTrayIcon.h" />
     <QtMoc Include="Sources\UI\Tips\OrderFilledTipsWindow.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

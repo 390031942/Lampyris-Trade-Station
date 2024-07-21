@@ -47,6 +47,8 @@ protected:
 protected slots:
 	void                  onTextEdited(const QString& input);
 	void                  onSuggestionClicked(QListWidgetItem* item);
+Q_SIGNALS: 
+	void                  suggestedTextChanged(const QString& text);
 protected:
 	QListWidget*          m_suggestionWidget;
 	int                   m_suggestIndex;

@@ -3,15 +3,18 @@
 */
 
 // Project Include(s)
-#include "UI/ConnectDialog.h"
+#include "Base/Localization.h"
 #include "Core/Application.h"
 #include "Const/AppReturnCode.h"
 #include "UI/MainWindow.h"
+#include "UI/ConnectDialog.h"
+#include "UI/Common/MessageBox.h"
 
 int main(int argc, char *argv[]) {
     Application a(argc, argv);
 
     if (!a.createAppInstanceMutex()) {
+        MessageBox->error(Localization->get("Comm"));
         return AppReturnCode::AppInstanceAlreadyExists;
     }
 

@@ -108,7 +108,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="textCode">
+             <widget class="TradeStockSearchLineEdit" name="textCode">
               <property name="minimumSize">
                <size>
                 <width>170</width>
@@ -184,7 +184,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBoxOrderType">
+             <widget class="QEnumComboBox" name="comboBoxOrderType">
               <property name="minimumSize">
                <size>
                 <width>170</width>
@@ -272,14 +272,14 @@
             <item>
              <widget class="QRadioButton" name="radioBtnStock">
               <property name="text">
-               <string>股数</string>
+               <string>股数 </string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QRadioButton" name="radioBtnMoney">
               <property name="text">
-               <string>金额</string>
+               <string>金额 </string>
               </property>
              </widget>
             </item>
@@ -488,7 +488,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBoxExchange">
+             <widget class="QEnumComboBox" name="comboBoxExchange">
               <property name="minimumSize">
                <size>
                 <width>170</width>
@@ -526,7 +526,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBoxValidTime">
+             <widget class="QEnumComboBox" name="comboBoxValidTime">
               <property name="minimumSize">
                <size>
                 <width>170</width>
@@ -729,6 +729,18 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>TradeStockSearchLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>UI/MainPartUI/Trade/TradeStockSearchLineEdit.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QEnumComboBox</class>
+   <extends>QComboBox</extends>
+   <header>UI/Common/QEnumComboBox.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
