@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     Application a(argc, argv);
 
     if (!a.createAppInstanceMutex()) {
-        MessageBox->error(Localization->get("Comm"));
+        MessageBox->error(Localization->get("AppReturnTips_AppInstanceAlreadyExists"));
         return AppReturnCode::AppInstanceAlreadyExists;
     }
 
