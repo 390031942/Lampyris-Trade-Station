@@ -36,7 +36,19 @@ bool Application::connect(const QString& ip, int port, int clientId) {
 	if (ms_clientSocket == nullptr) {
 		return false;
 	}
-	return ms_clientSocket->eConnect(ip.toUtf8().constData(), port, clientId);
+    if (ms_clientSocket->eConnect(ip.toUtf8().constData(), port, clientId)) {
+        if (ms_reader == nullptr) {
+            ms_reader = new EReader(ms_clientSocket, ms_signal);
+        }
+        else {
+            // 使用 placement new 构造 EReader 对象
+            ms_reader = new (ms_reader)EReader(ms_clientSocket, ms_signal);
+        }
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 void Application::disconnect() {
@@ -64,7 +76,6 @@ Application::Application(int argc, char* argv[]) {
     ms_wrapper = new TWSMessageWrapper();
     ms_signal = new EReaderOSSignal();
     ms_clientSocket = new EClientSocket(ms_wrapper, ms_signal);
-    ms_reader = new EReader(ms_clientSocket, ms_signal);
 
     // Timer
     ms_tickTimer.setInterval(1);
@@ -102,7 +113,7 @@ void Application::readConfigFromFile() {
 }
 
 void Application::tickTwsMessage() {
-    if (ms_clientSocket->isConnected()) {
+    if (ms_clientSocket->isConnected() && ms_reader != nullptr) {
         // ms_signal->waitForSignal();
         ms_reader->processMsgs();
     }

@@ -98,7 +98,7 @@ ConnectDialog::ConnectDialog(QWidget *parent)
 	// 如果IP和端口号非空，则执行连接
 	if (autoConnect) {
 		if (!info.ip.isEmpty() && info.port > 0) {
-			// onClickButtonConnect();
+			onClickButtonConnect();
 		}
 	}
 }
